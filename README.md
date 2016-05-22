@@ -1,7 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/Nano-Nimbus/ios-cleanse-1.svg?label=ready&title=Ready)](http://waffle.io/home-run/subtle-cosmic-moose) 
+[![Stories in Ready](https://badge.waffle.io/Nano-Nimbus/ios-cleanse-1.svg?label=ready&title=Ready)](http://waffle.io/nano-nimbus/ios-cleanse-1) 
 
-##~/run (HOME RUN)
-##An application for planning a baseball fan's dream vacation.
+##Nano Nimbus (Cleanse App)
+##An iOS Mobile Application for helping people out complete body cleanses.
 --------
 ###Git flow and branching scheme
 1. **Always** branch from ``develop``.

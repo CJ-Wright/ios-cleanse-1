@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
 		32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A2B2DF1CF113E3005CDC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		323588621D0DC7CD00EB861F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				323588631D0DC7E600EB861F /* recipes.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		32A2B2CE1CF113E3005CDC0E = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 				32A2B2E41CF113E3005CDC0E /* Assets.xcassets */,
 				32A2B2E61CF113E3005CDC0E /* LaunchScreen.storyboard */,
 				32A2B2E91CF113E3005CDC0E /* Info.plist */,
+				323588621D0DC7CD00EB861F /* Resources */,
 				32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */,
 				32F923911D002D4A0069D49D /* Recipe.swift */,
 			);
@@ -279,6 +290,7 @@
 				32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */,
 				32A2B2E51CF113E3005CDC0E /* Assets.xcassets in Resources */,
 				32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */,
+				323588641D0DC7E600EB861F /* recipes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

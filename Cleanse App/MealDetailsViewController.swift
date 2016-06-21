@@ -13,8 +13,11 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
     // MARK: - Data Members
     @IBOutlet var recipeNameLabel: UILabel!
     @IBOutlet var mealImage: UIImageView!
-    @IBOutlet var recipeDescription: UILabel!
+    @IBOutlet var recipeDescription: UITextView!
     @IBOutlet var ingredientsListLabel: UILabel!
+    
+    // Stores the JSON representation of the recipes.
+    var recipesJSON: AnyObject!
     
     var loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     
@@ -22,35 +25,40 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ingredientsListLabel.text = ""
         
-        recipeDescription.numberOfLines = loremIpsum.characters.count / 10
-        
         for item in ingredients {
+            let leftAlignment = NSTextAlignment.Left
+            ingredientsListLabel.textAlignment = leftAlignment
             ingredientsListLabel.text! += "• " + item + "\n"
             ingredientsListLabel.numberOfLines += 1
         }
         
-        
         recipeDescription.text = loremIpsum
+//        recipeDescription.font = recipeDescription.font?.fontWithSize(200)
+        recipeDescription.font = .systemFontOfSize(16)
         
-        loadJSON()
     }
     
     // MARK: - Label Methods
     func addIngredient(ingredient: String) {
-
+        
     }
     
     // MARK: - TableView Methods
     
     // MARK: - Data Methods
-    func loadJSON(){
-        if let path = NSBundle.mainBundle().pathForResource("recipes", ofType: "json") {
-            print("Json successfully loaded!")
-            print(path)
-        } else {
-            print("Failed!")
-        }
+    func recipesFromJSON(data: NSData){
+//        let path = NSBundle.mainBundle().URLForResource("recipes", withExtension: "json")
+//        let data = NSData(contentsOfURL: path!)
+//
+//        do {
+//            let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+//            print(jsonObject)
+//            print("Loaded JSON!")
+//        } catch let error {
+//            return .Failure(error)
+//        }
     }
 }

@@ -10,10 +10,18 @@ import UIKit
 
 class MealMapViewController: UIViewController {
     
+    @IBOutlet var menuButton: UIBarButtonItem!
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }   
     }
     
     override func didReceiveMemoryWarning() {

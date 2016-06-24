@@ -19,12 +19,41 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
     // Stores the JSON representation of the recipes.
     var recipesJSON: AnyObject!
     
-    var loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    var instructions = "Preheat the oven to 375 degrees Fahrenheit. In a large pot combine the broth, onion," +
+    "carrots, celery, and 1 tablespoon of the parsley (or cilantro), and garlic. Add 2 cups of" +
+    "water and bring to a boil. Add the rice and bring back to a boil. Cover and simmer for" +
+    "25 minutes. Remove the lid and simmer for 5 more minutes. Set aside." + "\n\n" +
+    "While the rice cooks, put the chicken and broccoli in a mixing bowl. Add the lime" +
+    "juice, ½ teaspoon parsley, salt, and pepper. Mix well until the chicken and broccoli are" +
+    "coated with the ﬂavorings. Transfer the chicken and broccoli mixture to a baking pan," +
+    "spreading it evenly across the bottom with a spatula. Bake for 30 to 35 minutes." + "\n\n" +
+    "Remove the chicken from the oven and allow to cool. Divide chicken and broccoli into" +
+    "four equal portions and place each over 1 cup of the rice/veggie mixture. Serve and" +
+    "enjoy. (Don’t hesitate to double this recipe and freeze leftover portions.)"
     
-    var ingredients: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    var ingredients: [String] = [
+        "4 cups vegetable or chicken broth", "½ cup chopped red onion", "½ cup chopped carrot", "½ cup chopped celery",
+        "1 tablespoon plus ½ teaspoon chopped parsley or cilantro",
+        "1 teaspoon minced garlic",
+        "1 pound skinless, boneless chicken",
+        "breast, chopped into 2-inch pieces",
+        "4 cups broccoli",
+        "1 tablespoon lime juice",
+        "½ teaspoon sea salt",
+        "½ teaspoon black pepper",
+        "1 cup brown rice"
+    ]
+    
+    var recipeTitle = "Chicken and Broccoli Bowl"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mealImage.layer.cornerRadius = 8.0
+        mealImage.clipsToBounds = true
+        
+        mealImage.layer.borderWidth = 3.0;
+        mealImage.layer.borderColor = UIColor .whiteColor().CGColor
         
         ingredientsListLabel.text = ""
         
@@ -35,7 +64,7 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
             ingredientsListLabel.numberOfLines += 1
         }
         
-        recipeDescription.text = loremIpsum
+        recipeDescription.text = instructions
 //        recipeDescription.font = recipeDescription.font?.fontWithSize(200)
         recipeDescription.font = .systemFontOfSize(16)
         

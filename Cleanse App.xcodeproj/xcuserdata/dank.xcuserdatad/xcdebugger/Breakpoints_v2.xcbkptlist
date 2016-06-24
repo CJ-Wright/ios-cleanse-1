@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cleanse App/Recipe.swift"
-            timestampString = "486559104.99342"
+            timestampString = "488482619.236506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "init(name:description:ingredients:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "init(name:instructions:ingredients:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

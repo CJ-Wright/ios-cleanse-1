@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
+		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
 		32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */; };
@@ -15,8 +16,8 @@
 		32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2E61CF113E3005CDC0E /* LaunchScreen.storyboard */; };
 		32A2B2F31CF113E3005CDC0E /* Cleanse_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2F21CF113E3005CDC0E /* Cleanse_AppTests.swift */; };
 		32A2B2FE1CF113E4005CDC0E /* Cleanse_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */; };
+		32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */; };
 		32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F9238B1D00214B0069D49D /* SWRevealViewController.m */; };
-		32F923901D0022E90069D49D /* MealMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9238F1D0022E90069D49D /* MealMapViewController.swift */; };
 		32F923921D002D4A0069D49D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923911D002D4A0069D49D /* Recipe.swift */; };
 		32F923941D00302F0069D49D /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923931D00302F0069D49D /* RecipeStore.swift */; };
 		32F923961D003F940069D49D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923951D003F940069D49D /* ImageStore.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
+		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A2B2DF1CF113E3005CDC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,10 +57,10 @@
 		32A2B2F91CF113E4005CDC0E /* Cleanse AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cleanse AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cleanse_AppUITests.swift; sourceTree = "<group>"; };
 		32A2B2FF1CF113E4005CDC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewController.swift; sourceTree = "<group>"; };
 		32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cleanse App-Bridging-Header.h"; sourceTree = "<group>"; };
 		32F9238A1D00214B0069D49D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		32F9238B1D00214B0069D49D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		32F9238F1D0022E90069D49D /* MealMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapViewController.swift; sourceTree = "<group>"; };
 		32F923911D002D4A0069D49D /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		32F923931D00302F0069D49D /* RecipeStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		32F923951D003F940069D49D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
@@ -167,8 +169,9 @@
 		32F9238E1D0022C00069D49D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				32F9238F1D0022E90069D49D /* MealMapViewController.swift */,
 				32F923981D0041E90069D49D /* MealDetailsViewController.swift */,
+				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
+				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -317,12 +320,13 @@
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
-				32F923901D0022E90069D49D /* MealMapViewController.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,
 				32F923961D003F940069D49D /* ImageStore.swift in Sources */,
 				32F923991D0041E90069D49D /* MealDetailsViewController.swift in Sources */,
+				32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */,
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
+				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,176 +6,66 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Meal Map-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Meal Map Table View Controller-->
+        <scene sceneID="LPH-qa-ziL">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MealMapViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="oiI-9N-CN9" customClass="MealMapTableViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="lRy-MC-2Sd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="p7J-Ye-7uV">
-                                <rect key="frame" x="20" y="72" width="560" height="520"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="N3M-GV-dfc">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDe-2G-cDg">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IL-Fy-V3P">
-                                                <rect key="frame" x="0.0" y="44" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="SnackMeal1">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="snackButton1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sqc-rF-auN"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="nOm-KE-6fM">
-                                        <rect key="frame" x="0.0" y="87" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakfast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9g-5g-l0e">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-eB-Emh">
-                                                <rect key="frame" x="0.0" y="43" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="BreakfastMeal">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="breakfastMealButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bqQ-kU-INv"/>
-                                                    <segue destination="cfT-UJ-N3X" kind="show" id="X8h-4E-Rts"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UVI-4R-dki">
-                                        <rect key="frame" x="0.0" y="174" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsd-8e-BfT">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qf-qz-Ds9">
-                                                <rect key="frame" x="0.0" y="43" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="SnackMeal2">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="snackButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vOx-OH-u1P"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lTC-Am-gdg">
-                                        <rect key="frame" x="0.0" y="261" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBP-dX-WMu">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81j-mI-UXw">
-                                                <rect key="frame" x="0.0" y="43" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="LunchMeal">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lunchMealButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f6a-sB-JPz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qco-OD-UC2">
-                                        <rect key="frame" x="0.0" y="348" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znn-eH-NyZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHA-nB-tkL">
-                                                <rect key="frame" x="0.0" y="43" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="SnackMeal3">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="snackButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gsz-xG-NHb"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GaN-87-oiz">
-                                        <rect key="frame" x="0.0" y="435" width="560" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dinner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Una-3M-zQR">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="42"/>
-                                                <color key="backgroundColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.70980392160000005" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0R-yK-nXG">
-                                                <rect key="frame" x="0.0" y="43" width="560" height="42"/>
-                                                <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                <state key="normal" title="DinnerMeal">
-                                                    <color key="titleColor" red="0.28627450980000002" green="0.45098039220000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="dinnerMealButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vkh-JI-JQj"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="p7J-Ye-7uV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2Cz-jV-cjS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="p7J-Ye-7uV" secondAttribute="bottom" constant="8" id="BvZ-tH-rLy"/>
-                            <constraint firstItem="p7J-Ye-7uV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="njZ-4e-QvD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="p7J-Ye-7uV" secondAttribute="trailing" id="uhI-U2-otF"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Meal Map" id="xpQ-77-Xap">
-                        <barButtonItem key="leftBarButtonItem" title="[=]" id="BDo-f3-GfV"/>
-                        <barButtonItem key="rightBarButtonItem" title="Options" id="SbA-mM-uxy"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="23Q-u4-pDD" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23Q-u4-pDD" id="74U-FX-ALG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-cX-kYM">
+                                            <rect key="frame" x="8" y="8" width="584" height="183.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLm-x3-yJu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="92"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-GH-BKl">
+                                                    <rect key="frame" x="0.0" y="92" width="584" height="91.5"/>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="C2E-cX-kYM" secondAttribute="leading" id="9sA-s5-bhf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="C2E-cX-kYM" secondAttribute="trailing" id="DFk-5b-u9O"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="C2E-cX-kYM" secondAttribute="bottom" id="N2N-Ir-lzd"/>
+                                        <constraint firstAttribute="topMargin" secondItem="C2E-cX-kYM" secondAttribute="top" id="NWk-0R-cHN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mealMapImageView" destination="QVH-GH-BKl" id="Qed-oa-sd1"/>
+                                    <outlet property="mealMapNameLabel" destination="gLm-x3-yJu" id="Y4b-zw-RfK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="oiI-9N-CN9" id="ysg-AA-7dH"/>
+                            <outlet property="delegate" destination="oiI-9N-CN9" id="Fd7-sq-yhM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="hzk-9c-OeC">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="4Qv-QI-W21"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButton" destination="BDo-f3-GfV" id="jkx-cw-UIL"/>
+                        <outlet property="menuButton" destination="4Qv-QI-W21" id="c8K-u0-nXE"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bbO-Ro-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759" y="336"/>
+            <point key="canvasLocation" x="309" y="133"/>
         </scene>
         <!--Meal Details View Controller-->
         <scene sceneID="RFh-Xp-9dK">
@@ -189,29 +79,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L2z-AX-TCR">
-                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L2z-AX-TCR">
+                                <rect key="frame" x="20" y="72" width="560" height="564"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpZ-Yh-amT">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="65"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" image="Asian_Turkey_SoupFS" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-8b-8VA">
-                                        <rect key="frame" x="0.0" y="21" width="560" height="200"/>
+                                        <rect key="frame" x="0.0" y="65" width="560" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="p03-Kw-oAs"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAb-7l-iWl">
-                                        <rect key="frame" x="0.0" y="221" width="560" height="21"/>
+                                        <rect key="frame" x="0.0" y="265" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUl-6F-DKd">
-                                        <rect key="frame" x="0.0" y="241" width="560" height="279"/>
+                                        <rect key="frame" x="0.0" y="285" width="560" height="279"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -236,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poi-Ts-xVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="336"/>
+            <point key="canvasLocation" x="1079" y="133"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="28u-9G-0uR">
@@ -253,7 +143,7 @@
                     </view>
                     <connections>
                         <segue destination="j75-k9-yQw" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="eve-GY-xm9"/>
-                        <segue destination="A79-5A-XHB" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Zo1-bf-Unf"/>
+                        <segue destination="yPk-Nm-R57" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="9V0-3y-24y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cP-Nf-g1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,9 +176,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="A79-5A-XHB" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="j5f-x8-YGP"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5mr-zC-IIj">
                                         <rect key="frame" x="0.0" y="44" width="600" height="44"/>
@@ -384,28 +271,25 @@
             <point key="canvasLocation" x="-771" y="824"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="1kj-DQ-xLC">
+        <scene sceneID="Gsb-ZK-Qm8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A79-5A-XHB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yPk-Nm-R57" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8FC-N6-1Hu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5hE-9z-8vT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="00p-sI-dHk"/>
+                        <segue destination="oiI-9N-CN9" kind="relationship" relationship="rootViewController" id="SLd-QE-LDn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UxY-RK-lCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eby-qM-aZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="336"/>
+            <point key="canvasLocation" x="-469" y="125"/>
         </scene>
     </scenes>
     <resources>
         <image name="Asian_Turkey_SoupFS" width="3072" height="2048"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Zo1-bf-Unf"/>
-    </inferredMetricsTieBreakers>
 </document>

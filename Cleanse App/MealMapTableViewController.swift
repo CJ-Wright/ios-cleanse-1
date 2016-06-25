@@ -9,18 +9,20 @@
 import UIKit
 
 
-class MealMapTableViewController: UITableViewController {
+class MealMapTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
-    
+    var currentDay = 1
+    var numDaysInPlan = 10
     // Temp cell identifier
     let navigationCellIdentifier = "NavCell"
     
-    let cellIdentifiers = ["DAY","Breakfast","Snack","Lunch","Snack","Dinner"]
+    let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,7 +49,7 @@ class MealMapTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 5
     }
 
     
@@ -62,28 +64,39 @@ class MealMapTableViewController: UITableViewController {
             cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
         
-        let labelText = cellIdentifiers[indexPath.row]
-        if labelText == "DAY" {
-            
-        }
+        
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row]
         
         return cell
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var returnHeight:CGFloat
-        switch(indexPath.row)
-        {
-        case 0:
-            returnHeight = 50
-        default:
-            returnHeight = 200
+     
+    @IBAction func nextDayButton(sender: UIBarButtonItem) {
+        print("Next day " + navigationBar.title!)
+        if currentDay < numDaysInPlan {
+            currentDay += 1
         }
-        
-        return returnHeight;
-    }
+        navigationBar.title! = "Day " + String(currentDay)
 
+        // This will animate the movement of the table right to left
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+        self.tableView.reloadSections(sections, withRowAnimation: .Left)
+
+    }
+    @IBAction func previousDayButton(sender: UIBarButtonItem) {
+        print("Previous day " + navigationBar.title!)
+        if currentDay > 1{
+            currentDay -= 1
+        }
+        navigationBar.title! = "Day " + String(currentDay)
+        
+        // This will animate the movement of the table left to right
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+        self.tableView.reloadSections(sections, withRowAnimation: .Right)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

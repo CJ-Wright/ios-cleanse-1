@@ -4,9 +4,10 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Meal Map Table View Controller-->
+        <!--Day-->
         <scene sceneID="LPH-qa-ziL">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="oiI-9N-CN9" customClass="MealMapTableViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,33 +16,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DayCell" rowHeight="49" id="23Q-u4-pDD" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="49"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23Q-u4-pDD" id="74U-FX-ALG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="48.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t82-1o-rs4">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="48.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="t82-1o-rs4" secondAttribute="bottom" id="7aC-9w-GPb"/>
-                                    <constraint firstItem="t82-1o-rs4" firstAttribute="top" secondItem="23Q-u4-pDD" secondAttribute="top" id="bru-zB-hNf"/>
-                                    <constraint firstItem="t82-1o-rs4" firstAttribute="leading" secondItem="23Q-u4-pDD" secondAttribute="leading" constant="8" id="fpr-ep-fu3"/>
-                                    <constraint firstAttribute="trailing" secondItem="t82-1o-rs4" secondAttribute="trailing" constant="8" id="pjs-5R-nyV"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="YhF-dv-9CF" kind="show" id="CdB-ik-hDR"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="dkL-ZX-cqY" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="141" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkL-ZX-cqY" id="k4n-HM-z08">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
@@ -72,6 +48,7 @@
                                 <connections>
                                     <outlet property="mealMapImageView" destination="TeO-BI-zb1" id="OVk-xx-y5a"/>
                                     <outlet property="mealMapNameLabel" destination="rRg-eR-OGP" id="0qi-4J-Ted"/>
+                                    <segue destination="YhF-dv-9CF" kind="show" id="NBT-sl-1u1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -81,11 +58,24 @@
                             <outlet property="delegate" destination="oiI-9N-CN9" id="Fd7-sq-yhM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hzk-9c-OeC">
+                    <navigationItem key="navigationItem" title="Day" id="hzk-9c-OeC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="4Qv-QI-W21"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Next" id="8gc-xQ-VzT" userLabel="Next">
+                                <connections>
+                                    <action selector="nextDayButton:" destination="oiI-9N-CN9" id="v6c-b2-ReZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Previous" id="Su0-eQ-yjn">
+                                <connections>
+                                    <action selector="previousDayButton:" destination="oiI-9N-CN9" id="1jl-1o-n4o"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="4Qv-QI-W21" id="c8K-u0-nXE"/>
+                        <outlet property="navigationBar" destination="hzk-9c-OeC" id="TQ9-oP-ALb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbO-Ro-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,6 +346,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gsb-ZK-Qm8">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eby-qM-aZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yPk-Nm-R57" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5hE-9z-8vT">
@@ -367,7 +358,6 @@
                         <segue destination="oiI-9N-CN9" kind="relationship" relationship="rootViewController" id="SLd-QE-LDn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eby-qM-aZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-551" y="9"/>
         </scene>
@@ -376,6 +366,6 @@
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9V0-3y-24y"/>
+        <segue reference="vLB-q4-8Ld"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -46,10 +46,14 @@ class Recipe: NSObject {
     var default_recipeTitle = "Chicken and Broccoli Bowl"
     
     
-    init (name: String, instructions: String, ingredients: [String]) {
-        self.name = name
-        self.instructions = instructions
-        self.ingredients = ingredients
+    override init () {
+//        init (name: String, instructions: String, ingredients: [String]) {
+//        self.name = name
+//        self.instructions = instructions
+//        self.ingredients = ingredients
+        self.name = ""
+        self.instructions = ""
+        self.ingredients = [String]()
     }
     
     // MARK: Testing methods

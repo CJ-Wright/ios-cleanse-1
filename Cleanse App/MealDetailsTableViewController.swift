@@ -79,15 +79,20 @@ class MealDetailsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var returnHeight:CGFloat
-        if indexPath.row == 0 {
-            returnHeight = 44
-        } else if indexPath.row == 1 {
-            returnHeight = 200
-        } else if indexPath.row == 2 {
-            returnHeight = 100 + (20 * CGFloat(self.ingredients.count))
-        } else {
-            returnHeight = 700 - (5 * CGFloat(self.ingredients.count))
+        switch(indexPath.row)
+        {
+            case 0:
+                returnHeight = 44
+            case 1:
+                returnHeight = 200
+            case 2:
+                returnHeight = 100 + (20 * CGFloat(self.ingredients.count))
+            case 3:
+                returnHeight = 700 - (5 * CGFloat(self.ingredients.count))
+            default:
+                returnHeight = 30
         }
+
         return returnHeight;
     }
     // MARK: - Table view data source

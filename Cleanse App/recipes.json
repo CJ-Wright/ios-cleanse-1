@@ -1,18 +1,179 @@
 {
-    "name":"Chicken and Broccoli Bowl",
-    "ingredients": [
-        "4 cups vegetable or chicken broth",
-        "1/2 cup chopped red onion",
-        "1/2 cup chopped carrot",
-        "1/2 cup chopped celery",
-        "1 tablespoon plus 1/2 teaspoon chopped parsley or cilantro",
-        "1 teaspoon minced garlic",
-        "1 pound skinless, boneless chicken breast, chopped into 2-inch pieces",
-        "4 cups broccoli",
-        "1 tablespoon lime juice",
-        "1/2 teaspoon sea salt",
-        "1/2 teaspoon black pepper",
-        "1 cup brown rice"
-    ],
-    "instructions":"Preheat the oven to 375 degrees Fahrenheit. In a large pot combine the broth, onion, carrots, celery, and 1 tablespoon of the parsley (or cilantro), and garlic. Add 2 cups of water and bring to a boil. Add the rice and bring back to a boil. Cover and simmer for 25 minutes. Remove the lid and simmer for 5 more minutes. Set aside. While the rice cooks, put the chicken and broccoli in a mixing bowl. Add the lime juice, ½ teaspoon parsley, salt, and pepper. Mix well until the chicken and broccoli are coated with the ﬂavorings. Transfer the chicken and broccoli mixture to a baking pan, spreading it evenly across the bottom with a spatula. Bake for 30 to 35 minutes. Remove the chicken from the oven and allow to cool. Divide chicken and broccoli into four equal portions and place each over 1 cup of the rice/veggie mixture. Serve and enjoy. (Don’t hesitate to double this recipe and freeze leftover portions.)"
+    "recipes":[{
+               "name":"OVERNIGHT STEEL-CUT OATS WITH PEACHES",
+               "serves":"4 to 8",
+               "ingredients":["1 cup steel-cut oats","4 cups water"],
+               "instructions":"Bring the water to a boil in a large saucepan. Add oats and boil 1 minute. Turn oﬀ the heat, cover the pan and let it stand overnight at room temperature. In the morning, remove the lid and bring the oats to a boil. Reduce heat and simmer, stirring often, until the oats are creamy yet still a little bit chewy, about 7 to 10 minutes. Cooked oats will keep in the fridge for a week. You can just spoon out a serving, add a little water, and reheat in the microwave for a minute or two. Or you can make a huge batch and freeze single servings. For extra flavor add ½ cup chopped peaches, ½ teaspoon grated fresh ginger, and ¼ teaspoon vanilla, or ½ cup of your favorite fruit (from the food list) as a mix-in."
+               },
+               {
+               "name":"CHICKEN AND BROCCOLI BOWL",
+               "serves":"4",
+               "ingredients":[
+                              "4 cups vegetable or chicken broth",
+                              "½ cup chopped red onion",
+                              "½ cup chopped carrot",
+                              "½ cup chopped celery",
+                              "1 tablespoon plus ½ teaspoon chopped parsley or cilantro",
+                              "1 teaspoon minced garlic"
+                              ],
+               "instructions":"Preheat the oven to 375 degrees Fahrenheit. In a large pot combine the broth, onion, carrots, celery, and 1 tablespoon of the parsley (or cilantro), and garlic. Add 2 cups of water and bring to a boil. Add the rice and bring back to a boil. Cover and simmer for 25 minutes. Remove the lid and simmer for 5 more minutes. Set aside. While the rice cooks, put the chicken and broccoli in a mixing bowl. Add the lime juice, ½ teaspoon parsley, salt, and pepper. Mix well until the chicken and broccoli are coated with the ﬂavorings. Transfer the chicken and broccoli mixture to a baking pan, spreading it evenly across the bottom with a spatula. Bake for 30 to 35 minutes. Remove the chicken from the oven and allow to cool. Divide chicken and broccoli into four equal portions and place each over 1 cup of the rice/veggie mixture. Serve and enjoy. (Don’t hesitate to double this recipe and freeze leftover portions.)"
+               },
+               {
+               "name":"TURKEY OR BUFFALO CHILI",
+               "serves":"6",
+               "ingredients":[
+                              "1 to 1½ pounds lean ground turkey or buffalo meat",
+                              "½ cup diced red onion, (or more if desired)",
+                              "2 tablespoon parsley or cilantro",
+                              "1 heaping tablespoon chili powder",
+                              "1 tablespoon minced garlic",
+                              "½ teaspoon crushed red pepper ﬂakes",
+                              "15-ounce can white beans",
+                              "15-ounce can kidney beans",
+                              "15-ounce can black beans",
+                              "15-ounce can pinto beans",
+                              "15-ounce can lentils or adzuki beans",
+                              "4 cups chopped zucchini",
+                              "4 cups (32 ounces) organic bell pepper and tomato soup or plain tomato soup (just be sure it is not milk-based)",
+                              "1 heaping teaspoon sea salt"
+                              ],
+               "instructions":"Brown the turkey in a skillet and drain. Turn a slow cooker to high setting. Add the meat, onion, parsley, chili powder, garlic, and red pepper ﬂakes to the slow cooker pot. Stir, cover, and set the slow cooker aside. Open and partially drain all ﬁve cans of beans; I leave a little liquid in to make the chili juicier. Add the beans, zucchini, and soup to the cooker. Stir well. Keep the cooker set on high for 4 to 5 hours, or adjust heat to low and simmer for 6 to 8 hours. Stir and taste occasionally, adjusting seasonings and adding salt as needed. A serving is 1½ cups."
+               },
+               {
+               "name":"HOT AND SOUR TURKEY SOUP",
+               "serves":"4",
+               "ingredients":[
+                              "3 ½ cups chicken broth",
+                              "2 cups sliced fresh mushrooms",
+                              "3 tablespoons apple cider vinegar",
+                              "2 tablespoons tamari",
+                              "1 teaspoon grated ginger",
+                              "½ teaspoon black pepper",
+                              "⅛ teaspoon powdered stevia",
+                              "1 tablespoon arrowroot powder",
+                              "1 tablespoon cold water",
+                              "2 cups shredded cooked turkey breast",
+                              "2 cups sliced cabbage",
+                              "1 red bell pepper, sliced into strips",
+                              "3 egg whites, lightly beaten",
+                              "3 tablespoons thinly sliced green onions"
+                              ],
+               "instructions":"In a large pot combine the broth, mushrooms, apple cider vinegar, tamari, ginger, black pepper and stevia. Bring this mixture to a boil. Meanwhile, in a small bowl, stir together the arrowroot powder and cold water until there are no lumps. Slowly stir this into the boiling broth mixture. Cook and stir until the mixture is thick and bubbly, then cook and stir for 2 minutes more. Stir in the cooked turkey, cabbage, and red bell pepper, and bring back to a boil. Pour the egg whites slowly into the soup in a steady stream, stirring two or three times to create shreds. Remove the soup from the heat, stir in the green onions, and serve."
+               },
+               {
+               "name":"CHICKEN SAUSAGE WITH BROWN RICE FUSILLI",
+               "serves":"4",
+               "ingredients":[
+                              "2 cups brown rice fusilli",
+                              "12 ounces chicken sausage",
+                              "2 cups cubed zucchini",
+                              "1 cup broccoli ﬂorets",
+                              "¼ cup minced onion",
+                              "1 tablespoon crushed garlic",
+                              "¼ teaspoon sea salt",
+                              "⅛ teaspoon black pepper"
+                              ],
+               "instructions":"Prepare pasta according to package directions, being careful not to overcook. When done, drain and rinse pasta. Set aside. Cut the chicken sausage into 1-inch pieces. Preheat a large non-stick skillet. Add 1 tablespoon of water and stir in the sausage, onion and garlic. Cook on medium heat until lightly browned. Incorporate the zucchini, broccoli, salt and pepper, and cook until vegetables are crisp-tender, 3 to 5 minutes. Add the pasta to the skillet, toss, and serve."
+               },
+               {
+               "name":"SHRIMP AND ASPARAGUS STIR-FRY",
+               "serves":"4",
+               "ingredients":[
+                              "2 tablespoons grapeseed oil",
+                              "1 pound shrimp, shelled and deveined",
+                              "1 pound asparagus, tough ends trimmed, sliced diagonally into 2-inch pieces (halve thick stalks lengthwise)",
+                              "1 tablespoon minced garlic",
+                              "1 tablespoon grated fresh ginger",
+                              "¼ - ½ teaspoon crushed red pepper ﬂakes",
+                              "2 tablespoons tamari",
+                              "2 teaspoons toasted sesame oil",
+                              "2 cups cooked quinoa"
+                              ],
+               "instructions":"Heat a large, heavy skillet over high heat. Add the grapeseed oil and shrimp and stir-fry 1 minute or until just pink. Remove the shrimp to a plate, leaving the oil in the pan. Add the asparagus and stir-fry 1 minute. Add the garlic, ginger, and red pepper ﬂakes. Return the shrimp to the pan and stir-fry 1 minute longer. Remove everything to a bowl. Toss with tamari and toasted sesame oil. Serve over quinoa."
+               },
+               {
+               "name":"EGG CASSEROLE",
+               "serves":"4",
+               "ingredients":[
+                              "2 tablespoons vegetable broth or water",
+                              "6 ounces (about 2 cups) sliced crimini(baby bella) mushrooms",
+                              "½ cup chopped red bell pepper",
+                              "2 teaspoons Simply Organic All-Purpose Seasoning (or another seasoning blend you like)",
+                              "2 teaspoons minced fresh jalapeños (optional)",
+                              "2 ½ cups (packed) fresh spinach, chopped",
+                              "4 ounces turkey bacon, cooked and chopped",
+                              "Sea salt",
+                              "Freshly ground black pepper",
+                              "9 egg whites",
+                              "3 green onions, thinly sliced"
+                              ],
+               "instructions":"Preheat the oven to 375 degrees. Line a 7-by-11-inch baking dish with parchment. Heat a large skillet over medium heat. Add 2 tablespoons of vegetable broth or water, the mushrooms, red bell pepper, Simply Organic seasoning, and optional jalapeños. Cook, stirring occasionally, until the vegetables are nearly tender, about 3 minutes. Add the spinach. Cook until the spinach is cooked down and bright green, about 1 minute. Remove the pan from the heat. Stir in the turkey bacon; season to taste with salt and pepper. Spread the spinach mixture evenly on the bottom of the prepared baking dish. Whisk the egg whites, then pour them over the spinach mixture. Scatter the green onions on top. Bake until the egg whites are set, about 25 minutes. Test by poking a small sharp knife into the middle of the casserole and taking a peek — it should be moist inside, but not liquidy. Let the casserole sit for about 5 minutes, then cut into pieces and serve. (The leftovers reheat well in the microwave — just cover and refrigerate.)"
+               },
+               {
+               "name":"TANGY TUNA CASSEROLE",
+               "serves":"4",
+               "ingredients":[
+                              "1 cup uncooked quinoa fusilli (Eden Organic Quinoa and Kamut Twists work well)",
+                              "2 ½ tablespoons olive oil, divided",
+                              "1 cup diced carrots",
+                              "1 cup diced celery",
+                              "1 cup diced onion",
+                              "1 cup sliced fresh mushrooms",
+                              "2 tablespoons arrowroot powder",
+                              "2 teaspoons tamari",
+                              "2 cups chicken broth",
+                              "¼ cup saﬄower mayonnaise",
+                              "2 12-ounce cans tuna, drained",
+                              "¼ teaspoon sea salt",
+                              "¼ teaspoon freshly ground black pepper",
+                              "1 slice sprouted-grain bread, ground into coarse crumbs in the blender or food processor",
+                              "Paprika"
+                              ],
+               "instructions":"Boil the pasta just until it’s al dente (according to package instructions). Meanwhile, preheat the oven to 350 degrees F. In a large skillet over medium heat, add 2 tablespoons of olive oil and the carrots, celery, onions, and mushrooms. Sauté until the veggies are tender, about 8 minutes. In a medium bowl, whisk the arrowroot and tamari into the chicken broth, and then add to the veggies in the skillet, stirring until the mixture is thick and smooth, about 5 minutes. Remove the pan from the heat, stir in the mayonnaise, tuna, salt, and pepper. Spread the pasta in a 9-inch square baking dish (no need to oil the dish). Pour the mixture over the pasta to cover completely. Scatter the breadcrumbs evenly on top, drizzle with the remaining 1/2 tablespoon olive oil, and sprinkle with paprika. Bake for 30 minutes, until the breadcrumbs are golden brown."
+               },
+               {
+               "name":"LIMEADE SLUSHY",
+               "serves":"na",
+               "ingredients":[
+                              "1 lime, peeled",
+                              "½ teaspoon lime zest",
+                              "3 packets stevia",
+                              "1 cup water",
+                              "2 cups crushed ice",
+                              "1 cup romaine lettuce"
+                              ],
+               "instructions":"Put all of the ingredients into a blender, adding the ice last. Blend until smooth and serve. Because this delicious, refreshing, fat-burning treat has a veggie, you can have as many as you want."
+               },
+               {
+               "name":"GINGERED SHRIMP AND VEGGIE STIR-FRY",
+               "serves":"8",
+               "ingredients":[
+                              "4 tablespoons grapeseed oil",
+                              "2 pounds shrimp, cleaned and deveined",
+                              "2 yellow squash, sliced",
+                              "1 cup mushrooms, sliced",
+                              "1 cup chopped bok choy",
+                              "¼ cup sliced asparagus",
+                              "1 cup diced tomatoes",
+                              "¼ cup coconut aminos",
+                              "¼ cup minced ginger",
+                              "½ cup toasted sesame seeds",
+                              "1 tablespoon sea salt herb mix",
+                              "1½ teaspoons crushed red pepper ﬂakes",
+                              "4 cups cooked wild rice"
+                              ],
+               "instructions":"Heat a large, heavy-bottomed skillet or wok over medium heat. When hot, heat 1 tablespoon of the oil, tipping the pan to coat it with oil. Add the shrimp and stir-fry for about 4 minutes or until pink. Remove from the pan and set aside. Re-coat the pan with the remaining oil and add the squash, mushrooms, bok choy, and asparagus. Stir-fry for about 5 minutes, until the vegetables are slightly tender. Add the tomatoes, coconut aminos, ginger, sesame seeds, salt mix and red pepper ﬂakes. Cook, stirring often, for 3 minutes. Return the shrimp to the pan, mix with the other ingredients, and cook just until everything is heated through. Serve over rice."
+               },
+               {
+               "name":"SOOTHING TEA",
+               "serves":"na",
+               "ingredients":[
+                              "2 tablespoons apple cider vinegar",
+                              "9 drops liquid stevia (to taste) or 3 teaspoons raw honey (after the diet only)",
+                              "¼ teaspoon ground ginger or 1 teaspoon grated fresh ginger",
+                              "1 cup spring water or sparkling water"
+                              ],
+               "instructions":"Combine all ingredients in a jar or glass. Cover and refrigerate for at least 2 hours or overnight. Shake or stir before serving. If using fresh ginger, strain through a sieve. Pour over ice and serve. Add extra water or sparkling water if desired. Also tastes great warm!"
+               },                            
+               ]
 }

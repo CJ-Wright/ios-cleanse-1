@@ -22,7 +22,6 @@
 		32F923921D002D4A0069D49D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923911D002D4A0069D49D /* Recipe.swift */; };
 		32F923941D00302F0069D49D /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923931D00302F0069D49D /* RecipeStore.swift */; };
 		32F923961D003F940069D49D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923951D003F940069D49D /* ImageStore.swift */; };
-		32F923991D0041E90069D49D /* old-MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923981D0041E90069D49D /* old-MealDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		32F923911D002D4A0069D49D /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		32F923931D00302F0069D49D /* RecipeStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		32F923951D003F940069D49D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
-		32F923981D0041E90069D49D /* old-MealDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "old-MealDetailsViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +169,6 @@
 		32F9238E1D0022C00069D49D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				32F923981D0041E90069D49D /* old-MealDetailsViewController.swift */,
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
 				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
@@ -327,7 +324,6 @@
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,
 				32F923961D003F940069D49D /* ImageStore.swift in Sources */,
 				32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */,
-				32F923991D0041E90069D49D /* old-MealDetailsViewController.swift in Sources */,
 				32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */,
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
 				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,

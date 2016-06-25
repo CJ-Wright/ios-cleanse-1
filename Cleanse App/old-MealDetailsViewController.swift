@@ -15,6 +15,7 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var mealImage: UIImageView!
     @IBOutlet var recipeDescription: UITextView!
     @IBOutlet var ingredientsListLabel: UILabel!
+    @IBOutlet var backButton: UIBarButtonItem!
     
     // Stores the JSON representation of the recipes.
     var recipesJSON: AnyObject!
@@ -49,7 +50,7 @@ class MealDetailsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         var default_recipe = Recipe()
-        
+        self.navigationItem.backBarButtonItem = backButton
         
         mealImage.layer.cornerRadius = 8.0
         mealImage.clipsToBounds = true

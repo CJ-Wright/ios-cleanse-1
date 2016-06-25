@@ -11,8 +11,8 @@ import UIKit
 class MealMapTableViewCell: UITableViewCell {
 
     @IBOutlet var mealMapNameLabel: UILabel!
-    
     @IBOutlet var mealMapImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

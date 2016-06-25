@@ -15,39 +15,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="23Q-u4-pDD" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DayCell" rowHeight="49" id="23Q-u4-pDD" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23Q-u4-pDD" id="74U-FX-ALG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="48.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t82-1o-rs4">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="48.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="t82-1o-rs4" secondAttribute="bottom" id="7aC-9w-GPb"/>
+                                    <constraint firstItem="t82-1o-rs4" firstAttribute="top" secondItem="23Q-u4-pDD" secondAttribute="top" id="bru-zB-hNf"/>
+                                    <constraint firstItem="t82-1o-rs4" firstAttribute="leading" secondItem="23Q-u4-pDD" secondAttribute="leading" constant="8" id="fpr-ep-fu3"/>
+                                    <constraint firstAttribute="trailing" secondItem="t82-1o-rs4" secondAttribute="trailing" constant="8" id="pjs-5R-nyV"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="YhF-dv-9CF" kind="show" id="CdB-ik-hDR"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="dkL-ZX-cqY" customClass="MealMapTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="141" width="600" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkL-ZX-cqY" id="k4n-HM-z08">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-cX-kYM">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nfw-nL-LdD">
                                             <rect key="frame" x="8" y="8" width="584" height="183.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLm-x3-yJu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-eR-OGP">
                                                     <rect key="frame" x="0.0" y="0.0" width="584" height="92"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-GH-BKl">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TeO-BI-zb1">
                                                     <rect key="frame" x="0.0" y="92" width="584" height="91.5"/>
                                                 </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="C2E-cX-kYM" secondAttribute="leading" id="9sA-s5-bhf"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="C2E-cX-kYM" secondAttribute="trailing" id="DFk-5b-u9O"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="C2E-cX-kYM" secondAttribute="bottom" id="N2N-Ir-lzd"/>
-                                        <constraint firstAttribute="topMargin" secondItem="C2E-cX-kYM" secondAttribute="top" id="NWk-0R-cHN"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="nfw-nL-LdD" secondAttribute="leading" id="OJg-yg-9KF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="nfw-nL-LdD" secondAttribute="trailing" id="ffG-A0-8u6"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="nfw-nL-LdD" secondAttribute="bottom" id="ots-qe-JjJ"/>
+                                        <constraint firstAttribute="topMargin" secondItem="nfw-nL-LdD" secondAttribute="top" id="wd6-Hk-Dc4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="mealMapImageView" destination="QVH-GH-BKl" id="Qed-oa-sd1"/>
-                                    <outlet property="mealMapNameLabel" destination="gLm-x3-yJu" id="Y4b-zw-RfK"/>
-                                    <segue destination="YhF-dv-9CF" kind="show" id="CdB-ik-hDR"/>
+                                    <outlet property="mealMapImageView" destination="TeO-BI-zb1" id="OVk-xx-y5a"/>
+                                    <outlet property="mealMapNameLabel" destination="rRg-eR-OGP" id="0qi-4J-Ted"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -204,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cP-Nf-g1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1641" y="74"/>
+            <point key="canvasLocation" x="-1359" y="-2"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="gVv-zF-3Og">
@@ -352,6 +376,6 @@
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vLB-q4-8Ld"/>
+        <segue reference="9V0-3y-24y"/>
     </inferredMetricsTieBreakers>
 </document>

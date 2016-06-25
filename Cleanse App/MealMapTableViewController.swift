@@ -16,7 +16,7 @@ class MealMapTableViewController: UITableViewController {
     // Temp cell identifier
     let navigationCellIdentifier = "NavCell"
     
-    let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
+    let cellIdentifiers = ["DAY","Breakfast","Snack","Lunch","Snack","Dinner"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class MealMapTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
 
     
@@ -58,15 +58,31 @@ class MealMapTableViewController: UITableViewController {
         
         if cellIdentifiers[indexPath.row] == "Snack" {
             cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
-        } else {
+        } else if cellIdentifiers[indexPath.row] != "DAY" {
             cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
         
+        let labelText = cellIdentifiers[indexPath.row]
+        if labelText == "DAY" {
+            
+        }
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row]
         
         return cell
     }
- 
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var returnHeight:CGFloat
+        switch(indexPath.row)
+        {
+        case 0:
+            returnHeight = 50
+        default:
+            returnHeight = 200
+        }
+        
+        return returnHeight;
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -47,6 +47,10 @@ class MealDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 68 // set to whatever your "average" cell height is
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.setNeedsLayout()
+        self.tableView.layoutIfNeeded()
         let leftAlignment = NSTextAlignment.Left
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,28 +58,40 @@ class MealDetailsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.recipeNameLabel.text = recipeTitle
-//        self.recipeImageView.image
+        self.recipeIngredientsLabel.text = ""
+        
+        self.recipeIngredientsLabel.textAlignment = leftAlignment
         for ingredient in ingredients {
-                self.recipeIngredientsLabel.text = "• " + ingredient + "\n"
-                self.recipeIngredientsLabel.numberOfLines += 1
+                self.recipeIngredientsLabel.text? += "• " + ingredient
+                self.recipeIngredientsLabel.text? += "\n"
         }
         
-        self.recipeInstructionsLabel.numberOfLines = 100
+//        self.recipeInstructionsLabel.numberOfLines = 100
         self.recipeInstructionsLabel.text = instructions
         self.recipeInstructionsLabel.font = .systemFontOfSize(16)
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44.0 // set to whatever your "average" cell height is
         
-        
-        self.recipeInstructionsLabel.text = instructions
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var returnHeight:CGFloat
+        if indexPath.row == 0 {
+            returnHeight = 44
+        } else if indexPath.row == 1 {
+            returnHeight = 200
+        } else if indexPath.row == 2 {
+            returnHeight = 100 + (20 * CGFloat(self.ingredients.count))
+        } else {
+            returnHeight = 700 - (5 * CGFloat(self.ingredients.count))
+        }
+        return returnHeight;
+    }
     // MARK: - Table view data source
+
     /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

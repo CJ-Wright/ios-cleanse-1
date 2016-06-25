@@ -86,7 +86,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrc-yj-qom">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrc-yj-qom">
                                                     <rect key="frame" x="8" y="8" width="584" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -120,15 +120,15 @@
                                             <constraint firstItem="q8e-WA-G4y" firstAttribute="top" secondItem="pyX-Si-OYM" secondAttribute="top" constant="8" id="upG-eZ-4qX"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeIngredientsCell" rowHeight="148" id="Tyt-ak-joB">
-                                        <rect key="frame" x="0.0" y="284" width="600" height="148"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeIngredientsCell" rowHeight="146" id="Tyt-ak-joB">
+                                        <rect key="frame" x="0.0" y="284" width="600" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tyt-ak-joB" id="Yez-Ur-Qkr">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="147.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="145.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Ingredients Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-Sj-n8H">
-                                                    <rect key="frame" x="8" y="8" width="584" height="127.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Ingredients Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-Sj-n8H">
+                                                    <rect key="frame" x="8" y="8" width="584" height="130"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -137,20 +137,20 @@
                                         </tableViewCellContentView>
                                         <constraints>
                                             <constraint firstItem="CCy-Sj-n8H" firstAttribute="leading" secondItem="Tyt-ak-joB" secondAttribute="leading" constant="8" id="7iO-Z3-LOa"/>
-                                            <constraint firstAttribute="bottom" secondItem="CCy-Sj-n8H" secondAttribute="bottom" constant="12.5" id="bnY-AX-bOK"/>
+                                            <constraint firstAttribute="bottom" secondItem="CCy-Sj-n8H" secondAttribute="bottom" constant="8" id="bnY-AX-bOK"/>
                                             <constraint firstAttribute="trailing" secondItem="CCy-Sj-n8H" secondAttribute="trailing" constant="8" id="ee7-bI-mt9"/>
                                             <constraint firstItem="CCy-Sj-n8H" firstAttribute="top" secondItem="Tyt-ak-joB" secondAttribute="top" constant="8" id="sEb-fK-GbE"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeInstructionsCell" rowHeight="154" id="uMy-NE-v4l">
-                                        <rect key="frame" x="0.0" y="432" width="600" height="154"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeInstructionsCell" rowHeight="165" id="uMy-NE-v4l">
+                                        <rect key="frame" x="0.0" y="430" width="600" height="165"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uMy-NE-v4l" id="eiG-4W-fH3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="153.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="164.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-M8-MGv">
-                                                    <rect key="frame" x="8" y="8" width="584" height="140.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-M8-MGv">
+                                                    <rect key="frame" x="8" y="8" width="584" height="151"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -160,7 +160,7 @@
                                         <constraints>
                                             <constraint firstItem="bUi-M8-MGv" firstAttribute="top" secondItem="uMy-NE-v4l" secondAttribute="top" constant="8" id="B0A-3K-IrH"/>
                                             <constraint firstAttribute="trailing" secondItem="bUi-M8-MGv" secondAttribute="trailing" constant="8" id="EXq-Yl-k9j"/>
-                                            <constraint firstAttribute="bottom" secondItem="bUi-M8-MGv" secondAttribute="bottom" constant="5.5" id="FUm-O6-Oo3"/>
+                                            <constraint firstAttribute="bottom" secondItem="bUi-M8-MGv" secondAttribute="bottom" constant="6" id="FUm-O6-Oo3"/>
                                             <constraint firstItem="bUi-M8-MGv" firstAttribute="leading" secondItem="uMy-NE-v4l" secondAttribute="leading" constant="8" id="naG-iY-FeZ"/>
                                         </constraints>
                                     </tableViewCell>

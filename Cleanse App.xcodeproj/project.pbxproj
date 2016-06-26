@@ -27,6 +27,7 @@
 		32FC27591D205A1E00DB3C99 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC27581D205A1E00DB3C99 /* CoreGraphics.framework */; };
 		32FC275B1D205A2600DB3C99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275A1D205A2600DB3C99 /* UIKit.framework */; };
 		32FC275D1D205A2F00DB3C99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275C1D205A2F00DB3C99 /* Foundation.framework */; };
+		32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */; };
 		9BE20EE0719BEBFD946BFCE1 /* Pods_Cleanse_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD293ED13F4EE68E6D43E9B /* Pods_Cleanse_AppUITests.framework */; };
 		D000878D8DCDB7860BEA48DF /* Pods_Cleanse_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97275013D322867B7B58BFA3 /* Pods_Cleanse_App.framework */; };
 		EEB622246A01E23F29BA46C4 /* Pods_Cleanse_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C04F143FCFAD902875CC55 /* Pods_Cleanse_AppTests.framework */; };
@@ -78,6 +79,7 @@
 		32FC27581D205A1E00DB3C99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32FC275A1D205A2600DB3C99 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32FC275C1D205A2F00DB3C99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterTrackerViewController.swift; sourceTree = "<group>"; };
 		4BD293ED13F4EE68E6D43E9B /* Pods_Cleanse_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cleanse_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51634753E4F925DC09FAB215 /* Pods-Cleanse AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cleanse AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cleanse AppTests/Pods-Cleanse AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		61C04F143FCFAD902875CC55 /* Pods_Cleanse_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cleanse_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
+				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
 				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
 			);
@@ -517,6 +520,7 @@
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
+				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,

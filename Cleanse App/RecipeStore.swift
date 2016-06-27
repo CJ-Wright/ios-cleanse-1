@@ -9,6 +9,10 @@
 import UIKit
 
 class RecipeStore: NSObject {
+    
+    static let sharedInstance = RecipeStore()
+    static var recipesReceived = false
+    
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)

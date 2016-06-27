@@ -29,9 +29,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         navigationBar.title = "Day " + String(currentDay)
         
         // This will need to be changed to check 
-        if !hasGottenRecipes && !hasGottenMealPlans {
-            recipeStore = RecipeStore()
-            mealPlanStore = MealPlanStore()
+        if !hasGottenRecipes && !MealPlanStore.plansReceived {
+            recipeStore = RecipeStore.sharedInstance
+            mealPlanStore = MealPlanStore.sharedInstance
             
             // Attempt to fetch the Meal Plans
             mealPlanStore.fetchMealPlans(){
@@ -40,7 +40,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 switch mealPlanResult {
                 case let .Success(mealPlan):
                     print("Successfully found \(mealPlan)")
-                    self.hasGottenMealPlans = true
+                    MealPlanStore.plansReceived = true
                 case let .Failure(error):
                     print("Error fetching recipes: \(error)")
                 }

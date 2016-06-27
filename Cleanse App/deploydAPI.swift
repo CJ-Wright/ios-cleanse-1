@@ -207,11 +207,9 @@ struct DeploydAPI {
         return MealPlan(name: name, numberOfDays: totalPlans.count, days: totalPlans, mealPlanID: planID)
     }
     
-    //    static func dailyPlanFromJSONMealPlan(json:Dictionary<String, AnyObject>)-> DailyPlan? {
     static func dailyPlanFromJSONMealPlan(json:[String:AnyObject]) -> DailyPlan? {
         
         var meal: Meal
-        
         let dailyPlan = DailyPlan()
         
         guard let
@@ -225,7 +223,8 @@ struct DeploydAPI {
             // Attempt to parse the indiviual meal json into a meal object
             guard let
                 mealName = mealJson["meal"] as? String,
-                mealTime = mealJson["time"] as? String else {
+                mealTime = mealJson["time"] as? String,
+                atAGlance = mealJson["at-a-glance"] as? String else {
                     return nil
             }
             
@@ -234,6 +233,7 @@ struct DeploydAPI {
             meal.mealTime = mealTime
             
             dailyPlan.meals?.append(meal)
+            dailyPlan.atAGlance = atAGlance
         }
         
         return dailyPlan

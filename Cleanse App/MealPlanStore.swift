@@ -9,6 +9,9 @@
 import UIKit
 
 class MealPlanStore: NSObject {
+    static let sharedInstance = MealPlanStore()
+    static var plansReceived = false
+    
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)

@@ -13,7 +13,6 @@ class MealPlan {
     
     var mealPlanName: String
     var numberOfDays: Int
-//    var days: [Dictionary<String, AnyObject>]?
     var days: [DailyPlan]?
     var mealPlanID: String
     
@@ -25,7 +24,6 @@ class MealPlan {
         self.mealPlanID = ""
     }
     
-//    init(name: String, numberOfDays: Int, days: [Dictionary<String, AnyObject>]?, mealPlanID: String){
     init(name: String, numberOfDays: Int, days: [DailyPlan]?, mealPlanID: String){
         self.mealPlanName = name
         self.numberOfDays = numberOfDays

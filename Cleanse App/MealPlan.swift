@@ -6,7 +6,7 @@
 //  Copyright © 2016 Nano Nimbus. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MealPlan {
     var mealPlanName: String!

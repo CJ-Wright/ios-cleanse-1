@@ -14,26 +14,51 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
     var recipeStore: RecipeStore!
+    var mealPlanStore: MealPlanStore!
     var currentDay = 1
     var numDaysInPlan = 10
-    // Temp cell identifier
-    let navigationCellIdentifier = "NavCell"
+    
+    // This will need to be changed so the application downloads the json and stores it locally.
+    var hasGottenRecipes = false
+    var hasGottenMealPlans = false
     
     let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBar.title = "Day " + String(currentDay)
         
-        recipeStore = RecipeStore()
-        recipeStore.fetchRecipes() {
-            (recipeResult) -> Void in
+        if !hasGottenRecipes && !hasGottenMealPlans {
+            recipeStore = RecipeStore()
+            mealPlanStore = MealPlanStore()
             
-            switch recipeResult {
-            case let .Success(recipes):
-                print("Successfully found \(recipes)")
-            case let .Failure(error):
-                print("Error fetching recipes: \(error)")
+            // Attempt to fetch the Meal Plans
+            mealPlanStore.fetchMealPlans(){
+                (mealPlanResult) -> Void in
+                
+                switch mealPlanResult {
+                case let .Success(mealPlan):
+                    print("Successfully found \(mealPlan)")
+                    self.hasGottenMealPlans = true
+                case let .Failure(error):
+                    print("Error fetching recipes: \(error)")
+                }
             }
+            
+            // Attempt to fetch the recipes
+            recipeStore.fetchRecipes() {
+                (recipeResult) -> Void in
+                
+                switch recipeResult {
+                case let .Success(recipes):
+                    print("Successfully found \(recipes)")
+                    self.hasGottenRecipes = true
+                case let .Failure(error):
+                    print("Error fetching recipes: \(error)")
+                }
+            }
+            
+            
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -41,6 +66,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -67,7 +94,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(navigationCellIdentifier)
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
         
@@ -149,10 +175,15 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-//    }
+        
+        // Check to see if the segue that's happening is going to the detail view of the recipes
+        if segue.identifier == "recipeDetailSegue" {
+            
+        }
+    }
 
 }
 

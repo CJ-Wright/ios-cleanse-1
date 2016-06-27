@@ -14,6 +14,7 @@ class MealDetailsTableViewController: UITableViewController {
     @IBOutlet var recipeIngredientsLabel: UILabel!
     @IBOutlet var recipeInstructionsLabel: UILabel!
     
+    /*
     // MARK: Meal Details Debug Variables
     var instructions = "Preheat the oven to 375 degrees Fahrenheit. In a large pot combine the broth, onion," +
         "carrots, celery, and 1 tablespoon of the parsley (or cilantro), and garlic. Add 2 cups of" +
@@ -41,7 +42,7 @@ class MealDetailsTableViewController: UITableViewController {
     ]
     
     var recipeTitle = "Chicken and Broccoli Bowl"
-    
+    */
     
     let cellTypes = ["recipeNameCell","recipeImagesCell","recipeIngredientsCell","recipeInstructionsCell"]
     
@@ -57,17 +58,19 @@ class MealDetailsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.recipeNameLabel.text = recipeTitle
+//        self.recipeNameLabel.text = recipeTitle
         self.recipeIngredientsLabel.text = ""
         
         self.recipeIngredientsLabel.textAlignment = leftAlignment
+        /*
         for ingredient in ingredients {
                 self.recipeIngredientsLabel.text? += "• " + ingredient
                 self.recipeIngredientsLabel.text? += "\n"
         }
+         */
         
 //        self.recipeInstructionsLabel.numberOfLines = 100
-        self.recipeInstructionsLabel.text = instructions
+//        self.recipeInstructionsLabel.text = instructions
         self.recipeInstructionsLabel.font = .systemFontOfSize(16)
         
     }
@@ -86,9 +89,9 @@ class MealDetailsTableViewController: UITableViewController {
             case 1:
                 returnHeight = 200
             case 2:
-                returnHeight = 100 + (20 * CGFloat(self.ingredients.count))
+                returnHeight = 100 //+ (20 * CGFloat(self.ingredients.count))
             case 3:
-                returnHeight = 700 - (5 * CGFloat(self.ingredients.count))
+                returnHeight = 700 //- (5 * CGFloat(self.ingredients.count))
             default:
                 returnHeight = 30
         }

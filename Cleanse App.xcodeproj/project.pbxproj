@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
+		32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32983C781D2097DD006D19D7 /* deploydAPI.swift */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
 		32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
+		32983C781D2097DD006D19D7 /* deploydAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deploydAPI.swift; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A2B2DF1CF113E3005CDC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		323588621D0DC7CD00EB861F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32983C781D2097DD006D19D7 /* deploydAPI.swift */,
 				323588631D0DC7E600EB861F /* recipes.json */,
 			);
 			name = Resources;
@@ -517,6 +520,7 @@
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
+				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,

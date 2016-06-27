@@ -13,6 +13,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
+    var recipeStore: RecipeStore!
     var currentDay = 1
     var numDaysInPlan = 10
     // Temp cell identifier
@@ -23,6 +24,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        recipeStore = RecipeStore()
+        recipeStore.fetchRecipes()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

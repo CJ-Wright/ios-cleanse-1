@@ -22,10 +22,8 @@ class MealPlanStore: NSObject {
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
-            
             let result = self.processRecentMealPlansRequest(data: data, error: error)
             completion(result)
-            
         }
         task.resume()
     }

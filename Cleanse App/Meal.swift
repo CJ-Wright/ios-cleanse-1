@@ -11,7 +11,10 @@ import Foundation
 class Meal {
     var mealName: String
     var mealTime: String
-    
+    init(){
+        self.mealName = ""
+        self.mealTime = ""
+    }
     init(mealName: String, mealTime: String){
         self.mealTime = mealTime
         self.mealName = mealName

@@ -11,24 +11,6 @@ import UIKit
 
 class MealPlan {
     
-    class DailyPlan {
-        var dayNumber: Int
-        var meals: [Meal]?
-        var atAGlance: String
-        
-        init(){
-            self.dayNumber = 0
-            self.meals = nil
-            self.atAGlance = ""
-        }
-        
-        init(dayNum: Int, meals: [Meal], atAGlance: String){
-            self.dayNumber = dayNum
-            self.meals = meals
-            self.atAGlance = atAGlance
-        }
-    }
-    
     var mealPlanName: String
     var numberOfDays: Int
 //    var days: [Dictionary<String, AnyObject>]?

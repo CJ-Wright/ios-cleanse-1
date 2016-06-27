@@ -21,6 +21,7 @@
 		32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */; };
 		32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */; };
 		32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90E1D20DE9E006D9F75 /* Meal.swift */; };
+		32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E9101D20E647006D9F75 /* DailyPlan.swift */; };
 		32F6A9A71D1F092200047A51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6A9A61D1F092200047A51 /* User.swift */; };
 		32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6A9A81D1F128200047A51 /* MealPlan.swift */; };
 		32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F9238B1D00214B0069D49D /* SWRevealViewController.m */; };
@@ -73,6 +74,7 @@
 		32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailsTableViewController.swift; sourceTree = "<group>"; };
 		32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
 		32F5E90E1D20DE9E006D9F75 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		32F5E9101D20E647006D9F75 /* DailyPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyPlan.swift; sourceTree = "<group>"; };
 		32F6A9A61D1F092200047A51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		32F6A9A81D1F128200047A51 /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
 		32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cleanse App-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				32F6A9A61D1F092200047A51 /* User.swift */,
 				32F5E90E1D20DE9E006D9F75 /* Meal.swift */,
 				32F6A9A81D1F128200047A51 /* MealPlan.swift */,
+				32F5E9101D20E647006D9F75 /* DailyPlan.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
 				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
+				32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,
 				32F923961D003F940069D49D /* ImageStore.swift in Sources */,

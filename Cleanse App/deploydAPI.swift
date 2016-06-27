@@ -120,20 +120,20 @@ struct DeploydAPI {
             var finalRecipes = [Recipe]()
             
             for recipeJson in jsonObject as! [Dictionary<String, AnyObject>] {
-
-//                print("==========================================")
+                
+                //                print("==========================================")
                 if let recipe = recipeFromJSONObject(recipeJson){
                     finalRecipes.append(recipe)
                 }
             }
- 
+            
             if finalRecipes.count == 0 && jsonObject.count > 0 {
                 // We weren't able to parse any of the photso
                 // Maybe the JSON format for photos has changed
                 print("Failed to get final recipes")
                 return .Failure(DeploydError.InvalidJSONData)
             }
- 
+            
             return .Success(finalRecipes)
         } catch let error {
             return .Failure(error)
@@ -153,7 +153,7 @@ struct DeploydAPI {
         }
         
         // Debugging statement to see the json that is returned after making the request
-//        print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
+        //        print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
         
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
     }
@@ -189,8 +189,6 @@ struct DeploydAPI {
     
     // This will take a given JSON Object and constructs a recipe
     static func mealPlanFromJSONObject(json:[String : AnyObject]) -> MealPlan? {
-        print("----------------------------")
-        
         
         guard let planID = json["id"] as? String,
             days = json["days"] as? [Dictionary<String, AnyObject>],
@@ -199,19 +197,47 @@ struct DeploydAPI {
                 print("Failed to parse json")
                 return nil
         }
+
+        var totalPlans = [DailyPlan]()
         
-        for day in days  {
-            print(day)
+        for dailyPlan in days {
+            if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {
+                totalPlans.append(plan)
+            }
         }
-        
-        print("Plan ID \(planID)")
-        print("Name \(name)")
-        
-        // Debugging statement to see the json that is returned after making the request
-        //        print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
-        
-        return MealPlan(name: name, numberOfDays: 10, days: days, mealPlanID: planID)
+        return MealPlan(name: name, numberOfDays: totalPlans.count, days: totalPlans, mealPlanID: planID)
     }
     
+    //    static func dailyPlanFromJSONMealPlan(json:Dictionary<String, AnyObject>)-> DailyPlan? {
+    static func dailyPlanFromJSONMealPlan(json:[String:AnyObject]) -> DailyPlan? {
+        
+        var meal: Meal
+        
+        let dailyPlan = DailyPlan()
+        
+        guard let
+            mealsJson = json["meals"] else {
+                return nil
+        }
+        
+        // Parse the daily meal plan into individual meals
+        for mealJson in mealsJson as! [Dictionary<String, AnyObject>]{
+            meal = Meal()
+            // Attempt to parse the indiviual meal json into a meal object
+            guard let
+                mealName = mealJson["meal"] as? String,
+                mealTime = mealJson["time"] as? String else {
+                    return nil
+            }
+            
+            // Assign the values to the meal object
+            meal.mealName = mealName
+            meal.mealTime = mealTime
+            
+            dailyPlan.meals?.append(meal)
+        }
+        
+        return dailyPlan
+    }
     
 }

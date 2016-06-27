@@ -14,7 +14,6 @@ class RecipeStore: NSObject {
         return NSURLSession(configuration: config)
     }()
     
-//    func fetchRecipes() {
     func fetchRecipes(completion completion: (RecipeResult) -> Void) {
         let url = DeploydAPI.recipesURL()
         print(url)
@@ -26,22 +25,6 @@ class RecipeStore: NSObject {
             
                 let result = self.processRecentRecipesRequest(data: data, error: error)
             completion(result)
-//            if let jsonData = data {
-//                do {
-//                    let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-//                    
-//                    print(jsonObject)
-//                    
-//                } catch let error {
-//                    print("Error creating JSON Object: \(error)")
-//                }
-//            }
-//            else if let requestError = error {
-//                print("Error fetching recent photos: \(requestError)")
-//            }
-//            else {
-//                print("Unexpected error with the request")
-//            }
         }
         task.resume()
     }

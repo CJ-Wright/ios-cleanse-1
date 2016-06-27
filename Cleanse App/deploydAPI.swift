@@ -189,20 +189,28 @@ struct DeploydAPI {
     
     // This will take a given JSON Object and constructs a recipe
     static func mealPlanFromJSONObject(json:[String : AnyObject]) -> MealPlan? {
+        print("----------------------------")
         
-        guard let recipeID = json["id"] as? String,
-            name = json["recipeName"] as? String,
-            ingredients = json["ingredients"] as? [String],
-            serves  = json["serves"] as? String,
-            instructions = json["instructions"] as? String else {
+        
+        guard let planID = json["id"] as? String,
+            days = json["days"] as? [Dictionary<String, AnyObject>],
+            name = json["mealplan"] as? String
+            else {
                 print("Failed to parse json")
                 return nil
         }
         
+        for day in days  {
+            print(day)
+        }
+        
+        print("Plan ID \(planID)")
+        print("Name \(name)")
+        
         // Debugging statement to see the json that is returned after making the request
         //        print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
         
-        return MealPlan()
+        return MealPlan(name: name, numberOfDays: 10, days: days, mealPlanID: planID)
     }
     
     

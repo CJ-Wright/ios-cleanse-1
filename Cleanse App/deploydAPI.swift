@@ -111,6 +111,7 @@ struct DeploydAPI {
     }
     
     // MARK: - JSON Methods
+    // MARK: Recipes From JSON Methods
     static func recipesFromJSONData(data: NSData) -> RecipeResult {
         do {
             // Attempt to convert the json object into an AnyObject
@@ -157,7 +158,7 @@ struct DeploydAPI {
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
     }
     
-    // -----
+    // MARK: Meal Plans From JSON Methods
     static func mealPlansFromJSONData(data: NSData) -> MealPlanResult {
         do {
             // Attempt to convert the json object into an AnyObject
@@ -238,5 +239,4 @@ struct DeploydAPI {
         
         return dailyPlan
     }
-    
 }

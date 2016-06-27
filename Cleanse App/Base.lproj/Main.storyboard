@@ -48,7 +48,7 @@
                                 <connections>
                                     <outlet property="mealMapImageView" destination="TeO-BI-zb1" id="OVk-xx-y5a"/>
                                     <outlet property="mealMapNameLabel" destination="rRg-eR-OGP" id="0qi-4J-Ted"/>
-                                    <segue destination="YhF-dv-9CF" kind="show" id="NBT-sl-1u1"/>
+                                    <segue destination="YhF-dv-9CF" kind="show" identifier="recipeDetailSegue" id="NBT-sl-1u1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

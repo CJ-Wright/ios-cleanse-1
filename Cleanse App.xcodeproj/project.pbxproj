@@ -17,6 +17,7 @@
 		32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2E61CF113E3005CDC0E /* LaunchScreen.storyboard */; };
 		32A2B2F31CF113E3005CDC0E /* Cleanse_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2F21CF113E3005CDC0E /* Cleanse_AppTests.swift */; };
 		32A2B2FE1CF113E4005CDC0E /* Cleanse_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */; };
+		32A3A2521D2176C2000FC321 /* BAFluidView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A3A2511D2176C2000FC321 /* BAFluidView.framework */; };
 		32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */; };
 		32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */; };
 		32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */; };
@@ -71,6 +72,7 @@
 		32A2B2F91CF113E4005CDC0E /* Cleanse AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cleanse AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cleanse_AppUITests.swift; sourceTree = "<group>"; };
 		32A2B2FF1CF113E4005CDC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32A3A2511D2176C2000FC321 /* BAFluidView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BAFluidView.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Cleanse_App-beapgjdvrponvoffzrvsyeawowil/Build/Products/Debug-iphonesimulator/BAFluidView/BAFluidView.framework"; sourceTree = "<group>"; };
 		32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewController.swift; sourceTree = "<group>"; };
 		32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailsTableViewController.swift; sourceTree = "<group>"; };
 		32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A3A2521D2176C2000FC321 /* BAFluidView.framework in Frameworks */,
 				32FC275D1D205A2F00DB3C99 /* Foundation.framework in Frameworks */,
 				32FC275B1D205A2600DB3C99 /* UIKit.framework in Frameworks */,
 				32FC27591D205A1E00DB3C99 /* CoreGraphics.framework in Frameworks */,
@@ -133,6 +136,7 @@
 		0820800AA1F74B100BD43FF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32A3A2511D2176C2000FC321 /* BAFluidView.framework */,
 				32FC275C1D205A2F00DB3C99 /* Foundation.framework */,
 				32FC275A1D205A2600DB3C99 /* UIKit.framework */,
 				32FC27581D205A1E00DB3C99 /* CoreGraphics.framework */,
@@ -154,6 +158,7 @@
 		32983C7A1D20AF2B006D19D7 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */,
 				32983C781D2097DD006D19D7 /* deploydAPI.swift */,
 			);
 			name = APIs;
@@ -235,7 +240,6 @@
 			children = (
 				32F9238A1D00214B0069D49D /* SWRevealViewController.h */,
 				32F9238B1D00214B0069D49D /* SWRevealViewController.m */,
-				32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */,
 			);
 			name = SWRevealView;
 			sourceTree = "<group>";

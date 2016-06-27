@@ -12,6 +12,7 @@ class WaterTrackerViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    @IBOutlet var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +22,8 @@ class WaterTrackerViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    @IBAction func startAnimation(sender: UIButton) {
     }
 
     override func didReceiveMemoryWarning() {

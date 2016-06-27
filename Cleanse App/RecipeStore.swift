@@ -14,26 +14,43 @@ class RecipeStore: NSObject {
         return NSURLSession(configuration: config)
     }()
     
-    func fetchRecipes() {
-        let url = deploydAPI.recipesURL()
+//    func fetchRecipes() {
+    func fetchRecipes(completion completion: (RecipeResult) -> Void) {
+        let url = DeploydAPI.recipesURL()
         print(url)
         let request = NSURLRequest(URL:url)
         print(request)
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
-            if let jsonData = data {
-                if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) {
-                    print(jsonString)
-                }
-            }
-            else if let requestError = error {
-                print("Error fetching recent photos: \(requestError)")
-            }
-            else {
-                print("Unexpected error with the request")
-            }
+            
+                let result = self.processRecentRecipesRequest(data: data, error: error)
+            completion(result)
+//            if let jsonData = data {
+//                do {
+//                    let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+//                    
+//                    print(jsonObject)
+//                    
+//                } catch let error {
+//                    print("Error creating JSON Object: \(error)")
+//                }
+//            }
+//            else if let requestError = error {
+//                print("Error fetching recent photos: \(requestError)")
+//            }
+//            else {
+//                print("Unexpected error with the request")
+//            }
         }
         task.resume()
+    }
+    
+    func processRecentRecipesRequest(data data: NSData?, error: NSError?) -> RecipeResult {
+        guard let jsonData = data else {
+            return .Failure(error!)
+        }
+        
+        return DeploydAPI.recipesFromJSONData(jsonData)
     }
 }

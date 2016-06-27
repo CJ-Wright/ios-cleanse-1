@@ -9,13 +9,15 @@
 import UIKit
 
 // MARK: - Recipe Class
-class Recipe: NSObject {
+class Recipe {
     
     // MARK: Data Members
     var name: String
     var instructions: String
     var image: UIImage?
     var ingredients: [String]
+    var recipeID: String
+    var serves: String
     
     // MARK: Default Ingredients for testing purposes only!
     var default_instructions = "Preheat the oven to 375 degrees Fahrenheit. In a large pot combine the broth, onion," +
@@ -46,14 +48,20 @@ class Recipe: NSObject {
     var default_recipeTitle = "Chicken and Broccoli Bowl"
     
     
-    override init () {
-//        init (name: String, instructions: String, ingredients: [String]) {
-//        self.name = name
-//        self.instructions = instructions
-//        self.ingredients = ingredients
+    init () {
+        self.recipeID = ""
         self.name = ""
         self.instructions = ""
         self.ingredients = [String]()
+        self.serves = ""
+    }
+    
+    init (name: String, instructions: String, ingredients: [String], recipeID: String, serves: String){
+        self.name = name
+        self.instructions = instructions
+        self.ingredients = ingredients
+        self.recipeID = recipeID
+        self.serves = serves
     }
     
     // MARK: Testing methods

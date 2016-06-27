@@ -25,7 +25,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         super.viewDidLoad()
         
         recipeStore = RecipeStore()
-        recipeStore.fetchRecipes()
+        recipeStore.fetchRecipes() {
+            (recipeResult) -> Void in
+            
+            switch recipeResult {
+            case let .Success(recipes):
+                print("Successfully found \(recipes)")
+            case let .Failure(error):
+                print("Error fetching recipes: \(error)")
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

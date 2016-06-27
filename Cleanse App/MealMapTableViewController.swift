@@ -23,12 +23,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.title = "Day " + String(currentDay)
+        recipeStore = RecipeStore.sharedInstance
+        mealPlanStore = MealPlanStore.sharedInstance
         
         // Checks to see if the recipe store and meal plan store has been already configured
         if !RecipeStore.recipesReceived && !MealPlanStore.plansReceived {
-            recipeStore = RecipeStore.sharedInstance
-            mealPlanStore = MealPlanStore.sharedInstance
-            
             // Attempt to fetch the Meal Plans
             mealPlanStore.fetchMealPlans(){
                 (mealPlanResult) -> Void in

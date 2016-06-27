@@ -18,18 +18,14 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     var currentDay = 1
     var numDaysInPlan = 10
     
-    // This will need to be changed so the application downloads the json and stores it locally.
-    var hasGottenRecipes = false
-    var hasGottenMealPlans = false
-    
     let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.title = "Day " + String(currentDay)
         
-        // This will need to be changed to check 
-        if !hasGottenRecipes && !MealPlanStore.plansReceived {
+        // Checks to see if the recipe store and meal plan store has been already configured
+        if !RecipeStore.recipesReceived && !MealPlanStore.plansReceived {
             recipeStore = RecipeStore.sharedInstance
             mealPlanStore = MealPlanStore.sharedInstance
             
@@ -41,8 +37,15 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 case let .Success(mealPlan):
                     print("Successfully found \(mealPlan)")
                     MealPlanStore.plansReceived = true
+                    
+                    // This is how you can access the mealPlan, however it is only accessible within this scope
+                    //  need to plan out how to parse information out for the tableview.
+                    //  - Also think ahead of how to cache / save this information and load it from stored memory instead
+                    //  calling to load the information.
+                    print("Plan name \(mealPlan[0].mealPlanName)")
                 case let .Failure(error):
                     print("Error fetching recipes: \(error)")
+                    MealPlanStore.plansReceived = false
                 }
             }
             
@@ -53,9 +56,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 switch recipeResult {
                 case let .Success(recipes):
                     print("Successfully found \(recipes)")
-                    self.hasGottenRecipes = true
+                    RecipeStore.recipesReceived = true
                 case let .Failure(error):
                     print("Error fetching recipes: \(error)")
+                    RecipeStore.recipesReceived = false
                 }
             }
         }

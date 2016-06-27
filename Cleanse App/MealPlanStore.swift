@@ -10,6 +10,8 @@ import UIKit
 
 class MealPlanStore: NSObject {
     static let sharedInstance = MealPlanStore()
+    // TODO: Definitely needs to be considered for refactoring
+    static var currentMealPlan = MealPlan() // <- This may need to be changed to let
     static var plansReceived = false
     
     let session: NSURLSession = {

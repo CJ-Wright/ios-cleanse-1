@@ -27,8 +27,8 @@ enum DeploydError: ErrorType {
 }
 struct DeploydAPI {
     // The base url of the server to make the requests from
-    // "http://ec2-54-215-241-191.us-west-1.compute.amazonaws.com:3000" <- This is my current aws server
-    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403" // <- This is Anthony's server
+    private static let baseURLString = "http://ec2-54-183-2-68.us-west-1.compute.amazonaws.com:3000" //<- This is my current aws server
+//    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403" // <- This is Anthony's server
     
     
     // Empty APIKey for the moment being
@@ -142,19 +142,21 @@ struct DeploydAPI {
     
     // This will take a given JSON Object and constructs a recipe
     static func recipeFromJSONObject(json:[String : AnyObject]) -> Recipe? {
-        
+
         guard let recipeID = json["id"] as? String,
-            name = json["recipeName"] as? String,
+            name = json["name"] as? String,
             ingredients = json["ingredients"] as? [String],
             serves  = json["serves"] as? String,
-            instructions = json["instructions"] as? String else {
+            instructions = json["instructions"] as? String
+            else {
                 print("Failed to parse json")
                 return nil
         }
         
         // Debugging statement to see the json that is returned after making the request
-        //        print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
+        // print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
         
+
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
     }
     

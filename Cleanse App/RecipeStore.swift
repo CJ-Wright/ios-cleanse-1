@@ -20,9 +20,9 @@ class RecipeStore: NSObject {
     
     func fetchRecipes(completion completion: (RecipeResult) -> Void) {
         let url = DeploydAPI.recipesURL()
-        print(url)
+//        print(url)
         let request = NSURLRequest(URL:url)
-        print(request)
+//        print(request)
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             

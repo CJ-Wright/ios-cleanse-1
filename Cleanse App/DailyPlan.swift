@@ -12,15 +12,15 @@ import Foundation
 class DailyPlan {
     var dayNumber: Int
     var meals: [Meal]?
-    var atAGlance: String
+    var atAGlance: [String]
     
     init(){
         self.dayNumber = 0
         self.meals = [Meal]()
-        self.atAGlance = ""
+        self.atAGlance = [String]()
     }
     
-    init(dayNum: Int, meals: [Meal], atAGlance: String){
+    init(dayNum: Int,inout  meals: [Meal], atAGlance: [String]){
         self.dayNumber = dayNum
         self.meals = meals
         self.atAGlance = atAGlance

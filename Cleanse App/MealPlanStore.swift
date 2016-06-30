@@ -79,4 +79,26 @@ class MealPlanStore: NSObject {
             }
         }
     }
+    
+    func initMealPlan(){
+        if !MealPlanStore.plansReceived {
+            // Attempt to fetch the Meal Plans
+            fetchMealPlans(){
+                (mealPlanResult) -> Void in
+                
+                switch mealPlanResult {
+                case let .Success(mealPlan):
+                    
+                    MealPlanStore.plansReceived = true
+                    // TODO: Need to implement a way to determine which plan the user is currently on
+                    MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
+                    
+                case let .Failure(error):
+                    print("Error fetching recipes: \(error)")
+                    MealPlanStore.plansReceived = false
+                }
+            }
+        }
+    }
+ 
 }

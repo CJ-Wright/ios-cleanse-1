@@ -40,4 +40,22 @@ class RecipeStore: NSObject {
         
         return DeploydAPI.recipesFromJSONData(jsonData)
     }
+    
+    func initRecipes(){
+        if !RecipeStore.recipesReceived {
+            // Attempt to fetch the recipes
+            fetchRecipes() {
+                (recipeResult) -> Void in
+                
+                switch recipeResult {
+                case let .Success(recipes):
+                    //                    print("Successfully found \(recipes)")
+                    RecipeStore.recipesReceived = true
+                case let .Failure(error):
+                    print("Error fetching recipes: \(error)")
+                    RecipeStore.recipesReceived = false
+                }
+            }
+        }
+    }
 }

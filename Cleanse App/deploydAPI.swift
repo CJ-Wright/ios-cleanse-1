@@ -154,10 +154,6 @@ struct DeploydAPI {
                 return nil
         }
         
-        // Debugging statement to see the json that is returned after making the request
-        // print("Recipe ID : \(recipeID) \n - Name : \(name) \n - Ingredients [\(ingredients) \n - Serves : \(serves) \n - Instructions: \(instructions)")
-        
-        
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
     }
     
@@ -168,13 +164,11 @@ struct DeploydAPI {
             let jsonObject:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             
             // Create an array of recipes to store the converted JSON Objects
-            //            var finalMealPlans = [MealPlan]()
             var finalMealPlans = NSMutableArray()
             
             for mealPlanJson in jsonObject as! [Dictionary<String, AnyObject>] {
                 
                 if let mealPlan = mealPlanFromJSONObject(mealPlanJson){
-                    //                    finalMealPlans.append(mealPlan)
                     finalMealPlans.addObject(mealPlan)
                 }
             }
@@ -203,12 +197,10 @@ struct DeploydAPI {
                 return nil
         }
         
-        //        var totalPlans = [DailyPlan]()
         let totalPlans = NSMutableArray()
         
         for dailyPlan in days {
             if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {
-                //                totalPlans.append(plan)
                 totalPlans.addObject(plan)
             }
         }
@@ -246,8 +238,6 @@ struct DeploydAPI {
             // Assign the values to the meal object
             meal.mealName = mealName
             meal.mealTime = mealTime
-            
-//            print("Meal Name \(meal.mealName) - Time \(meal.mealTime)")
             
             dailyPlan.meals?.append(meal)
         }

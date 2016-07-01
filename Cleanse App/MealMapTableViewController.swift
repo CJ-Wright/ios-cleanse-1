@@ -26,7 +26,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         recipeStore.initRecipes()
         mealPlanStore.initMealPlan()
         // TODO: Should correspond to the day that the user is currently on in the plan
-//        navigationBar.title = "Day " + String(currentDay)
+        //        navigationBar.title = "Day " + String(currentDay)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -61,16 +61,22 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
         
         if cellIdentifiers[indexPath.row] == "Snack" {
             cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
+            if MealPlanStore.currentMealPlan.days.count > 0 {
+                if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+                }
+            }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
             
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                     navigationBar.title! = "Day " + String(day.dayNumber)
+                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
                 }
             }
             cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
@@ -98,9 +104,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     }
     @IBAction func previousDayButton(sender: UIBarButtonItem) {
         print("Previous day " + navigationBar.title!)
-        if currentDay > 0{
-            currentDay -= 1
+        if currentDay > 1 {
             
+            currentDay -= 1
             navigationBar.title! = "Day " + String(currentDay)
             
             // This will animate the movement of the table left to right

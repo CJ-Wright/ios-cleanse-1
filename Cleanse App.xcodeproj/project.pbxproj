@@ -158,7 +158,6 @@
 		32983C7A1D20AF2B006D19D7 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */,
 				32983C781D2097DD006D19D7 /* deploydAPI.swift */,
 			);
 			name = APIs;
@@ -238,6 +237,7 @@
 		32F9238D1D0021800069D49D /* SWRevealView */ = {
 			isa = PBXGroup;
 			children = (
+				32F923891D00214A0069D49D /* Cleanse App-Bridging-Header.h */,
 				32F9238A1D00214B0069D49D /* SWRevealViewController.h */,
 				32F9238B1D00214B0069D49D /* SWRevealViewController.m */,
 			);

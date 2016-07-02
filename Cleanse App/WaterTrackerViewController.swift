@@ -11,8 +11,8 @@ import UIKit
 class WaterTrackerViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet var amountLabel: UILabel!
     
-    @IBOutlet var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +23,7 @@ class WaterTrackerViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-    @IBAction func startAnimation(sender: UIButton) {
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,6 +31,9 @@ class WaterTrackerViewController: UIViewController {
     }
     
 
+    @IBAction func addOuncesButton(sender: UIButton) {
+        print("Merp")
+    }
     /*
     // MARK: - Navigation
 

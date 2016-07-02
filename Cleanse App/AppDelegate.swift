@@ -13,10 +13,15 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-//        var recipeStore: RecipeStore
+        let recipeStore = RecipeStore()
+        let mealPlanStore = MealPlanStore()
+        recipeStore.initRecipes()
+        mealPlanStore.initMealPlan()
+
 //        let mealMapController = MealMapTableViewController()
 //        mealMapController.recipeStore = RecipeStore()
 //        window?.rootViewController?.addChildViewController(mealMapController)

@@ -13,8 +13,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
-    var recipeStore: RecipeStore!
-    var mealPlanStore: MealPlanStore!
+    var recipeStore = RecipeStore.sharedInstance
+    var mealPlanStore = MealPlanStore.sharedInstance
+    // This will need to be initialized when the plan is loaded from the users information
     var currentDay = 1
     var numDaysInPlan = 10
     
@@ -22,46 +23,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.title = "Day " + String(currentDay)
-        recipeStore = RecipeStore.sharedInstance
-        mealPlanStore = MealPlanStore.sharedInstance
-        
-        // Checks to see if the recipe store and meal plan store has been already configured
-        if !RecipeStore.recipesReceived && !MealPlanStore.plansReceived {
-            // Attempt to fetch the Meal Plans
-            mealPlanStore.fetchMealPlans(){
-                (mealPlanResult) -> Void in
-                
-                switch mealPlanResult {
-                case let .Success(mealPlan):
-                    print("Successfully found \(mealPlan)")
-                    MealPlanStore.plansReceived = true
-                    
-                    // This is how you can access the mealPlan, however it is only accessible within this scope
-                    //  need to plan out how to parse information out for the tableview.
-                    //  - Also think ahead of how to cache / save this information and load it from stored memory instead
-                    //  calling to load the information.
-                    print("Plan name \(mealPlan[0].mealPlanName)")
-                case let .Failure(error):
-                    print("Error fetching recipes: \(error)")
-                    MealPlanStore.plansReceived = false
-                }
-            }
-            
-            // Attempt to fetch the recipes
-            recipeStore.fetchRecipes() {
-                (recipeResult) -> Void in
-                
-                switch recipeResult {
-                case let .Success(recipes):
-                    print("Successfully found \(recipes)")
-                    RecipeStore.recipesReceived = true
-                case let .Failure(error):
-                    print("Error fetching recipes: \(error)")
-                    RecipeStore.recipesReceived = false
-                }
-            }
-        }
+//        recipeStore.initRecipes()
+//        mealPlanStore.initMealPlan()
+        // TODO: Should correspond to the day that the user is currently on in the plan
+        //        navigationBar.title = "Day " + String(currentDay)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -98,15 +63,34 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
-        
+        var mealName: String = "None"
+        var image: UIImage?
         if cellIdentifiers[indexPath.row] == "Snack" {
             cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
+            if MealPlanStore.currentMealPlan.days.count > 0 {
+                if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+//                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
+                    image = day.meals![indexPath.row].mealImage
+                    mealName = day.meals![indexPath.row].mealName
+                }
+            }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
+            
+            if MealPlanStore.currentMealPlan.days.count > 0 {
+                if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                    navigationBar.title! = "Day " + String(day.dayNumber)
+//                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
+                    image = day.meals![indexPath.row].mealImage
+                    mealName = day.meals![indexPath.row].mealName
+                }
+            }
             cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
-        
-        
-        cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row]
+        cell.mealMapNameLabel.numberOfLines = 2
+        cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
+        cell.mealMapImageView.image = image
         
         return cell
     }
@@ -128,9 +112,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     }
     @IBAction func previousDayButton(sender: UIBarButtonItem) {
         print("Previous day " + navigationBar.title!)
-        if currentDay > 1{
-            currentDay -= 1
+        if currentDay > 1 {
             
+            currentDay -= 1
             navigationBar.title! = "Day " + String(currentDay)
             
             // This will animate the movement of the table left to right
@@ -185,9 +169,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         // Check to see if the segue that's happening is going to the detail view of the recipes
         if segue.identifier == "recipeDetailSegue" {
-            
+            print("Recipe Detail Segue")
         }
     }
-    
 }
 

@@ -20,9 +20,7 @@ class RecipeStore: NSObject {
     
     func fetchRecipes(completion completion: (RecipeResult) -> Void) {
         let url = DeploydAPI.recipesURL()
-        print(url)
         let request = NSURLRequest(URL:url)
-        print(request)
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
@@ -39,5 +37,23 @@ class RecipeStore: NSObject {
         }
         
         return DeploydAPI.recipesFromJSONData(jsonData)
+    }
+    
+    func initRecipes(){
+        if !RecipeStore.recipesReceived {
+            // Attempt to fetch the recipes
+            fetchRecipes() {
+                (recipeResult) -> Void in
+                
+                switch recipeResult {
+                case let .Success(recipes):
+                    //                    print("Successfully found \(recipes)")
+                    RecipeStore.recipesReceived = true
+                case let .Failure(error):
+                    print("Error fetching recipes: \(error)")
+                    RecipeStore.recipesReceived = false
+                }
+            }
+        }
     }
 }

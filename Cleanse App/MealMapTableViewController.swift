@@ -66,7 +66,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         var mealName: String = "None"
         var image: UIImage?
         if cellIdentifiers[indexPath.row] == "Snack" {
-            cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
+//            cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                     //                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
@@ -86,9 +86,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     mealName = day.meals![indexPath.row].mealName
                 }
             }
-            cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
+//            cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
-        cell.mealMapNameLabel.numberOfLines = 2
+        cell.mealMapNameLabel.numberOfLines = 3
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
         cell.mealMapImageView.image = image
         

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
+		328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D731D282D3400B69128 /* QuizViewController.swift */; };
+		328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */; };
+		328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */; };
 		32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32983C781D2097DD006D19D7 /* deploydAPI.swift */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
@@ -58,6 +61,9 @@
 /* Begin PBXFileReference section */
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
+		328B1D731D282D3400B69128 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
+		328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanViewController.swift; sourceTree = "<group>"; };
 		32983C781D2097DD006D19D7 /* deploydAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deploydAPI.swift; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,8 +254,11 @@
 			isa = PBXGroup;
 			children = (
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
+				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
+				328B1D731D282D3400B69128 /* QuizViewController.swift */,
 				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
+				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
 			);
 			name = ViewControllers;
@@ -543,6 +552,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
+				328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */,
+				328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
@@ -558,6 +569,7 @@
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
 				32F6A9A71D1F092200047A51 /* User.swift in Sources */,
 				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,
+				328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

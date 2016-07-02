@@ -23,8 +23,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeStore.initRecipes()
-        mealPlanStore.initMealPlan()
+//        recipeStore.initRecipes()
+//        mealPlanStore.initMealPlan()
         // TODO: Should correspond to the day that the user is currently on in the plan
         //        navigationBar.title = "Day " + String(currentDay)
         
@@ -63,12 +63,16 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
-        
+        var mealName: String = "None"
+        var image: UIImage?
         if cellIdentifiers[indexPath.row] == "Snack" {
             cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
+                    image = day.meals![indexPath.row].mealImage
+                    mealName = day.meals![indexPath.row].mealName
                 }
             }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
@@ -76,13 +80,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                     navigationBar.title! = "Day " + String(day.dayNumber)
-                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
+//                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
+                    image = day.meals![indexPath.row].mealImage
+                    mealName = day.meals![indexPath.row].mealName
                 }
             }
             cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
-        
-        cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row]
+        cell.mealMapNameLabel.numberOfLines = 2
+        cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
+        cell.mealMapImageView.image = image
         
         return cell
     }
@@ -161,7 +169,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         // Check to see if the segue that's happening is going to the detail view of the recipes
         if segue.identifier == "recipeDetailSegue" {
-            
+            print("Recipe Detail Segue")
         }
     }
 }

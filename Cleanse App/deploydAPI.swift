@@ -28,13 +28,11 @@ enum DeploydError: ErrorType {
 }
 struct DeploydAPI {
     // The base url of the server to make the requests from
-    private static let baseURLString = "http://ec2-54-183-2-68.us-west-1.compute.amazonaws.com:3000" //<- This is my current aws server
-    //    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403" // <- This is Anthony's server
-    
+    private static let baseURLString = "http://ec2-54-183-2-68.us-west-1.compute.amazonaws.com:3000" // <- This is my current aws server
+    //    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403"  // <- This is Anthony's server
     
     // Empty APIKey for the moment being
     private static let APIKey = ""
-    
     
     // This function will return the url endpoint of the API server which is used for storing the Recipes and the Meal Plans
     private static func deploydURL(method method: Method, parameters: [String:String]?) -> NSURL {
@@ -88,7 +86,6 @@ struct DeploydAPI {
         
         return components.URL!
     }
-    
     
     static func mealPlansURL() -> NSURL {
         
@@ -230,7 +227,8 @@ struct DeploydAPI {
             // Attempt to parse the indiviual meal json into a meal object
             guard let
                 mealName = mealJson["meal"] as? String,
-                mealTime = mealJson["time"] as? String else {
+                mealTime = mealJson["time"] as? String,
+                mealImageUrl = mealJson["imgurl"] as? String else {
                     print("failed to meal json parse")
                     return nil
             }
@@ -238,12 +236,11 @@ struct DeploydAPI {
             // Assign the values to the meal object
             meal.mealName = mealName
             meal.mealTime = mealTime
-            
+            meal.mealImageUrl = NSURL(string:mealImageUrl)
             dailyPlan.meals?.append(meal)
         }
         dailyPlan.atAGlance = atAGlance
         dailyPlan.dayNumber = day
-        
         
         return dailyPlan
     }

@@ -12,10 +12,12 @@ class WaterTrackerViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var amountLabel: UILabel!
+    var amountConsumed = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        amountLabel.text = String(amountConsumed) + " Ounces"
         // Do any additional setup after loading the view.
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -32,7 +34,8 @@ class WaterTrackerViewController: UIViewController {
     
 
     @IBAction func addOuncesButton(sender: UIButton) {
-        print("Merp")
+        amountConsumed += 8
+        amountLabel.text = String(amountConsumed) + " Ounces"
     }
     /*
     // MARK: - Navigation

@@ -123,19 +123,14 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor(red: 18/255, green: 68/255, blue: 104/255, alpha: 1.0) //make the background color light blue
         header.textLabel!.textColor = UIColor.whiteColor() //make the text white
-        header.alpha = 0.5 //make the header transparent
         header.textLabel?.textAlignment = NSTextAlignment.Center
+    }
+    
+    /*
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        button.backgroundColor = .greenColor()
-        button.setTitle("Test Button", forState: .Normal)
-        button.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
-//        header.contentView.addSubview(button)
-        //        self.view.addSubview(button)
     }
-    func buttonAction(sender: UIButton!) {
-        print("Button tapped")
-    }
+    */
     
     /*
      // Override to support conditional editing of the table view.

@@ -102,16 +102,16 @@
                                 <rect key="frame" x="20" y="84" width="560" height="496"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CcI-je-CHQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="369"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="368"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" misplaced="YES" text="Select one of the following plans" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pB-gS-dzm">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="185"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="184"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
                                                 <color key="textColor" cyan="0.0" magenta="0.040000000000000001" yellow="0.11" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-BR-95M">
-                                                <rect key="frame" x="0.0" y="185" width="560" height="184"/>
+                                                <rect key="frame" x="0.0" y="184" width="560" height="184"/>
                                                 <string key="text">Chicharrones aesthetic YOLO, yr pinterest gochujang flexitarian you probably haven't heard of them paleo authentic. Blue bottle 3 wolf moon tote bag fashion axe, literally pug echo park deep v readymade. Tattooed irony pork belly, selvage mustache synth kickstarter gastropub gochujang locavore viral aesthetic offal. Lo-fi wayfarers distillery, locavore meditation sartorial pour-over pop-up disrupt affogato master cleanse bushwick. Fanny pack cardigan small batch iPhone, helvetica poutine before they sold out squid mixtape pitchfork DIY man bun kitsch.</string>
                                                 <color key="textColor" red="0.93725490199999995" green="0.89411764709999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -120,7 +120,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Hwd-8z-JO8">
-                                        <rect key="frame" x="0.0" y="377" width="560" height="120"/>
+                                        <rect key="frame" x="0.0" y="376" width="560" height="120"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rr9-h8-FYS">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>

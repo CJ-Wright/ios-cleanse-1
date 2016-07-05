@@ -37,6 +37,12 @@ class WaterTrackerViewController: UIViewController {
         amountConsumed += 8
         amountLabel.text = String(amountConsumed) + " Ounces"
     }
+    
+    @IBAction func subtractOuncesButton(sender: UIButton) {
+        amountConsumed -= 8
+        amountLabel.text = String(amountConsumed) + " Ounces"
+    }
+    
     /*
     // MARK: - Navigation
 

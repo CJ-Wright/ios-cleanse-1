@@ -224,11 +224,17 @@ struct DeploydAPI {
         // Parse the daily meal plan into individual meals
         for mealJson in mealsJson as! [Dictionary<String, AnyObject>]{
             meal = Meal()
+
             // Attempt to parse the indiviual meal json into a meal object
             guard let
                 mealName = mealJson["meal"] as? String,
                 mealTime = mealJson["time"] as? String,
-                mealImageUrl = mealJson["imgurl"] as? String else {
+                mealImageUrl = mealJson["imgurl"] as? String,
+                recipe = mealJson["recipe"] as? [String:AnyObject],
+                ingredients = recipe["ingredients"] as? [String],
+                instructions = recipe["instructions"] as? String,
+                serves = recipe["serves"] as? String
+            else {
                     print("failed to meal json parse")
                     return nil
             }
@@ -236,6 +242,14 @@ struct DeploydAPI {
             // Assign the values to the meal object
             meal.mealName = mealName
             meal.mealTime = mealTime
+            for ingredient in ingredients {
+                meal.recipe?.ingredients.append(ingredient)
+            }
+            
+            meal.recipe?.instructions = instructions
+            meal.recipe?.serves = serves
+            
+            
             meal.mealImageUrl = NSURL(string:mealImageUrl)
             dailyPlan.meals?.append(meal)
         }

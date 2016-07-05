@@ -15,6 +15,7 @@ class MealDetailsTableViewController: UITableViewController {
     @IBOutlet var recipeInstructionsLabel: UILabel!
     
     var meal: Meal!
+    var numIngredients: Int = 0
     
     let cellTypes = ["recipeNameCell","recipeImagesCell","recipeIngredientsCell","recipeInstructionsCell"]
     
@@ -30,7 +31,6 @@ class MealDetailsTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.recipeIngredientsLabel.text = ""
         
         self.recipeIngredientsLabel.textAlignment = leftAlignment
         /*
@@ -57,9 +57,9 @@ class MealDetailsTableViewController: UITableViewController {
         case 1:
             returnHeight = 200
         case 2:
-            returnHeight = 100 //+ (20 * CGFloat(self.ingredients.count))
+            returnHeight = 100 + (30 * CGFloat(self.numIngredients))
         case 3:
-            returnHeight = 700 //- (5 * CGFloat(self.ingredients.count))
+            returnHeight = 700 - (10 * CGFloat(self.numIngredients))
         default:
             returnHeight = 30
         }
@@ -140,7 +140,15 @@ class MealDetailsTableViewController: UITableViewController {
         
         self.recipeNameLabel.text           = meal.mealName
         self.recipeImageView.image          = meal.mealImage
-        self.recipeIngredientsLabel.text    = "Some ingredients list"
-        self.recipeInstructionsLabel.text   = "Instructions"
+        
+        self.recipeInstructionsLabel.text   = meal.recipe?.instructions
+        self.recipeNameLabel.adjustsFontSizeToFitWidth = true
+        var ingredientsList: String = ""
+        for ingredient in (meal.recipe?.ingredients)! {
+            print(ingredient)
+            ingredientsList = ingredientsList + "\n* " + ingredient
+            numIngredients += 1
+        }
+        self.recipeIngredientsLabel.text = ingredientsList
     }
 }

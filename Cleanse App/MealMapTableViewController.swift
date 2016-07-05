@@ -23,16 +23,15 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        recipeStore.initRecipes()
-        //        mealPlanStore.initMealPlan()
-        // TODO: Should correspond to the day that the user is currently on in the plan
-        //        navigationBar.title = "Day " + String(currentDay)
+        navigationBar.title! = "Meal Mapper"
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {
@@ -66,27 +65,19 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         var mealName: String = "None"
         var image: UIImage?
         if cellIdentifiers[indexPath.row] == "Snack" {
-//            cell.mealMapImageView.image = UIImage(named: "Shaker_Bottle")
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    //                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
-                    //                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
                     image = day.meals![indexPath.row].mealImage
                     mealName = day.meals![indexPath.row].mealName
                 }
             }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
-            
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    navigationBar.title! = "Day " + String(day.dayNumber)
-                    //                    print("Meal \(indexPath.row) [\(day.meals![indexPath.row].mealName)]")
-                    //                    print("Image url is \(day.meals![indexPath.row].mealImageUrl)")
                     image = day.meals![indexPath.row].mealImage
                     mealName = day.meals![indexPath.row].mealName
                 }
             }
-//            cell.mealMapImageView.image = UIImage(named: "Asian_Turkey_SoupFS")
         }
         cell.mealMapNameLabel.numberOfLines = 3
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
@@ -95,33 +86,55 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         return cell
     }
     
-    
     @IBAction func nextDayButton(sender: UIBarButtonItem) {
-        print("Next day " + navigationBar.title!)
+        
         if currentDay < numDaysInPlan {
             currentDay += 1
-            
-            navigationBar.title! = "Day " + String(currentDay)
             
             // This will animate the movement of the table right to left
             let range = NSMakeRange(0, self.tableView.numberOfSections)
             let sections = NSIndexSet(indexesInRange: range)
             self.tableView.reloadSections(sections, withRowAnimation: .Left)
         }
-        
     }
     @IBAction func previousDayButton(sender: UIBarButtonItem) {
-        print("Previous day " + navigationBar.title!)
+        
         if currentDay > 1 {
-            
             currentDay -= 1
-            navigationBar.title! = "Day " + String(currentDay)
-            
             // This will animate the movement of the table left to right
             let range = NSMakeRange(0, self.tableView.numberOfSections)
             let sections = NSIndexSet(indexesInRange: range)
             self.tableView.reloadSections(sections, withRowAnimation: .Right)
         }
+    }
+    
+    // MARK: - Section Header Methods
+    
+    // Return the title of the section header. This will change based on the current
+    //  day of the meal plan.
+    override func tableView(tableView: UITableView,
+                            titleForHeaderInSection section: Int) -> String?{
+        navigationBar.title! = "Meal Mapper"
+        return "Day " + String(currentDay)
+    }
+    
+    // This configures and edits the section header
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor(red: 18/255, green: 68/255, blue: 104/255, alpha: 1.0) //make the background color light blue
+        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+        header.alpha = 0.5 //make the header transparent
+        header.textLabel?.textAlignment = NSTextAlignment.Center
+        
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.backgroundColor = .greenColor()
+        button.setTitle("Test Button", forState: .Normal)
+        button.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
+//        header.contentView.addSubview(button)
+        //        self.view.addSubview(button)
+    }
+    func buttonAction(sender: UIButton!) {
+        print("Button tapped")
     }
     
     /*
@@ -183,4 +196,3 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         }
     }
 }
-

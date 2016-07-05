@@ -15,16 +15,19 @@ class Meal {
     var mealTime: String
     var mealImageUrl: NSURL?
     var mealImage: UIImage?
+    var recipe: Recipe?
     
     init(){
         self.mealName = ""
         self.mealTime = ""
         self.mealImageUrl = nil
+        self.recipe = Recipe()
     }
     
-    init(mealName: String, mealTime: String, imageUrl: NSURL){
+    init(mealName: String, mealTime: String, imageUrl: NSURL, recipe: Recipe){
         self.mealTime = mealTime
         self.mealName = mealName
         self.mealImageUrl = imageUrl
+        self.recipe = recipe
     }
 }

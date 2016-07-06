@@ -37,7 +37,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
     
@@ -60,6 +59,20 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MealMapTableViewController.nextDayButton(_:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        if currentDay == 1 {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        } else {
+            // Remove the ability to open up the side menu by swiping when it is not the first day.
+            self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
+            
+            swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+            self.view.addGestureRecognizer(swipeRight)
+        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
         var mealName: String = "None"
@@ -125,6 +138,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         header.textLabel!.textColor = UIColor.whiteColor() //make the text white
         header.textLabel?.textAlignment = NSTextAlignment.Center
     }
+    
+
     
     /*
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

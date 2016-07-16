@@ -23,6 +23,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationBar.title! = "Meal Mapper"
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
@@ -59,24 +60,31 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        // Initialize the swipe left gesture to change days
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MealMapTableViewController.nextDayButton(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
         
+        // If the current day is 1 then allow the swipe right feature to bring out the side menu
         if currentDay == 1 {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         } else {
             // Remove the ability to open up the side menu by swiping when it is not the first day.
             self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
             
+            // Add the swipe right functionality to the view
+            let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
             swipeRight.direction = UISwipeGestureRecognizerDirection.Right
             self.view.addGestureRecognizer(swipeRight)
         }
         
+        // Create a template cell as a MealMapTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
         var mealName: String = "None"
         var image: UIImage?
+        
+        // Determine if the cell is to be a snack/shake or meal cell
         if cellIdentifiers[indexPath.row] == "Snack" {
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
@@ -92,6 +100,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
         }
+        
         cell.mealMapNameLabel.numberOfLines = 3
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
         cell.mealMapImageView.image = image
@@ -99,8 +108,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         return cell
     }
     
+    // Changes the current day to the next day in the meal plan
     @IBAction func nextDayButton(sender: UIBarButtonItem) {
         
+        // Check to see if the current day is less than the number of days in a meal plan
         if currentDay < numDaysInPlan {
             currentDay += 1
             
@@ -110,8 +121,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             self.tableView.reloadSections(sections, withRowAnimation: .Left)
         }
     }
+    
+    // Changes the current day to the previous day
     @IBAction func previousDayButton(sender: UIBarButtonItem) {
         
+        // Check to see if the current day is greater than the first day in the meal plan
         if currentDay > 1 {
             currentDay -= 1
             // This will animate the movement of the table left to right
@@ -125,21 +139,21 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     // Return the title of the section header. This will change based on the current
     //  day of the meal plan.
-    override func tableView(tableView: UITableView,
-                            titleForHeaderInSection section: Int) -> String?{
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         navigationBar.title! = "Meal Mapper"
         return "Day " + String(currentDay)
     }
     
     // This configures and edits the section header
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor(red: 18/255, green: 68/255, blue: 104/255, alpha: 1.0) //make the background color light blue
+        //recast your view as a UITableViewHeaderFooterView
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        //make the background color dark blue
+        header.contentView.backgroundColor = UIColor(red: 18/255, green: 68/255, blue: 104/255, alpha: 1.0)
         header.textLabel!.textColor = UIColor.whiteColor() //make the text white
         header.textLabel?.textAlignment = NSTextAlignment.Center
+        header.textLabel?.font
     }
-    
-
     
     /*
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -170,10 +184,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     /*
      // Override to support rearranging the table view.
      override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
      }
      */
-    
+
     /*
      // Override to support conditional rearranging of the table view.
      override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -192,15 +205,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         // Check to see if the segue that's happening is going to the detail view of the recipes
         if segue.identifier == "recipeDetailSegue" {
-            print("Recipe Detail Segue")
             
             // Figure out which row was just tapped
             if let row = tableView.indexPathForSelectedRow?.row {
+            
                 // Get the item associated with this row and pass it along
-                if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    let meal = dailyPlan.meals![row]
-                    let detailViewController = segue.destinationViewController as! MealDetailsTableViewController
-                    detailViewController.meal = meal
+                if MealPlanStore.currentMealPlan.days.count > 0 {
+                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                        let meal = dailyPlan.meals![row]
+                        let detailViewController = segue.destinationViewController as! MealDetailsTableViewController
+                        detailViewController.meal = meal
+                    }
                 }
             }
         }

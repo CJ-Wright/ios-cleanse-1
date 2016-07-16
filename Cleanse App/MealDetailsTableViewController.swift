@@ -138,17 +138,19 @@ class MealDetailsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.recipeNameLabel.text           = meal.mealName
-        self.recipeImageView.image          = meal.mealImage
-        
-        self.recipeInstructionsLabel.text   = meal.recipe?.instructions
-        self.recipeNameLabel.adjustsFontSizeToFitWidth = true
-        var ingredientsList: String = ""
-        for ingredient in (meal.recipe?.ingredients)! {
-            print(ingredient)
-            ingredientsList = ingredientsList + "\n* " + ingredient
-            numIngredients += 1
+        if meal != nil {
+            self.recipeNameLabel.text           = meal.mealName
+            self.recipeImageView.image          = meal.mealImage
+            
+            self.recipeInstructionsLabel.text   = meal.recipe?.instructions
+            self.recipeNameLabel.adjustsFontSizeToFitWidth = true
+            var ingredientsList: String = ""
+            for ingredient in (meal.recipe?.ingredients)! {
+                print(ingredient)
+                ingredientsList = ingredientsList + "\n* " + ingredient
+                numIngredients += 1
+            }
+            self.recipeIngredientsLabel.text = ingredientsList
         }
-        self.recipeIngredientsLabel.text = ingredientsList
     }
 }

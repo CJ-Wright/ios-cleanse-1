@@ -346,7 +346,32 @@
                     <view key="view" contentMode="scaleToFill" id="2cU-R7-hmx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="GEk-CU-hI9">
+                                <rect key="frame" x="20" y="514" width="560" height="78"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDl-6g-e5D" userLabel="AtAGlanceButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="146.5" height="78"/>
+                                        <state key="normal" image="icon_atAGlance"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrt-c1-DUB" userLabel="FoodListButton">
+                                        <rect key="frame" x="206.5" y="0.0" width="147" height="78"/>
+                                        <state key="normal" image="icon_foodList_orange"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYZ-ZG-8w9" userLabel="RecipeListButton">
+                                        <rect key="frame" x="413.5" y="0.0" width="146.5" height="78"/>
+                                        <state key="normal" image="icon_recipes_orange"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="GEk-CU-hI9" secondAttribute="leading" id="KaA-tL-9ls"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GEk-CU-hI9" secondAttribute="trailing" id="VBb-dv-V9j"/>
+                            <constraint firstItem="GEk-CU-hI9" firstAttribute="top" secondItem="z78-GV-PPl" secondAttribute="bottom" constant="450" id="mwj-cF-eYO"/>
+                            <constraint firstItem="FJo-zg-9I9" firstAttribute="top" secondItem="GEk-CU-hI9" secondAttribute="bottom" constant="8" id="nix-SW-jhZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Xs-sl-emf">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="UJi-CK-K9V"/>
@@ -769,6 +794,9 @@
     <resources>
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
         <image name="fiji-water-bottle-no-bg" width="1000" height="1000"/>
+        <image name="icon_atAGlance" width="105" height="108"/>
+        <image name="icon_foodList_orange" width="91" height="77"/>
+        <image name="icon_recipes_orange" width="95" height="101"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -384,6 +384,24 @@
             </objects>
             <point key="canvasLocation" x="1003" y="2524"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="sQ3-YD-yXp">
+            <objects>
+                <viewController id="oMl-9f-Tbw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MQE-RA-Viq"/>
+                        <viewControllerLayoutGuide type="bottom" id="mZP-a0-PuL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oT8-QF-Ogc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPw-Wv-NP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="2524"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="gVv-zF-3Og">
             <objects>
@@ -532,20 +550,20 @@
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water Consumed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="TYU-ii-rSG">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="74"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="63"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Ounces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjf-g2-99B">
-                                        <rect key="frame" x="0.0" y="124" width="560" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <rect key="frame" x="0.0" y="113" width="560" height="58"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <color key="textColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tL3-Ya-bH7">
-                                        <rect key="frame" x="0.0" y="239" width="560" height="81"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <rect key="frame" x="0.0" y="221" width="560" height="77"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="+ 8 Ounces of water">
                                             <color key="titleColor" red="0.40784313729999999" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -554,8 +572,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uty-ND-kEz">
-                                        <rect key="frame" x="0.0" y="369" width="560" height="167"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <rect key="frame" x="0.0" y="348" width="560" height="188"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="- 8 Ounces of Water">
                                             <color key="titleColor" red="0.40784313729999999" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -584,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJ3-g9-zPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-931" y="3445"/>
+            <point key="canvasLocation" x="-1723" y="2693"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gsb-ZK-Qm8">
@@ -620,7 +638,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tde-Ag-gwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1673" y="3445"/>
+            <point key="canvasLocation" x="-2465" y="2693"/>
         </scene>
         <!--Purchases Table View Controller-->
         <scene sceneID="Inu-Gk-2sF">
@@ -654,7 +672,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqF-rD-tBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="3457"/>
+            <point key="canvasLocation" x="-1723" y="3441"/>
         </scene>
         <!--Detox Quiz-->
         <scene sceneID="irN-0R-jeM">
@@ -752,7 +770,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJH-0p-tXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="3457"/>
+            <point key="canvasLocation" x="-2465" y="3441"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yt0-6x-F1W">

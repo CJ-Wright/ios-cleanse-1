@@ -9,6 +9,8 @@
     <customFonts key="customFonts">
         <mutableArray key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -347,30 +349,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="GEk-CU-hI9">
-                                <rect key="frame" x="20" y="514" width="560" height="78"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="4cN-WP-LM9">
+                                <rect key="frame" x="20" y="64" width="560" height="101"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yf-Ml-EZT" userLabel="RecipeButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="101"/>
+                                        <state key="normal" image="icon_recipes_orange"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svK-aT-Z13">
+                                        <rect key="frame" x="220" y="0.0" width="120" height="101"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rr9-Lf-aPV" userLabel="ShoppingListButton">
+                                        <rect key="frame" x="440" y="0.0" width="120" height="101"/>
+                                        <state key="normal" image="icon_shoppingList"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="94s-dY-la9">
+                                <rect key="frame" x="0.0" y="264" width="600" height="121"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2S-eh-MQM" userLabel="ButtonSpacer1">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="61"/>
+                                        <color key="backgroundColor" red="0.62352941179999999" green="0.72941176470000002" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="31"/>
+                                        <state key="normal" image="icon_foodList_orange">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-hv-hCw">
+                                        <rect key="frame" x="0.0" y="61" width="600" height="61"/>
+                                        <color key="backgroundColor" red="0.62352941179999999" green="0.72941176470000002" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="25"/>
+                                        <color key="textColor" red="0.2274509804" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="GEk-CU-hI9">
+                                <rect key="frame" x="20" y="464" width="560" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDl-6g-e5D" userLabel="AtAGlanceButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="146.5" height="78"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                         <state key="normal" image="icon_atAGlance"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrt-c1-DUB" userLabel="FoodListButton">
-                                        <rect key="frame" x="206.5" y="0.0" width="147" height="78"/>
-                                        <state key="normal" image="icon_foodList_orange"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrt-c1-DUB" userLabel="CheckListButton">
+                                        <rect key="frame" x="220" y="0.0" width="120" height="150"/>
+                                        <state key="normal" image="icon_checklist"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYZ-ZG-8w9" userLabel="RecipeListButton">
-                                        <rect key="frame" x="413.5" y="0.0" width="146.5" height="78"/>
-                                        <state key="normal" image="icon_recipes_orange"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYZ-ZG-8w9" userLabel="SettingsButton">
+                                        <rect key="frame" x="440" y="0.0" width="120" height="150"/>
+                                        <state key="normal" image="icon_settings"/>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="GEk-CU-hI9" secondAttribute="leading" id="KaA-tL-9ls"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GEk-CU-hI9" secondAttribute="trailing" id="VBb-dv-V9j"/>
-                            <constraint firstItem="GEk-CU-hI9" firstAttribute="top" secondItem="z78-GV-PPl" secondAttribute="bottom" constant="450" id="mwj-cF-eYO"/>
-                            <constraint firstItem="FJo-zg-9I9" firstAttribute="top" secondItem="GEk-CU-hI9" secondAttribute="bottom" constant="8" id="nix-SW-jhZ"/>
+                            <constraint firstItem="GEk-CU-hI9" firstAttribute="top" secondItem="94s-dY-la9" secondAttribute="bottom" constant="64" id="8Y6-9G-Q9D"/>
+                            <constraint firstItem="GEk-CU-hI9" firstAttribute="leading" secondItem="2cU-R7-hmx" secondAttribute="leadingMargin" id="AaA-9L-9Tq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4cN-WP-LM9" secondAttribute="trailing" id="Ced-x9-Hyf"/>
+                            <constraint firstItem="4cN-WP-LM9" firstAttribute="leading" secondItem="2cU-R7-hmx" secondAttribute="leadingMargin" id="JzW-Nn-96M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GEk-CU-hI9" secondAttribute="trailing" id="ThJ-4N-PLc"/>
+                            <constraint firstItem="94s-dY-la9" firstAttribute="leading" secondItem="2cU-R7-hmx" secondAttribute="leadingMargin" constant="-20" id="XXl-oL-nsT"/>
+                            <constraint firstItem="FJo-zg-9I9" firstAttribute="top" secondItem="GEk-CU-hI9" secondAttribute="bottom" id="eg7-ji-48p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="94s-dY-la9" secondAttribute="trailing" constant="-20" id="ems-38-DIz"/>
+                            <constraint firstItem="4cN-WP-LM9" firstAttribute="top" secondItem="z78-GV-PPl" secondAttribute="bottom" id="hkM-ac-bUD"/>
+                            <constraint firstItem="94s-dY-la9" firstAttribute="top" secondItem="4cN-WP-LM9" secondAttribute="bottom" constant="100" id="poE-6S-a3o"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Xs-sl-emf">
@@ -813,8 +857,11 @@
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
         <image name="fiji-water-bottle-no-bg" width="1000" height="1000"/>
         <image name="icon_atAGlance" width="105" height="108"/>
+        <image name="icon_checklist" width="116" height="150"/>
         <image name="icon_foodList_orange" width="91" height="77"/>
         <image name="icon_recipes_orange" width="95" height="101"/>
+        <image name="icon_settings" width="99" height="99"/>
+        <image name="icon_shoppingList" width="123" height="79"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

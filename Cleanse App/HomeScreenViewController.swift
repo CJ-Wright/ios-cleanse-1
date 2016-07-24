@@ -12,8 +12,13 @@ class HomeScreenViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
+
 
         // Do any additional setup after loading the view.
         // This allows for the side menu to appear from within the app
@@ -27,6 +32,7 @@ class HomeScreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

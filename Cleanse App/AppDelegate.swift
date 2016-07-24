@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mealPlanStore = MealPlanStore()
         recipeStore.initRecipes()
         mealPlanStore.initMealPlan()
-
+        
 //        let mealMapController = MealMapTableViewController()
 //        mealMapController.recipeStore = RecipeStore()
 //        window?.rootViewController?.addChildViewController(mealMapController)

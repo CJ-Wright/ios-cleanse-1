@@ -330,7 +330,7 @@
                     </view>
                     <connections>
                         <segue destination="j75-k9-yQw" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="eve-GY-xm9"/>
-                        <segue destination="Qyz-tz-eOL" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="hLc-Nc-lvy"/>
+                        <segue destination="A7J-mi-CfN" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="yRh-oh-scx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cP-Nf-g1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -909,5 +909,8 @@
         <image name="icon_recipes_orange" width="95" height="101"/>
         <image name="icon_settings" width="99" height="99"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yRh-oh-scx"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

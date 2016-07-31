@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
+		32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */; };
 		3289FB531D454FE90046AE66 /* DjoserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289FB521D454FE90046AE66 /* DjoserAPI.swift */; };
 		328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D731D282D3400B69128 /* QuizViewController.swift */; };
 		328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
+		32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3289FB521D454FE90046AE66 /* DjoserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DjoserAPI.swift; sourceTree = "<group>"; };
 		328B1D731D282D3400B69128 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
+				32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */,
 				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
@@ -586,6 +589,7 @@
 				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */,
+				32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */,
 				3289FB531D454FE90046AE66 /* DjoserAPI.swift in Sources */,
 				328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,

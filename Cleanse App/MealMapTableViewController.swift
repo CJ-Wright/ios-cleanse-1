@@ -26,6 +26,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         navigationBar.title! = "Meal Mapper"
         
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
         
         // Uncomment the following line to preserve selection between presentations

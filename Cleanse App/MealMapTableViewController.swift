@@ -90,15 +90,19 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         if cellIdentifiers[indexPath.row] == "Snack" {
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    image = day.meals![indexPath.row].mealImage
-                    mealName = day.meals![indexPath.row].mealName
+                    if let meal = day.meals[indexPath.row] as? Meal {
+                        image = meal.mealImage
+                        mealName = meal.mealName
+//                        image = day.meals[indexPath.row].mealImage
+//                        mealName = day.meals[indexPath.row].mealName
+                    }
                 }
             }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    image = day.meals![indexPath.row].mealImage
-                    mealName = day.meals![indexPath.row].mealName
+                    image = day.meals[indexPath.row].mealImage
+                    mealName = day.meals[indexPath.row].mealName
                 }
             }
         }
@@ -214,9 +218,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 // Get the item associated with this row and pass it along
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                        let meal = dailyPlan.meals![row]
+                        let meal = dailyPlan.meals[row]
                         let detailViewController = segue.destinationViewController as! MealDetailsTableViewController
-                        detailViewController.meal = meal
+                        detailViewController.meal = meal as! Meal
                     }
                 }
             }

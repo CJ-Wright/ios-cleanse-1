@@ -251,7 +251,7 @@ struct DeploydAPI {
             
             
             meal.mealImageUrl = NSURL(string:mealImageUrl)
-            dailyPlan.meals?.append(meal)
+            dailyPlan.meals.addObject(meal)
         }
         dailyPlan.atAGlance = atAGlance
         dailyPlan.dayNumber = day

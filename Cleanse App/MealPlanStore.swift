@@ -93,18 +93,19 @@ class MealPlanStore: NSObject {
     
     
     // MARK: Debugging functions
+    /*
     func displayMealPlan(){
         print("Plan Name [ \(MealPlanStore.currentMealPlan.mealPlanName) ]")
         
         for dailyPlan in MealPlanStore.currentMealPlan.days {
             if let plan = dailyPlan as? DailyPlan {
                 print("Day [\(plan.dayNumber)]")
-                for meal in plan.meals! {
+                for meal in plan.meals as? Meal {
                     print("Meal [\(meal.mealName)] at [\(meal.mealTime)]")
                 }
             }
         }
-    }
+    }*/
     
     func initMealPlan(){
         if !MealPlanStore.plansReceived {
@@ -120,8 +121,8 @@ class MealPlanStore: NSObject {
                     MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
                     for day in MealPlanStore.currentMealPlan.days {
                         if let plan = day as? DailyPlan {
-                            for meal in plan.meals! {
-                                self.fetchImageForPhoto(meal) {
+                            for meal in plan.meals {
+                                self.fetchImageForPhoto(meal as! Meal) {
                                     (imageResult) -> Void in
                                     switch imageResult {
                                     case .Success(_):

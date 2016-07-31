@@ -31,11 +31,11 @@ class MealPlan: NSObject, NSCoding {
         self.mealPlanID = mealPlanID
     }
     
-    func addDailyPlan(inout meals: [Meal], dayNum: Int, atAGlance: [String])
+    /*func addDailyPlan(inout meals: [Meal], dayNum: Int, atAGlance: [String])
     {
-        let dailyPlan = DailyPlan(dayNum: dayNum, meals: &meals, atAGlance: atAGlance)
+        let dailyPlan = DailyPlan(dayNum: dayNum, meals: meals, atAGlance: atAGlance)
         self.days.addObject(dailyPlan)
-    }
+    }*/
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){

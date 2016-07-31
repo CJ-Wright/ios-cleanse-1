@@ -9,12 +9,12 @@
 import Foundation
 
 
-class DailyPlan {
+class DailyPlan: NSObject, NSCoding {
     var dayNumber: Int
     var meals: [Meal]?
     var atAGlance: [String]
     
-    init(){
+    override init(){
         self.dayNumber = 0
         self.meals = [Meal]()
         self.atAGlance = [String]()
@@ -24,5 +24,20 @@ class DailyPlan {
         self.dayNumber = dayNum
         self.meals = meals
         self.atAGlance = atAGlance
+    }
+    
+    // MARK: NSCoding
+    required convenience init?(coder decoder: NSCoder) {
+        guard let meals = decoder.decodeObjectForKey("meals") as? [Meal],
+            let atAGlance = decoder.decodeObjectForKey("atAGlace") as? [String]
+            else {
+                return nil
+        }
+        
+        self.init(
+            dayNum: decoder.decodeIntegerForKey("dayNumber"),
+            meals: meals,
+            atAGlance: atAGlance
+        )
     }
 }

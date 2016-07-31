@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MealPlan {
+class MealPlan: NSObject, NSCoding {
     
     var mealPlanName: String
     var numberOfDays: Int
@@ -17,7 +17,7 @@ class MealPlan {
     var mealPlanID: String
     
     
-    init(){
+    override init(){
         self.mealPlanName = "Sample Meal Plan"
         self.numberOfDays = 0
         self.days = NSMutableArray()
@@ -35,5 +35,29 @@ class MealPlan {
     {
         let dailyPlan = DailyPlan(dayNum: dayNum, meals: &meals, atAGlance: atAGlance)
         self.days.addObject(dailyPlan)
+    }
+    
+    // MARK: NSCoding
+    required convenience init?(coder decoder: NSCoder){
+        guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
+         let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
+         let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String
+        else {
+            return nil
+        }
+        
+        self.init(
+            name:mealPlanName,
+            numberOfDays: decoder.decodeIntegerForKey("numberOfDays"),
+            days:days,
+            mealPlanID: mealPlanID
+        )
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.mealPlanName, forKey: "mealPlanName")
+        aCoder.encodeObject(self.numberOfDays, forKey: "numberOfDays")
+        aCoder.encodeObject(self.days, forKey: "days")
+        aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
     }
 }

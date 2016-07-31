@@ -93,8 +93,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     if let meal = day.meals[indexPath.row] as? Meal {
                         image = meal.mealImage
                         mealName = meal.mealName
-//                        image = day.meals[indexPath.row].mealImage
-//                        mealName = day.meals[indexPath.row].mealName
                     }
                 }
             }

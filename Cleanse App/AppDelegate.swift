@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    let recipeStore = RecipeStore()
+    let mealPlanStore = MealPlanStore()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let recipeStore = RecipeStore()
-        let mealPlanStore = MealPlanStore()
+        // TODO: Need to implement a check to see if the data has alredady been downloaded.
+        
         recipeStore.initRecipes()
         mealPlanStore.initMealPlan()
         
@@ -51,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+        if MealPlanStore.plansReceived {
+            print("Archiving mealPlan")
+            NSKeyedArchiver.archiveRootObject(mealPlanStore, toFile: "/somerandom/file/path")
+        }
     }
 
     // MARK: - Core Data stack

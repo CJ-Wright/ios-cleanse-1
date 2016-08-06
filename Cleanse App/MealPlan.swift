@@ -40,15 +40,16 @@ class MealPlan: NSObject, NSCoding {
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){
         guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
-         let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
-         let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String
+            let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
+            let numberOfDays = decoder.decodeObjectForKey("numberOfDays") as? Int,
+            let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String
         else {
             return nil
         }
         
         self.init(
             name:mealPlanName,
-            numberOfDays: decoder.decodeIntegerForKey("numberOfDays"),
+            numberOfDays: numberOfDays,
             days:days,
             mealPlanID: mealPlanID
         )

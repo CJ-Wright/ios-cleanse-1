@@ -35,6 +35,7 @@ class DailyPlan: NSObject, NSCoding {
         guard let mealsArray = decoder.decodeObjectForKey("meals") as? NSMutableArray,
             let atAGlance = decoder.decodeObjectForKey("atAGlace") as? [String]
             else {
+                print("Failed to init Daily Plan from archiver")
                 return nil
         }
         
@@ -46,7 +47,8 @@ class DailyPlan: NSObject, NSCoding {
     }
  
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.dayNumber, forKey: "dayNumber")
+//        aCoder.encodeObject(self.dayNumber, forKey: "dayNumber")
+        aCoder.encodeInteger(self.dayNumber, forKey: "dayNumber")
         aCoder.encodeObject(self.meals, forKey: "meals")
         aCoder.encodeObject(self.atAGlance, forKey: "atAGlance")
         

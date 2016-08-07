@@ -15,18 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let recipeStore = RecipeStore()
     let mealPlanStore = MealPlanStore()
+    let userStore = UserStore()
+    var user: User? = nil
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // TODO: Need to implement a check to see if the data has alredady been downloaded.
+        user = userStore.load()
+        if user != nil {
+            print("Loaded user profile")
+        } else {
+            print("No user found")
+           user = User(name: "New User", hasPlan: false)
+        }
         
         recipeStore.initRecipes()
-        mealPlanStore.initMealPlan()
+        mealPlanStore.initMealPlan(user!)
         
-        if MealPlanStore.plansReceived {
-            print("Archiving mealPlan")
-            NSKeyedArchiver.archiveRootObject(mealPlanStore, toFile: "/somerandom/file/path")
-        }
+//        if MealPlanStore.plansReceived {
+//            print("Archiving mealPlan")
+//            NSKeyedArchiver.archiveRootObject(mealPlanStore, toFile: "/somerandom/file/path")
+//        }
 //        let mealMapController = MealMapTableViewController()
 //        mealMapController.recipeStore = RecipeStore()
 //        window?.rootViewController?.addChildViewController(mealMapController)
@@ -42,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         let success = mealPlanStore.saveChanges()
+        userStore.save(user!)
         if success {
             print("Saved all of the meal plans")
         } else {
@@ -125,5 +135,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }

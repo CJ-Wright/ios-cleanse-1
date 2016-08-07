@@ -28,6 +28,7 @@
 		32DDBB3B1D36EEE500A6A065 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB381D36EEE500A6A065 /* ProximaNova-Bold.otf */; };
 		32DDBB3C1D36EEE500A6A065 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */; };
 		32DDBB3D1D36EEE500A6A065 /* ProximaNova-RegularIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB3A1D36EEE500A6A065 /* ProximaNova-RegularIt.otf */; };
+		32E43F7B1D56A7F700D664B5 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E43F7A1D56A7F700D664B5 /* UserStore.swift */; };
 		32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */; };
 		32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */; };
 		32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90E1D20DE9E006D9F75 /* Meal.swift */; };
@@ -92,6 +93,7 @@
 		32DDBB381D36EEE500A6A065 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		32DDBB3A1D36EEE500A6A065 /* ProximaNova-RegularIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegularIt.otf"; sourceTree = "<group>"; };
+		32E43F7A1D56A7F700D664B5 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailsTableViewController.swift; sourceTree = "<group>"; };
 		32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
 		32F5E90E1D20DE9E006D9F75 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		32A2B2D91CF113E3005CDC0E /* Cleanse App */ = {
 			isa = PBXGroup;
 			children = (
+				32DDBB3F1D36EEF300A6A065 /* Fonts */,
 				32983C7A1D20AF2B006D19D7 /* APIs */,
 				32F6A9AA1D1F12FE00047A51 /* Objects */,
 				323588621D0DC7CD00EB861F /* Resources */,
@@ -215,7 +218,6 @@
 				32F9238D1D0021800069D49D /* SWRevealView */,
 				32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */,
 				32A2B2DE1CF113E3005CDC0E /* Main.storyboard */,
-				32DDBB3F1D36EEF300A6A065 /* Fonts */,
 				32A2B2E41CF113E3005CDC0E /* Assets.xcassets */,
 				32A2B2E61CF113E3005CDC0E /* LaunchScreen.storyboard */,
 				32A2B2E91CF113E3005CDC0E /* Info.plist */,
@@ -295,6 +297,7 @@
 			children = (
 				32F923951D003F940069D49D /* ImageStore.swift */,
 				32F923931D00302F0069D49D /* RecipeStore.swift */,
+				32E43F7A1D56A7F700D664B5 /* UserStore.swift */,
 				32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */,
 			);
 			name = Stores;
@@ -586,6 +589,7 @@
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
+				32E43F7B1D56A7F700D664B5 /* UserStore.swift in Sources */,
 				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */,

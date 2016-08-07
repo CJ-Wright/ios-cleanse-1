@@ -35,10 +35,12 @@ class Meal: NSObject, NSCoding {
     
     required convenience init?(coder decoder: NSCoder) {
         guard let mealName = decoder.decodeObjectForKey("mealName") as? String,
-        let mealTime = decoder.decodeObjectForKey("mealTime") as? String,
-        let mealImageUrl = decoder.decodeObjectForKey("mealImageUrl") as? NSURL,
-        let mealImage = decoder.decodeObjectForKey("mealImage") as? UIImage,
-            let recipe = decoder.decodeObjectForKey("recipe") as? Recipe else {
+            let mealTime = decoder.decodeObjectForKey("mealTime") as? String,
+            let mealImageUrl = decoder.decodeObjectForKey("mealImageUrl") as? NSURL,
+            let mealImage = decoder.decodeObjectForKey("mealImage") as? UIImage,
+            let recipe = decoder.decodeObjectForKey("recipe") as? Recipe
+            else {
+                print("Failed to init Meal from archiver")
                 return nil
         }
         

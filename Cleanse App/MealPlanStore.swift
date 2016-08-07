@@ -39,15 +39,6 @@ class MealPlanStore: NSObject {
         return NSURLSession(configuration: config)
     }()
     
-    override init() {
-        if let archivedItems =
-            NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {
-            MealPlanStore.currentMealPlan = archivedItems
-        } else {
-            MealPlanStore.plansReceived = false
-        }
-    }
-    
     // MARK: Retrieval Methods
     func fetchMealPlans(completion completion: (MealPlanResult) -> Void) {
         let url = DeploydAPI.mealPlansURL()
@@ -84,7 +75,18 @@ class MealPlanStore: NSObject {
     }
     
     
-    func initMealPlan(){
+    func initMealPlan(user:User){
+        if user.hasPlan() {
+            if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {
+                MealPlanStore.currentMealPlan = archivedItems
+                MealPlanStore.plansReceived = true
+                print("Successfully unarchived plans")
+            } else {
+                MealPlanStore.plansReceived = false
+                print("Failed to unarchive plans")
+            }
+        }
+        
         if !MealPlanStore.plansReceived {
             // Attempt to fetch the Meal Plans
             fetchMealPlans(){
@@ -103,6 +105,7 @@ class MealPlanStore: NSObject {
                                     (imageResult) -> Void in
                                     switch imageResult {
                                     case .Success(_):
+                                        user.setPlanState(true)
                                         print("Downloaded the image")
                                     case .Failure(_):
                                         print("Error downloading the image")
@@ -112,7 +115,7 @@ class MealPlanStore: NSObject {
                         }
                     }
                 case let .Failure(error):
-                    print("Error fetching recipes: \(error)")
+                    print("Error fetching meal plan: \(error)")
                     MealPlanStore.plansReceived = false
                 }
             }
@@ -121,8 +124,6 @@ class MealPlanStore: NSObject {
     
     func saveChanges() -> Bool {
         print("Saving meal plan to \(mealPlanArchiveURL.path!)")
-        let tempPlan = MealPlanStore.currentMealPlan
-        return NSKeyedArchiver.archiveRootObject(tempPlan, toFile: mealPlanArchiveURL.path!)
+        return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
     }
-    
 }

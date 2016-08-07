@@ -8,44 +8,43 @@
 
 import Foundation
 
-class User {
+class User: NSObject, NSCoding {
     var userName: String!
-    var userPassword: String!
     var sessionAuthToken: String!
     var apiKey: String!
+    var hasCurrentPlan: Bool
     
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)
     }()
     
-    func login(){
-        
-        let url = DjoserAPI.loginURL()
-        
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        
-        let data = "username=\(self.userName)&password=\(self.userPassword)".dataUsingEncoding(NSUTF8StringEncoding)
-        
-        
-        let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler:
-            {(data,response,error) in
-                
-                guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
-                    print("error")
-                    return
-                }
-                
-                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print(dataString)
-                self.sessionAuthToken = String(dataString)
-            }
-        );
-        task.resume()
+    init(name:String, hasPlan:Bool){
+        self.userName = name
+        self.hasCurrentPlan = hasPlan
     }
     
+    required convenience init?(coder decoder: NSCoder){
+        guard let name = decoder.decodeObjectForKey("userName") as? String
+            else { return nil }
+        
+        self.init(
+            name: name,
+            hasPlan: decoder.decodeBoolForKey("hasPlan")
+        )
+    }
+    
+    func hasPlan() -> Bool {
+        return self.hasCurrentPlan
+    }
+    
+    func setPlanState(state:Bool){
+        self.hasCurrentPlan = state
+    }
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.userName, forKey: "userName")
+        aCoder.encodeBool(self.hasCurrentPlan, forKey: "hasPlan")
+    }
+ 
     
 }

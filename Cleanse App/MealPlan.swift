@@ -41,23 +41,27 @@ class MealPlan: NSObject, NSCoding {
     required convenience init?(coder decoder: NSCoder){
         guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
             let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
-            let numberOfDays = decoder.decodeObjectForKey("numberOfDays") as? Int,
+//            let numberOfDays = decoder.decodeObjectForKey("numberOfDays") as? Int,
             let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String
         else {
+            print("Failed to init [ Meal Plan ] from archiver")
             return nil
         }
+        print("[Meal Plan] Success!")
         
         self.init(
             name:mealPlanName,
-            numberOfDays: numberOfDays,
+            numberOfDays: decoder.decodeIntegerForKey("numberOfDays"),
             days:days,
             mealPlanID: mealPlanID
         )
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
         aCoder.encodeObject(self.mealPlanName, forKey: "mealPlanName")
-        aCoder.encodeObject(self.numberOfDays, forKey: "numberOfDays")
+//        aCoder.encodeObject(self.numberOfDays, forKey: "numberOfDays")
+        aCoder.encodeInt(Int32(self.numberOfDays), forKey: "numberOfDays")
         aCoder.encodeObject(self.days, forKey: "days")
         aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
     }

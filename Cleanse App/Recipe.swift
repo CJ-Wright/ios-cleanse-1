@@ -43,7 +43,9 @@ class Recipe: NSObject, NSCoding {
             let ingredients = decoder.decodeObjectForKey("ingredients") as? [String],
             let recipeID = decoder.decodeObjectForKey("recipeID") as? String,
             let serves = decoder.decodeObjectForKey("serves") as? String else {
+                print("Failed to init user from archiver")
                 return nil
+                
         }
         
         self.init(

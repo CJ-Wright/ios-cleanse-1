@@ -47,7 +47,7 @@ class RecipeStore: NSObject {
                 
                 switch recipeResult {
                 case let .Success(recipes):
-                    //                    print("Successfully found \(recipes)")
+                     print("Successfully found \(recipes)")
                     RecipeStore.recipesReceived = true
                 case let .Failure(error):
                     print("Error fetching recipes: \(error)")

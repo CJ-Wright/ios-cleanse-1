@@ -74,7 +74,8 @@ class MealPlanStore: NSObject {
         return DeploydAPI.mealPlansFromJSONData(jsonData)
     }
     
-    
+    /*
+     */
     func initMealPlan(user:User){
         if user.hasPlan() {
             if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {

@@ -32,13 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         recipeStore.initRecipes()
         mealPlanStore.initMealPlan(user!)
         
-//        if MealPlanStore.plansReceived {
-//            print("Archiving mealPlan")
-//            NSKeyedArchiver.archiveRootObject(mealPlanStore, toFile: "/somerandom/file/path")
-//        }
-//        let mealMapController = MealMapTableViewController()
-//        mealMapController.recipeStore = RecipeStore()
-//        window?.rootViewController?.addChildViewController(mealMapController)
         return true
     }
 
@@ -51,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         let success = mealPlanStore.saveChanges()
-        userStore.save(user!)
         if success {
+            user?.setPlanState(true)
+            userStore.save(user!)
             print("Saved all of the meal plans")
         } else {
             print("Could not save the meal plan")

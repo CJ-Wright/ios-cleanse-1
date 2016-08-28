@@ -143,7 +143,7 @@ struct DeploydAPI {
         
         guard let recipeID = json["id"] as? String,
             name = json["name"] as? String,
-            ingredients = json["ingredients"] as? [String],
+            ingredients = json["ingredients"] as? NSMutableArray,
             serves  = json["serves"] as? String,
             instructions = json["instructions"] as? String
             else {
@@ -243,7 +243,8 @@ struct DeploydAPI {
             meal.mealName = mealName
             meal.mealTime = mealTime
             for ingredient in ingredients {
-                meal.recipe?.ingredients.append(ingredient)
+                meal.recipe?.ingredients.addObject(ingredient)
+//                meal.recipe?.ingredients.append(ingredient)
             }
             
             meal.recipe?.instructions = instructions
@@ -253,7 +254,10 @@ struct DeploydAPI {
             meal.mealImageUrl = NSURL(string:mealImageUrl)
             dailyPlan.meals.addObject(meal)
         }
-        dailyPlan.atAGlance = atAGlance
+        for aString in atAGlance {
+            dailyPlan.atAGlance.addObject(aString)
+        }
+        
         dailyPlan.dayNumber = day
         
         return dailyPlan

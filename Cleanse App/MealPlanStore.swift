@@ -22,7 +22,6 @@ class MealPlanStore: NSObject {
     // Singleton of the MealPlanStore
     static let sharedInstance = MealPlanStore()
     
-    // TODO: Definitely needs to be considered for refactoring
     static var currentMealPlan = MealPlan()
     
     let mealPlanArchiveURL: NSURL = {
@@ -51,7 +50,10 @@ class MealPlanStore: NSObject {
         }
         task.resume()
     }
-    
+
+    /*
+    Method for retrieving the photo from URL in the given Meal
+     */
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
         if let photoURL = meal.mealImageUrl {
             let request = NSURLRequest(URL:photoURL)
@@ -77,16 +79,9 @@ class MealPlanStore: NSObject {
     /*
      */
     func initMealPlan(user:User){
-        if user.hasPlan() {
-            if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {
-                MealPlanStore.currentMealPlan = archivedItems
-                MealPlanStore.plansReceived = true
-                print("Successfully unarchived plans")
-            } else {
-                MealPlanStore.plansReceived = false
-                print("Failed to unarchive plans")
-            }
-        }
+        print("MERP")
+        
+        loadMealPlanFromArchive(user)
         
         if !MealPlanStore.plansReceived {
             // Attempt to fetch the Meal Plans
@@ -106,7 +101,6 @@ class MealPlanStore: NSObject {
                                     (imageResult) -> Void in
                                     switch imageResult {
                                     case .Success(_):
-                                        user.setPlanState(true)
                                         print("Downloaded the image")
                                     case .Failure(_):
                                         print("Error downloading the image")
@@ -115,12 +109,30 @@ class MealPlanStore: NSObject {
                             }
                         }
                     }
+                    user.setPlanState(true)
                 case let .Failure(error):
                     print("Error fetching meal plan: \(error)")
                     MealPlanStore.plansReceived = false
                 }
             }
         }
+    }
+
+    // MARK: - Persistence
+
+    // Method will check if the given user has a meal plan, and if they do, try to load the file.
+    func loadMealPlanFromArchive(user:User) -> Bool {
+        if user.hasPlan() {
+            if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {
+                MealPlanStore.currentMealPlan = archivedItems
+                MealPlanStore.plansReceived = true
+                print("Successfully unarchived plans")
+            } else {
+                MealPlanStore.plansReceived = false
+                print("Failed to unarchive plans")
+            }
+        }
+        return MealPlanStore.plansReceived
     }
     
     func saveChanges() -> Bool {

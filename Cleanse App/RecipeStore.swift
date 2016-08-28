@@ -23,8 +23,6 @@ class RecipeStore: NSObject {
         let request = NSURLRequest(URL:url)
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
-            
-            
                 let result = self.processRecentRecipesRequest(data: data, error: error)
             completion(result)
         }

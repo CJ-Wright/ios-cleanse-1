@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cleanse App/MealMapTableViewController.swift"
-            timestampString = "491690086.565228"
+            timestampString = "494466038.183822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -144,102 +144,6 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "encodeWithCoder(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cleanse App/MealPlanStore.swift"
-            timestampString = "494033999.170346"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "initMealPlan(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Cleanse_App.MealPlanStore.initMealPlan (Cleanse_App.User) -&gt; ()"
-                  moduleName = "Cleanse App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dank/Developer/Nano-Nimbus/Apps/ios/Cleanse%20App/Cleanse%20App/MealPlanStore.swift"
-                  timestampString = "494034904.574571"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "260">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Cleanse_App.MealPlanStore.(initMealPlan (Cleanse_App.User) -&gt; ()).(closure #1)"
-                  moduleName = "Cleanse App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dank/Developer/Nano-Nimbus/Apps/ios/Cleanse%20App/Cleanse%20App/MealPlanStore.swift"
-                  timestampString = "494034904.574774"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "37">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cleanse App/MealPlanStore.swift"
-            timestampString = "494034243.842155"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "initMealPlan(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cleanse App/MealPlanStore.swift"
-            timestampString = "494034244.891583"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "initMealPlan(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cleanse App/MealPlanStore.swift"
-            timestampString = "494034840.661888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "initMealPlan(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

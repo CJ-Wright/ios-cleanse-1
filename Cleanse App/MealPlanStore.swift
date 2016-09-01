@@ -22,8 +22,13 @@ class MealPlanStore: NSObject {
     // Singleton of the MealPlanStore
     static let sharedInstance = MealPlanStore()
     
+    // Singleton of the Current meal plan
     static var currentMealPlan = MealPlan()
     
+    // Static variable to determine if the first plan has been downloaded.
+    static var plansReceived = false
+    
+    // This is the path to where the information for the meal plans are stored.
     let mealPlanArchiveURL: NSURL = {
         let documentsDirectories =
             NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -31,8 +36,7 @@ class MealPlanStore: NSObject {
         return documentDirectory.URLByAppendingPathComponent("mealplans.archive")
     }()
 
-    static var plansReceived = false
-    
+    // URLSession configuration for accessing online web services.
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)
@@ -57,7 +61,7 @@ class MealPlanStore: NSObject {
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
         if let photoURL = meal.mealImageUrl {
             let request = NSURLRequest(URL:photoURL)
-            
+
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
@@ -77,12 +81,10 @@ class MealPlanStore: NSObject {
     }
     
     /*
+     Initializes the meal plan and loads the images dynamically.
      */
     func initMealPlan(user:User){
-        print("MERP")
-        
         loadMealPlanFromArchive(user)
-        
         if !MealPlanStore.plansReceived {
             // Attempt to fetch the Meal Plans
             fetchMealPlans(){
@@ -91,8 +93,9 @@ class MealPlanStore: NSObject {
                 switch mealPlanResult {
                 case let .Success(mealPlan):
                     
+                    // If the plan was recevied successfully then
                     MealPlanStore.plansReceived = true
-                    // TODO: Need to implement a way to determine which plan the user is currently on
+
                     MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
                     for day in MealPlanStore.currentMealPlan.days {
                         if let plan = day as? DailyPlan {
@@ -119,7 +122,6 @@ class MealPlanStore: NSObject {
     }
 
     // MARK: - Persistence
-
     // Method will check if the given user has a meal plan, and if they do, try to load the file.
     func loadMealPlanFromArchive(user:User) -> Bool {
         if user.hasPlan() {

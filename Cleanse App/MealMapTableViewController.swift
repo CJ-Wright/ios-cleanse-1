@@ -24,12 +24,12 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
         navigationBar.title! = "Meal Mapper"
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -160,10 +160,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     /*
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-    }
-    */
+     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     
+     }
+     */
     
     /*
      // Override to support conditional editing of the table view.
@@ -185,19 +185,59 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
      }
      */
     
+    
     /*
      // Override to support rearranging the table view.
      override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     print("Moving cell")
+     
      }
-     */
-
-    /*
+     
+     
+     
      // Override to support conditional rearranging of the table view.
      override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
      // Return false if you do not want the item to be re-orderable.
      return true
      }
      */
+    
+    //Called, when long press occurred
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
+        
+        //
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            let touchPoint = longPressGestureRecognizer.locationInView(self.view)
+            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+                print("Touched a cell!")
+                self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
+                
+                self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
+                
+                // Alert Controller / Modal for selecting a new recipes
+                let alertController = UIAlertController(title: "Edit Meal", message: "Select a new recipe?", preferredStyle: .ActionSheet)
+                
+                // Cancel the Modal
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+                    action in
+                    print("Cancel pressed")
+                })
+                
+                // Change the recipe
+                let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
+                    action in
+                    print("Changed recipe")
+                })
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(changeRecipeAction)
+                
+                alertController.popoverPresentationController?.sourceView = view
+//                self.presentedViewController(alertController, animated: true, completion:nil)
+            }
+        }
+    }
+    
     
     
     // MARK: - Navigation
@@ -212,7 +252,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             
             // Figure out which row was just tapped
             if let row = tableView.indexPathForSelectedRow?.row {
-            
+                
                 // Get the item associated with this row and pass it along
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {

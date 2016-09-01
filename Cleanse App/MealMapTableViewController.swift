@@ -24,6 +24,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
         // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
         self.view.addGestureRecognizer(longPressRecognizer)
@@ -209,11 +212,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             let touchPoint = longPressGestureRecognizer.locationInView(self.view)
             if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
-                print("Touched a cell!")
-                self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
-                
-                self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
-                
                 // Alert Controller / Modal for selecting a new recipes
                 let alertController = UIAlertController(title: "Edit Meal", message: "Select a new recipe?", preferredStyle: .ActionSheet)
                 
@@ -233,7 +231,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 alertController.addAction(changeRecipeAction)
                 
                 alertController.popoverPresentationController?.sourceView = view
-//                self.presentedViewController(alertController, animated: true, completion:nil)
+                presentViewController(alertController, animated: true, completion:nil)
             }
         }
     }

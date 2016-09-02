@@ -32,7 +32,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         self.view.addGestureRecognizer(longPressRecognizer)
         navigationBar.title! = "Meal Mapper"
         
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -225,6 +224,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
                     action in
                     print("Changed recipe")
+                    
+                    self .performSegueWithIdentifier("selectRecipeModal", sender: self)
                 })
                 
                 alertController.addAction(cancelAction)
@@ -235,8 +236,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             }
         }
     }
-    
-    
     
     // MARK: - Navigation
     
@@ -250,7 +249,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             
             // Figure out which row was just tapped
             if let row = tableView.indexPathForSelectedRow?.row {
-                
                 // Get the item associated with this row and pass it along
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
@@ -260,6 +258,16 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     }
                 }
             }
+        } else if segue.identifier == "selectRecipeModal" {
+            print("Selecting new recipes")
+            //TODO: Need to present a list of the different recipes that can be selected.
+            /*
+             let recipeTableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
+             recipeTableView.delegate = self
+             recipeTableView.dataSource = self
+             recipeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+             self.view.addSubview(recipeTableView)
+             */
         }
     }
 }

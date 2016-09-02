@@ -93,6 +93,7 @@
                     <connections>
                         <outlet property="menuButton" destination="4Qv-QI-W21" id="c8K-u0-nXE"/>
                         <outlet property="navigationBar" destination="hzk-9c-OeC" id="TQ9-oP-ALb"/>
+                        <segue destination="3dD-TO-gyX" kind="show" identifier="selectRecipeModal" id="NzR-Lm-cJJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbO-Ro-UbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +200,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ore-oA-T4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757" y="1533"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="bgW-lg-q10">
+            <objects>
+                <tableViewController id="3dD-TO-gyX" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="woS-Sd-EjI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xro-tT-dE9">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xro-tT-dE9" id="iQB-Vk-n7V">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3dD-TO-gyX" id="8sW-Oc-1UR"/>
+                            <outlet property="delegate" destination="3dD-TO-gyX" id="QjB-Wz-9Bh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6T-ro-tUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1459" y="-30"/>
         </scene>
         <!--Meal Details Table View Controller-->
         <scene sceneID="erV-zL-FRg">

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cleanse App/MealMapTableViewController.swift"
-            timestampString = "494466523.109343"
+            timestampString = "494526559.748708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "MealMapTableViewController"
             landmarkType = "3">
          </BreakpointContent>

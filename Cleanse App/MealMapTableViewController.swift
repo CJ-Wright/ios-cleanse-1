@@ -23,6 +23,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
+        self.tableView.alwaysBounceVertical = false
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         

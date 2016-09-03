@@ -223,9 +223,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 // Change the recipe
                 let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
                     action in
-                    print("Changed recipe")
+                    print("Change recipe")
                     
-                    self .performSegueWithIdentifier("selectRecipeModal", sender: self)
+                    self.performSegueWithIdentifier("selectRecipeModal", sender: self)
                 })
                 
                 alertController.addAction(cancelAction)
@@ -260,14 +260,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             }
         } else if segue.identifier == "selectRecipeModal" {
             print("Selecting new recipes")
-            //TODO: Need to present a list of the different recipes that can be selected.
-            /*
-             let recipeTableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
-             recipeTableView.delegate = self
-             recipeTableView.dataSource = self
-             recipeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-             self.view.addSubview(recipeTableView)
-             */
+            
         }
     }
 }

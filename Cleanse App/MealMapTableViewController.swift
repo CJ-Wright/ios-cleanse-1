@@ -32,7 +32,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
         self.view.addGestureRecognizer(longPressRecognizer)
-        navigationBar.title! = "Meal Mapper"
+        navigationBar.title! = "Meal Map"
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -112,6 +112,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         cell.mealMapNameLabel.numberOfLines = 3
         cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
         cell.mealMapImageView.image = image
+        cell.sizeToFit()
         
         return cell
     }
@@ -148,7 +149,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     // Return the title of the section header. This will change based on the current
     //  day of the meal plan.
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
-        navigationBar.title! = "Meal Mapper"
+        navigationBar.title! = "Meal Map"
         return "Day " + String(currentDay)
     }
     

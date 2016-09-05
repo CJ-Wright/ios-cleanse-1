@@ -10,8 +10,9 @@
 		323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323195221D7B8B7400A18D16 /* CheckBoxButton.swift */; };
 		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
+		326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */; };
+		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
 		32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */; };
-		3289FB531D454FE90046AE66 /* DjoserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289FB521D454FE90046AE66 /* DjoserAPI.swift */; };
 		328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D731D282D3400B69128 /* QuizViewController.swift */; };
 		328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */; };
 		328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */; };
@@ -25,6 +26,7 @@
 		32A2B2F31CF113E3005CDC0E /* Cleanse_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2F21CF113E3005CDC0E /* Cleanse_AppTests.swift */; };
 		32A2B2FE1CF113E4005CDC0E /* Cleanse_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */; };
 		32A3A2521D2176C2000FC321 /* BAFluidView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A3A2511D2176C2000FC321 /* BAFluidView.framework */; };
+		32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */; };
 		32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */; };
 		32DDBB3B1D36EEE500A6A065 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB381D36EEE500A6A065 /* ProximaNova-Bold.otf */; };
 		32DDBB3C1D36EEE500A6A065 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */; };
@@ -70,8 +72,9 @@
 		323195221D7B8B7400A18D16 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
+		326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FoodListCellDescriptor.plist; sourceTree = "<group>"; };
+		326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenDetailsTableViewController.swift; sourceTree = "<group>"; };
-		3289FB521D454FE90046AE66 /* DjoserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DjoserAPI.swift; sourceTree = "<group>"; };
 		328B1D731D282D3400B69128 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cleanse_AppUITests.swift; sourceTree = "<group>"; };
 		32A2B2FF1CF113E4005CDC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A3A2511D2176C2000FC321 /* BAFluidView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BAFluidView.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Cleanse_App-beapgjdvrponvoffzrvsyeawowil/Build/Products/Debug-iphonesimulator/BAFluidView/BAFluidView.framework"; sourceTree = "<group>"; };
+		32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FmcSpringAPI.swift; sourceTree = "<group>"; };
 		32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewController.swift; sourceTree = "<group>"; };
 		32DDBB381D36EEE500A6A065 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		323588621D0DC7CD00EB861F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */,
 				323588631D0DC7E600EB861F /* recipes.json */,
 			);
 			name = Resources;
@@ -189,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				32983C781D2097DD006D19D7 /* deploydAPI.swift */,
-				3289FB521D454FE90046AE66 /* DjoserAPI.swift */,
+				32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */,
 				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
+				326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 				328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */,
 				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
@@ -441,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */,
+				326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */,
 				32A2B2E51CF113E3005CDC0E /* Assets.xcassets in Resources */,
 				32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */,
 				323588641D0DC7E600EB861F /* recipes.json in Resources */,
@@ -596,17 +603,18 @@
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
 				328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */,
+				32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */,
 				328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
+				326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */,
 				32E43F7B1D56A7F700D664B5 /* UserStore.swift in Sources */,
 				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */,
 				323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */,
 				32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */,
-				3289FB531D454FE90046AE66 /* DjoserAPI.swift in Sources */,
 				328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,

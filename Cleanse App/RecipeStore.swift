@@ -12,6 +12,7 @@ class RecipeStore: NSObject {
     
     static let sharedInstance = RecipeStore()
     static var recipesReceived = false
+    static var recipeSet = Set<Recipe>()
     
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -53,5 +54,9 @@ class RecipeStore: NSObject {
                 }
             }
         }
+    }
+    
+    func addRecipeToStore(recipe:Recipe){
+        RecipeStore.recipeSet.insert(recipe)
     }
 }

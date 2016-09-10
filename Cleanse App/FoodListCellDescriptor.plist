@@ -15,7 +15,7 @@
 			<key>primaryTitle</key>
 			<string></string>
 			<key>secondaryTitle</key>
-			<string>Fullname</string>
+			<string></string>
 			<key>cellIdentifier</key>
 			<string>idCellNormal</string>
 			<key>additionalRows</key>

@@ -21,7 +21,7 @@ class MealDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 68 // set to whatever your "average" cell height is
+        self.tableView.estimatedRowHeight = 140 // set to whatever your "average" cell height is
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.setNeedsLayout()
         self.tableView.layoutIfNeeded()
@@ -48,24 +48,24 @@ class MealDetailsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var returnHeight:CGFloat
-        switch(indexPath.row)
-        {
-        case 0:
-            returnHeight = 44
-        case 1:
-            returnHeight = 200
-        case 2:
-            returnHeight = 100 + (30 * CGFloat(self.numIngredients))
-        case 3:
-            returnHeight = 700 - (10 * CGFloat(self.numIngredients))
-        default:
-            returnHeight = 30
-        }
-        
-        return returnHeight;
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        var returnHeight:CGFloat
+//        switch(indexPath.row)
+//        {
+//        case 0:
+//            returnHeight = 44
+//        case 1:
+//            returnHeight = 200
+//        case 2:
+//            returnHeight = 100 + (10 * CGFloat(self.numIngredients))
+//        case 3:
+//            returnHeight = 700 - (10 * CGFloat(self.numIngredients))
+//        default:
+//            returnHeight = 30
+//        }
+//        
+//        return returnHeight;
+//    }
     // MARK: - Table view data source
     
     /*

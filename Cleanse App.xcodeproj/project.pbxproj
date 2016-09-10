@@ -13,6 +13,7 @@
 		326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */; };
 		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
 		32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */; };
+		3272BB891D84AB950018B367 /* ChangeRecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */; };
 		328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D731D282D3400B69128 /* QuizViewController.swift */; };
 		328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */; };
 		328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */; };
@@ -75,6 +76,7 @@
 		326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FoodListCellDescriptor.plist; sourceTree = "<group>"; };
 		326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenDetailsTableViewController.swift; sourceTree = "<group>"; };
+		3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeRecipeTableViewController.swift; sourceTree = "<group>"; };
 		328B1D731D282D3400B69128 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanViewController.swift; sourceTree = "<group>"; };
@@ -295,16 +297,17 @@
 		32F9238E1D0022C00069D49D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */,
+				326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */,
+				32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */,
+				328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */,
+				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
+				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
-				32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */,
-				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
-				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
-				326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
-				328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */,
-				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
+				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */,
 				328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
+				3272BB891D84AB950018B367 /* ChangeRecipeTableViewController.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
 				326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */,

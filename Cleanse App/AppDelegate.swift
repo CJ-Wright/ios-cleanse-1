@@ -29,9 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            user = User(name: "New User", hasPlan: false)
         }
         
-        recipeStore.initRecipes()
         mealPlanStore.initMealPlan(user!)
-        
         return true
     }
 

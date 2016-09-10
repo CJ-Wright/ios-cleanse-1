@@ -206,7 +206,7 @@
         <!--Change Recipe Table-->
         <scene sceneID="bgW-lg-q10">
             <objects>
-                <tableViewController title="Recipes" id="3dD-TO-gyX" userLabel="Change Recipe Table" sceneMemberID="viewController">
+                <tableViewController title="Recipes" id="3dD-TO-gyX" userLabel="Change Recipe Table" customClass="ChangeRecipeTableViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="woS-Sd-EjI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -781,16 +781,16 @@
             </objects>
             <point key="canvasLocation" x="-105" y="1533"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Food List Table View Controller-->
         <scene sceneID="imz-zH-BfG">
             <objects>
-                <tableViewController id="GNI-Gk-MXg" sceneMemberID="viewController">
+                <tableViewController id="GNI-Gk-MXg" customClass="FoodListTableViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="adq-xS-9bV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="obe-Rp-XO7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="obe-Rp-XO7" customClass="CustomCell" customModule="Cleanse_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="obe-Rp-XO7" id="wXG-NF-ha2">

@@ -14,6 +14,9 @@
 		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
 		32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */; };
 		3272BB891D84AB950018B367 /* ChangeRecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */; };
+		3272BB921D84C6C20018B367 /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3272BB8B1D84C6C20018B367 /* NormalCell.xib */; };
+		3272BB951D84C6C20018B367 /* TextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3272BB8E1D84C6C20018B367 /* TextfieldCell.xib */; };
+		3272BB971D84C6C20018B367 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272BB901D84C6C20018B367 /* CustomCell.swift */; };
 		328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D731D282D3400B69128 /* QuizViewController.swift */; };
 		328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */; };
 		328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */; };
@@ -77,6 +80,9 @@
 		326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeRecipeTableViewController.swift; sourceTree = "<group>"; };
+		3272BB8B1D84C6C20018B367 /* NormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalCell.xib; sourceTree = "<group>"; };
+		3272BB8E1D84C6C20018B367 /* TextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextfieldCell.xib; sourceTree = "<group>"; };
+		3272BB901D84C6C20018B367 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		328B1D731D282D3400B69128 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanViewController.swift; sourceTree = "<group>"; };
@@ -187,9 +193,19 @@
 			isa = PBXGroup;
 			children = (
 				326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */,
+				3272BB901D84C6C20018B367 /* CustomCell.swift */,
 				323588631D0DC7E600EB861F /* recipes.json */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		3272BB981D84C6C80018B367 /* Xib Files */ = {
+			isa = PBXGroup;
+			children = (
+				3272BB8B1D84C6C20018B367 /* NormalCell.xib */,
+				3272BB8E1D84C6C20018B367 /* TextfieldCell.xib */,
+			);
+			name = "Xib Files";
 			sourceTree = "<group>";
 		};
 		32983C7A1D20AF2B006D19D7 /* APIs */ = {
@@ -226,9 +242,10 @@
 		32A2B2D91CF113E3005CDC0E /* Cleanse App */ = {
 			isa = PBXGroup;
 			children = (
+				32983C7A1D20AF2B006D19D7 /* APIs */,
+				3272BB981D84C6C80018B367 /* Xib Files */,
 				323195241D7B8B8900A18D16 /* UIElements */,
 				32DDBB3F1D36EEF300A6A065 /* Fonts */,
-				32983C7A1D20AF2B006D19D7 /* APIs */,
 				32F6A9AA1D1F12FE00047A51 /* Objects */,
 				323588621D0DC7CD00EB861F /* Resources */,
 				32F923971D0041030069D49D /* Stores */,
@@ -449,9 +466,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3272BB951D84C6C20018B367 /* TextfieldCell.xib in Resources */,
 				32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */,
 				326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */,
 				32A2B2E51CF113E3005CDC0E /* Assets.xcassets in Resources */,
+				3272BB921D84C6C20018B367 /* NormalCell.xib in Resources */,
 				32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */,
 				323588641D0DC7E600EB861F /* recipes.json in Resources */,
 				32DDBB3D1D36EEE500A6A065 /* ProximaNova-RegularIt.otf in Resources */,
@@ -617,6 +636,7 @@
 				32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */,
 				32F6A9A91D1F128200047A51 /* MealPlan.swift in Sources */,
 				32F5E9111D20E647006D9F75 /* DailyPlan.swift in Sources */,
+				3272BB971D84C6C20018B367 /* CustomCell.swift in Sources */,
 				323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */,
 				32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */,
 				328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */,

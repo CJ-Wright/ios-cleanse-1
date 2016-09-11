@@ -18,12 +18,14 @@ class Recipe: NSObject, NSCoding {
     var ingredients: NSMutableArray
     var recipeID: String
     var serves: String
+    var numIngredients: Int
     
     override init () {
         self.recipeID = ""
         self.name = ""
         self.instructions = ""
         self.ingredients = NSMutableArray()
+        self.numIngredients = 0
         self.serves = ""
         self.image = UIImage()
     }
@@ -36,6 +38,7 @@ class Recipe: NSObject, NSCoding {
         for ingredient in ingredients {
             self.ingredients.addObject(ingredient)
         }
+        self.numIngredients = ingredients.count
         self.recipeID = recipeID
         self.serves = serves
     }

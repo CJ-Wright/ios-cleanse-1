@@ -29,19 +29,7 @@ class HomeScreenViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
         
-        for day in MealPlanStore.currentMealPlan.days {
-            if let dailyPlan = day as? DailyPlan {
-                for dailyMeal in dailyPlan.meals {
-                    if let meal = dailyMeal as? Meal {
-                        if let recipe = meal.recipe {
-                            RecipeStore.recipeSet.insert(recipe)
-                            print("Recipe Name (meal name...) \(meal.mealName)")
-                            print("Recipe Instructions \(recipe.instructions)")
-                        }
-                    }
-                }
-            }
-        }
+
     }
 
     override func didReceiveMemoryWarning() {

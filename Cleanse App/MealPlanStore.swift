@@ -28,6 +28,8 @@ class MealPlanStore: NSObject {
     // Static variable to determine if the first plan has been downloaded.
     static var plansReceived = false
     
+    var counter = 0
+    
     // This is the path to where the information for the meal plans are stored.
     let mealPlanArchiveURL: NSURL = {
         let documentsDirectories =
@@ -60,14 +62,18 @@ class MealPlanStore: NSObject {
      */
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
         if let photoURL = meal.mealImageUrl {
+            var tmpCount: Int
             let request = NSURLRequest(URL:photoURL)
-
+//            print("Image starting download \(counter)...")
+            tmpCount = counter
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
                     meal.mealImage = UIImage(data: imageData)
+//                    print("Image done downloading \(tmpCount)")
                 }
             }
+            counter += 1
             task.resume()
         }
     }

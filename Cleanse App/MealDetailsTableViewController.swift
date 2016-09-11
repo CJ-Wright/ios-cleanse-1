@@ -39,8 +39,7 @@ class MealDetailsTableViewController: UITableViewController {
          self.recipeIngredientsLabel.text? += "\n"
          }
          */
-        self.recipeInstructionsLabel.font = .systemFontOfSize(16)
-        
+        self.recipeInstructionsLabel.font = .systemFontOfSize(15)
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,24 +47,23 @@ class MealDetailsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        var returnHeight:CGFloat
-//        switch(indexPath.row)
-//        {
-//        case 0:
-//            returnHeight = 44
-//        case 1:
-//            returnHeight = 200
-//        case 2:
-//            returnHeight = 100 + (10 * CGFloat(self.numIngredients))
-//        case 3:
-//            returnHeight = 700 - (10 * CGFloat(self.numIngredients))
-//        default:
-//            returnHeight = 30
-//        }
-//        
-//        return returnHeight;
-//    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var returnHeight:CGFloat
+        switch(indexPath.row)
+        {
+        case 0:
+            returnHeight = 44
+        case 1:
+            returnHeight = 200
+        case 2:
+            returnHeight = 100 + 10*CGFloat(meal.recipe!.numIngredients)
+        case 3:
+            returnHeight = 500// - 10*CGFloat(meal.recipe!.numIngredients)
+        default:
+            returnHeight = 30
+        }
+        return returnHeight;
+    }
     // MARK: - Table view data source
     
     /*
@@ -78,17 +76,17 @@ class MealDetailsTableViewController: UITableViewController {
      // #warning Incomplete implementation, return the number of rows
      return 4
      }
-     
-     
-     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     
-     let cell = tableView.dequeueReusableCellWithIdentifier(cellTypes[indexPath.row], forIndexPath: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+ 
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellTypes[indexPath.row], forIndexPath: indexPath)
+        
+        // Configure the cell...
+        cell.sizeToFit()
+        return cell
+    }
+    */
     
     /*
      // Override to support conditional editing of the table view.

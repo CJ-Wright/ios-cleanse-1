@@ -45,6 +45,21 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
+        if RecipeStore.recipeSet.isEmpty {
+            for day in MealPlanStore.currentMealPlan.days {
+                if let dailyPlan = day as? DailyPlan {
+                    for dailyMeal in dailyPlan.meals {
+                        if let meal = dailyMeal as? Meal {
+                            if let recipe = meal.recipe {
+                                recipe.name = meal.mealName
+                                recipe.image = meal.mealImage!
+                                RecipeStore.recipeSet.insert(recipe)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,7 +101,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         }
         
         // Create a template cell as a MealMapTableViewCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath:indexPath) as! MealMapTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
         var mealName: String = "None"
         var image: UIImage?
         
@@ -264,6 +279,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         } else if segue.identifier == "selectRecipeModal" {
             print("Selecting new recipes")
             
+            let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+            if let selectedMealCell = sender as? MealMapTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedMealCell)
+            }
         }
     }
 }

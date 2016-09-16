@@ -18,6 +18,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     // This will need to be initialized when the plan is loaded from the users information
     var currentDay = 1
     var numDaysInPlan = 10
+    var mealIndex: Int?
     
     let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
     
@@ -248,6 +249,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
                     action in
                     print("Change recipe")
+                    self.mealIndex = indexPath.row
                     self.performSegueWithIdentifier("selectRecipeModal", sender: self)
                 })
                 
@@ -283,20 +285,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             }
         } else if segue.identifier == "selectRecipeModal" {
             print("Selecting new recipes\n")
-            
-            if let row = tableView.indexPathForSelectedRow?.row {
-                print("Selected row [\(row)]")
-                if let selectedMealCell = sender as? MealMapTableViewCell {
-                    let indexPath = tableView.indexPathForCell(selectedMealCell)
-                    let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
-                    selectNewRecipeController.dailyPlanIndex = currentDay - 1
-                    selectNewRecipeController.mealIndex = indexPath!.row
-                    
-//                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                        //                        selectNewRecipeController.meal = dailyPlan.meals[row] as? Meal
-                        //                    }
-                    }
-                }
-            }
+            print("Selected row [\(self.mealIndex)]")
+            let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+            selectNewRecipeController.dailyPlanIndex = currentDay - 1
+            selectNewRecipeController.mealIndex = self.mealIndex!
+//            if let row = tableView.indexPathForSelectedRow?.row {
+//            
+//                if let selectedMealCell = sender as? MealMapTableViewCell {
+//                    let indexPath = tableView.indexPathForCell(selectedMealCell)
+//                    
+//                }
+//            }
         }
+    }
 }

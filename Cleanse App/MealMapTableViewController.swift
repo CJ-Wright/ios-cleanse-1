@@ -284,5 +284,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 let indexPath = tableView.indexPathForCell(selectedMealCell)
             }
         }
+        print("Segue Done")
     }
 }

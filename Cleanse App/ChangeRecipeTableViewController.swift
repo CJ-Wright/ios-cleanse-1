@@ -9,15 +9,14 @@
 import UIKit
 
 class ChangeRecipeTableViewController: UITableViewController {
-
-    var meal: Meal!
-    
+    var recipeSet = RecipeStore.recipeSet
+    var recipeArray = [Recipe]()
+    var recipeNames = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -31,26 +30,70 @@ class ChangeRecipeTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return recipeArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Create a template cell as a MealMapTableViewCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
-        var mealName: String = "None"
-        var image: UIImage?
+        let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath:indexPath) as! ChangeRecipeTableViewCell
         
+        print(recipeArray[indexPath.row].name)
+        cell.recipeImageView.image = recipeArray[indexPath.row].image
+        cell.recipeNameLabel.text = recipeArray[indexPath.row].name
         
         return cell
     }
  
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
+        for recipe in recipeSet {
+            if recipeNames.contains(recipe.name) == false {
+                recipeArray.append(recipe)
+                recipeNames.append(recipe.name)
+            }
+        }
+    }
+    
+    //Called, when long press occurred
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
+        
+        //
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            let touchPoint = longPressGestureRecognizer.locationInView(self.view)
+            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+                // Alert Controller / Modal for selecting a new recipes
+                let alertController = UIAlertController(title: "Select Recipe", message: "Use selected recipe?", preferredStyle: .ActionSheet)
+                
+                // Cancel the Modal
+                let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: {
+                    action in
+                    print("Cancel pressed")
+                })
+                
+                // Change the recipe
+                let changeRecipeAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+                    action in
+                    print("Change recipe")
+                    
+                    self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                })
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(changeRecipeAction)
+                
+                alertController.popoverPresentationController?.sourceView = view
+                presentViewController(alertController, animated: true, completion:nil)
+            }
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

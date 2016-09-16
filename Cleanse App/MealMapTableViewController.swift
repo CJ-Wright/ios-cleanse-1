@@ -53,7 +53,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                             if let recipe = meal.recipe {
                                 recipe.name = meal.mealName
                                 recipe.image = meal.mealImage!
-                                RecipeStore.recipeSet.insert(recipe)
+                                if RecipeStore.recipeSet.contains(recipe) == false {
+                                    RecipeStore.recipeSet.insert(recipe)
+                                }
                             }
                         }
                     }

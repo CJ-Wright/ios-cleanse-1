@@ -22,6 +22,7 @@
 		328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */; };
 		328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */; };
 		32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32983C781D2097DD006D19D7 /* deploydAPI.swift */; };
+		329E5A301D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E5A2E1D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
 		32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */; };
@@ -29,7 +30,6 @@
 		32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2E61CF113E3005CDC0E /* LaunchScreen.storyboard */; };
 		32A2B2F31CF113E3005CDC0E /* Cleanse_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2F21CF113E3005CDC0E /* Cleanse_AppTests.swift */; };
 		32A2B2FE1CF113E4005CDC0E /* Cleanse_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */; };
-		32A3A2521D2176C2000FC321 /* BAFluidView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A3A2511D2176C2000FC321 /* BAFluidView.framework */; };
 		32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */; };
 		32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */; };
 		32DDBB3B1D36EEE500A6A065 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB381D36EEE500A6A065 /* ProximaNova-Bold.otf */; };
@@ -50,9 +50,6 @@
 		32FC275B1D205A2600DB3C99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275A1D205A2600DB3C99 /* UIKit.framework */; };
 		32FC275D1D205A2F00DB3C99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275C1D205A2F00DB3C99 /* Foundation.framework */; };
 		32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */; };
-		9BE20EE0719BEBFD946BFCE1 /* Pods_Cleanse_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD293ED13F4EE68E6D43E9B /* Pods_Cleanse_AppUITests.framework */; };
-		D000878D8DCDB7860BEA48DF /* Pods_Cleanse_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97275013D322867B7B58BFA3 /* Pods_Cleanse_App.framework */; };
-		EEB622246A01E23F29BA46C4 /* Pods_Cleanse_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C04F143FCFAD902875CC55 /* Pods_Cleanse_AppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +85,7 @@
 		328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanViewController.swift; sourceTree = "<group>"; };
 		328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		32983C781D2097DD006D19D7 /* deploydAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deploydAPI.swift; sourceTree = "<group>"; };
+		329E5A2E1D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A2B2DF1CF113E3005CDC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,11 +138,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32A3A2521D2176C2000FC321 /* BAFluidView.framework in Frameworks */,
 				32FC275D1D205A2F00DB3C99 /* Foundation.framework in Frameworks */,
 				32FC275B1D205A2600DB3C99 /* UIKit.framework in Frameworks */,
 				32FC27591D205A1E00DB3C99 /* CoreGraphics.framework in Frameworks */,
-				D000878D8DCDB7860BEA48DF /* Pods_Cleanse_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB622246A01E23F29BA46C4 /* Pods_Cleanse_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +155,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE20EE0719BEBFD946BFCE1 /* Pods_Cleanse_AppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +308,7 @@
 		32F9238E1D0022C00069D49D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				329E5A2E1D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift */,
 				3272BB881D84AB950018B367 /* ChangeRecipeTableViewController.swift */,
 				326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */,
 				32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */,
@@ -360,12 +355,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A2B3021CF113E4005CDC0E /* Build configuration list for PBXNativeTarget "Cleanse App" */;
 			buildPhases = (
-				E0E5887948FDB24FA94CA18B /* [CP] Check Pods Manifest.lock */,
 				32A2B2D31CF113E3005CDC0E /* Sources */,
 				32A2B2D41CF113E3005CDC0E /* Frameworks */,
 				32A2B2D51CF113E3005CDC0E /* Resources */,
-				5725EC2ADC1D443797EC0C9A /* [CP] Embed Pods Frameworks */,
-				817A284640B2C951A7EB692B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,12 +372,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A2B3051CF113E4005CDC0E /* Build configuration list for PBXNativeTarget "Cleanse AppTests" */;
 			buildPhases = (
-				75345CF72C20F9A59262B0E4 /* [CP] Check Pods Manifest.lock */,
 				32A2B2EA1CF113E3005CDC0E /* Sources */,
 				32A2B2EB1CF113E3005CDC0E /* Frameworks */,
 				32A2B2EC1CF113E3005CDC0E /* Resources */,
-				FBE387DF48AA0C1A26F5872B /* [CP] Embed Pods Frameworks */,
-				B7FC3C3974C59045D4D0BCE7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,11 +390,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A2B3081CF113E4005CDC0E /* Build configuration list for PBXNativeTarget "Cleanse AppUITests" */;
 			buildPhases = (
-				F572DBC57E8BD5C60F92ED75 /* [CP] Check Pods Manifest.lock */,
 				32A2B2F51CF113E4005CDC0E /* Sources */,
 				32A2B2F61CF113E4005CDC0E /* Frameworks */,
 				32A2B2F71CF113E4005CDC0E /* Resources */,
-				CE02A4BB2DD843A00E761D01 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -495,129 +482,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5725EC2ADC1D443797EC0C9A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cleanse App/Pods-Cleanse App-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		75345CF72C20F9A59262B0E4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		817A284640B2C951A7EB692B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cleanse App/Pods-Cleanse App-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7FC3C3974C59045D4D0BCE7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cleanse AppTests/Pods-Cleanse AppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE02A4BB2DD843A00E761D01 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cleanse AppUITests/Pods-Cleanse AppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0E5887948FDB24FA94CA18B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F572DBC57E8BD5C60F92ED75 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FBE387DF48AA0C1A26F5872B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cleanse AppTests/Pods-Cleanse AppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		32A2B2D31CF113E3005CDC0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -642,6 +506,7 @@
 				328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,
+				329E5A301D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift in Sources */,
 				32F923961D003F940069D49D /* ImageStore.swift in Sources */,
 				32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */,
 				32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */,

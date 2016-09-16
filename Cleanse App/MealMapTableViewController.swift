@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MealMapTableViewController: UITableViewController, UIGestureRecognizerDelegate {
+class MealMapTableViewController: UITableViewController, UIGestureRecognizerDelegate, changeRecipeDelegate {
     
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -181,6 +181,10 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         header.textLabel?.font
     }
     
+    func changeMealRecipe(recipe: Recipe) -> Recipe {
+        return recipe
+    }
+    
     /*
      override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
      
@@ -282,16 +286,18 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             print("Selecting new recipes")
             
             let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+            
             if let row = tableView.indexPathForSelectedRow?.row {
-                if let selectedMealCell = sender as? MealMapTableViewCell {
-                    let indexPath = tableView.indexPathForCell(selectedMealCell)
-                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                        let meal = dailyPlan.meals[row]
-                        selectNewRecipeController.meal = meal as! Meal
-                    }
-                }
+                selectNewRecipeController.dailyPlanIndex = currentDay - 1
+                selectNewRecipeController.mealIndex = row
+                
+//                if let selectedMealCell = sender as? MealMapTableViewCell {
+//                    let indexPath = tableView.indexPathForCell(selectedMealCell)
+//                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+//                        selectNewRecipeController.meal = dailyPlan.meals[row] as? Meal
+//                    }
+//                }
             }
         }
-        print("Segue Done")
     }
 }

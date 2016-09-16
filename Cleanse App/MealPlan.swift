@@ -65,4 +65,8 @@ class MealPlan: NSObject, NSCoding {
         aCoder.encodeObject(self.days, forKey: "days")
         aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
     }
+    
+    func changeMealRecipe(recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
+        ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
+    }
 }

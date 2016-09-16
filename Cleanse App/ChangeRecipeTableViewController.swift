@@ -12,6 +12,8 @@ class ChangeRecipeTableViewController: UITableViewController {
     var recipeSet = RecipeStore.recipeSet
     var recipeArray = [Recipe]()
     var recipeNames = [String]()
+    var mealIndex: Int = 0
+    var dailyPlanIndex: Int = 0
     var meal: Meal?
     
     override func viewDidLoad() {
@@ -67,12 +69,11 @@ class ChangeRecipeTableViewController: UITableViewController {
     //Called, when long press occurred
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
         
-        //
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             let touchPoint = longPressGestureRecognizer.locationInView(self.view)
             if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
                 // Alert Controller / Modal for selecting a new recipes
-                let alertController = UIAlertController(title: "Select Recipe", message: "Use selected recipe?", preferredStyle: .ActionSheet)
+                let alertController = UIAlertController(title: "", message: "Use selected recipe?", preferredStyle: .ActionSheet)
                 
                 // Cancel the Modal
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
@@ -84,7 +85,15 @@ class ChangeRecipeTableViewController: UITableViewController {
                 let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
                     action in
                     print("Change recipe")
-                    self.meal?.recipe = self.recipeArray[indexPath.row]
+                    let newRecipe = self.recipeArray[indexPath.row]
+                    print("BEFORE CHANGING RECIPE")
+                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
+
+                    print("After changing recipe")
+                    MealPlanStore.currentMealPlan.changeMealRecipe(newRecipe ,dailyPlanIndex: self.dailyPlanIndex, mealIndex: self.mealIndex)
+                    
+                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
+                    print("New Recipe Name " + self.recipeArray[indexPath.row].name)
                 })
                 
                 alertController.addAction(cancelAction)
@@ -131,14 +140,13 @@ class ChangeRecipeTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
     }
-    */
-
 }

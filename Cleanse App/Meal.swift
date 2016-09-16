@@ -61,4 +61,8 @@ class Meal: NSObject, NSCoding {
         coder.encodeObject(self.mealImageUrl, forKey: "mealImageUrl")
         coder.encodeObject(self.recipe, forKey: "recipe")
     }
+    
+    func changeRecipe(recipe:Recipe) {
+        self.recipe = recipe
+    }
 }

@@ -23,6 +23,7 @@
 		328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */; };
 		32983C791D2097DD006D19D7 /* deploydAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32983C781D2097DD006D19D7 /* deploydAPI.swift */; };
 		329E5A301D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E5A2E1D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift */; };
+		329E5A331D8BB24000C3BB28 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E5A321D8BB24000C3BB28 /* Protocols.swift */; };
 		32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */; };
 		32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A2B2DE1CF113E3005CDC0E /* Main.storyboard */; };
 		32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2E11CF113E3005CDC0E /* Cleanse_App.xcdatamodeld */; };
@@ -86,6 +87,7 @@
 		328ECB581D3333B500925BE9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		32983C781D2097DD006D19D7 /* deploydAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deploydAPI.swift; sourceTree = "<group>"; };
 		329E5A2E1D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeRecipeTableViewCell.swift; sourceTree = "<group>"; };
+		329E5A321D8BB24000C3BB28 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		32A2B2D71CF113E3005CDC0E /* Cleanse App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cleanse App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A2B2DA1CF113E3005CDC0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A2B2DF1CF113E3005CDC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */,
 				324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */,
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
+				329E5A321D8BB24000C3BB28 /* Protocols.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
@@ -511,6 +514,7 @@
 				32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */,
 				32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */,
 				32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */,
+				329E5A331D8BB24000C3BB28 /* Protocols.swift in Sources */,
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
 				32F6A9A71D1F092200047A51 /* User.swift in Sources */,
 				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,

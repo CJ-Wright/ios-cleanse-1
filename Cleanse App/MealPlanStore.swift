@@ -147,4 +147,5 @@ class MealPlanStore: NSObject {
         print("Saving meal plan to \(mealPlanArchiveURL.path!)")
         return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
     }
+ 
 }

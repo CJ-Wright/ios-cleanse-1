@@ -11,32 +11,33 @@ import UIKit
 
 
 class Meal: NSObject, NSCoding {
-    var mealName: String
+//    var mealName: String
     var mealTime: String
-    var mealImageUrl: NSURL?
+//    var mealImageUrl: NSURL?
     var mealImage: UIImage?
     var recipe: Recipe?
     
     override init(){
-        self.mealName = ""
+//        self.mealName = ""
         self.mealTime = ""
-        self.mealImageUrl = nil
+//        self.mealImageUrl = nil
         self.recipe = Recipe()
     }
     
-    init(mealName: String, mealTime: String, imageUrl: NSURL, recipe: Recipe ){
+    init(imealTime: String, recipe: Recipe ){
+//        init(mealName: String, mealTime: String, imageUrl: NSURL, recipe: Recipe ){
         self.mealTime = mealTime
-        self.mealName = mealName
-        self.mealImageUrl = imageUrl
+//        self.mealName = mealName
+//        self.mealImageUrl = imageUrl
         self.recipe = recipe
     }
     
     // MARK: NSCoding
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let mealName = decoder.decodeObjectForKey("mealName") as? String,
-            let mealTime = decoder.decodeObjectForKey("mealTime") as? String,
-            let mealImageUrl = decoder.decodeObjectForKey("mealImageUrl") as? NSURL,
+//        guard let mealName = decoder.decodeObjectForKey("mealName") as? String,
+            guard let mealTime = decoder.decodeObjectForKey("mealTime") as? String,
+//            let mealImageUrl = decoder.decodeObjectForKey("mealImageUrl") as? NSURL,
             let mealImage = decoder.decodeObjectForKey("mealImage") as? UIImage,
             let recipe = decoder.decodeObjectForKey("recipe") as? Recipe
             else {
@@ -45,9 +46,9 @@ class Meal: NSObject, NSCoding {
         }
         
         self.init(
-            mealName:mealName,
+//            mealName:mealName,
             mealTime: mealTime,
-            imageUrl: mealImageUrl,
+//            imageUrl: mealImageUrl,
             recipe: recipe
             
         )
@@ -55,10 +56,10 @@ class Meal: NSObject, NSCoding {
     }
     
     func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.mealName, forKey: "mealName")
+//        coder.encodeObject(self.mealName, forKey: "mealName")
         coder.encodeObject(self.mealTime, forKey: "mealTime")
-        coder.encodeObject(self.mealImage, forKey: "mealImage")
-        coder.encodeObject(self.mealImageUrl, forKey: "mealImageUrl")
+//        coder.encodeObject(self.mealImage, forKey: "mealImage")
+//        coder.encodeObject(self.mealImageUrl, forKey: "mealImageUrl")
         coder.encodeObject(self.recipe, forKey: "recipe")
     }
     

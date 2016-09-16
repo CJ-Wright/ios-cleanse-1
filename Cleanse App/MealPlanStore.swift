@@ -70,6 +70,7 @@ class MealPlanStore: NSObject {
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
                     meal.recipe?.image = UIImage(data: imageData)!
+                    meal.mealImage = UIImage(data: imageData)!
 //                    print("Image done downloading \(tmpCount)")
                 }
             }

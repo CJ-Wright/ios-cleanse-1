@@ -112,16 +112,16 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                     if let meal = day.meals[indexPath.row] as? Meal {
-                        image = meal.mealImage
-                        mealName = meal.mealName
+                        image = meal.recipe!.image  // mealImage
+                        mealName = meal.recipe!.name        //mealName
                     }
                 }
             }
         } else if cellIdentifiers[indexPath.row] != "DAY" {
             if MealPlanStore.currentMealPlan.days.count > 0 {
                 if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    image = day.meals[indexPath.row].mealImage
-                    mealName = day.meals[indexPath.row].mealName
+                    image = (day.meals[indexPath.row] as! Meal).recipe!.image
+                    mealName = (day.meals[indexPath.row] as! Meal).recipe!.name
                 }
             }
         }
@@ -248,7 +248,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
                     action in
                     print("Change recipe")
-                    
                     self.performSegueWithIdentifier("selectRecipeModal", sender: self)
                 })
                 
@@ -283,21 +282,21 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
         } else if segue.identifier == "selectRecipeModal" {
-            print("Selecting new recipes")
-            
-            let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+            print("Selecting new recipes\n")
             
             if let row = tableView.indexPathForSelectedRow?.row {
-                selectNewRecipeController.dailyPlanIndex = currentDay - 1
-                selectNewRecipeController.mealIndex = row
-                
-//                if let selectedMealCell = sender as? MealMapTableViewCell {
-//                    let indexPath = tableView.indexPathForCell(selectedMealCell)
+                print("Selected row [\(row)]")
+                if let selectedMealCell = sender as? MealMapTableViewCell {
+                    let indexPath = tableView.indexPathForCell(selectedMealCell)
+                    let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+                    selectNewRecipeController.dailyPlanIndex = currentDay - 1
+                    selectNewRecipeController.mealIndex = indexPath!.row
+                    
 //                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-//                        selectNewRecipeController.meal = dailyPlan.meals[row] as? Meal
-//                    }
-//                }
+                        //                        selectNewRecipeController.meal = dailyPlan.meals[row] as? Meal
+                        //                    }
+                    }
+                }
             }
         }
-    }
 }

@@ -67,6 +67,7 @@ class MealPlan: NSObject, NSCoding {
     }
     
     func changeMealRecipe(recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
+        print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
         ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
     }
 }

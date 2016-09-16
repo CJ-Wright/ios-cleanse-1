@@ -85,6 +85,7 @@ class ChangeRecipeTableViewController: UITableViewController {
                 let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
                     action in
                     print("Change recipe")
+                    print("Changing Day \(self.dailyPlanIndex) and Meal Index \(self.mealIndex)")
                     let newRecipe = self.recipeArray[indexPath.row]
                     print("BEFORE CHANGING RECIPE")
                     print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")

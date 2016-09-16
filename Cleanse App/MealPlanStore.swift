@@ -69,7 +69,7 @@ class MealPlanStore: NSObject {
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
-                    meal.mealImage = UIImage(data: imageData)
+                    meal.recipe?.image = UIImage(data: imageData)!
 //                    print("Image done downloading \(tmpCount)")
                 }
             }
@@ -103,21 +103,21 @@ class MealPlanStore: NSObject {
                     MealPlanStore.plansReceived = true
 
                     MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
-                    for day in MealPlanStore.currentMealPlan.days {
-                        if let plan = day as? DailyPlan {
-                            for meal in plan.meals {
-                                self.fetchImageForPhoto(meal as! Meal) {
-                                    (imageResult) -> Void in
-                                    switch imageResult {
-                                    case .Success(_):
-                                        print("Downloaded the image")
-                                    case .Failure(_):
-                                        print("Error downloading the image")
-                                    }
-                                }
-                            }
-                        }
-                    }
+//                    for day in MealPlanStore.currentMealPlan.days {
+//                        if let plan = day as? DailyPlan {
+//                            for meal in plan.meals {
+//                                self.fetchImageForPhoto(meal as! Meal) {
+//                                    (imageResult) -> Void in
+//                                    switch imageResult {
+//                                    case .Success(_):
+//                                        print("Downloaded the image")
+//                                    case .Failure(_):
+//                                        print("Error downloading the image")
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                     user.setPlanState(true)
                 case let .Failure(error):
                     print("Error fetching meal plan: \(error)")

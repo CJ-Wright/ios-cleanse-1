@@ -232,7 +232,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     //Called, when long press occurred
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
         
-        //
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             let touchPoint = longPressGestureRecognizer.locationInView(self.view)
             if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
@@ -289,13 +288,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
             selectNewRecipeController.dailyPlanIndex = currentDay - 1
             selectNewRecipeController.mealIndex = self.mealIndex!
-//            if let row = tableView.indexPathForSelectedRow?.row {
-//            
-//                if let selectedMealCell = sender as? MealMapTableViewCell {
-//                    let indexPath = tableView.indexPathForCell(selectedMealCell)
-//                    
-//                }
-//            }
         }
     }
 }

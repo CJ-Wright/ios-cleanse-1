@@ -282,8 +282,14 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             print("Selecting new recipes")
             
             let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
-            if let selectedMealCell = sender as? MealMapTableViewCell {
-                let indexPath = tableView.indexPathForCell(selectedMealCell)
+            if let row = tableView.indexPathForSelectedRow?.row {
+                if let selectedMealCell = sender as? MealMapTableViewCell {
+                    let indexPath = tableView.indexPathForCell(selectedMealCell)
+                    if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                        let meal = dailyPlan.meals[row]
+                        selectNewRecipeController.meal = meal as! Meal
+                    }
+                }
             }
         }
         print("Segue Done")

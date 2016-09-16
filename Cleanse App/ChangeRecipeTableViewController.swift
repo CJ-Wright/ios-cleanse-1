@@ -12,9 +12,13 @@ class ChangeRecipeTableViewController: UITableViewController {
     var recipeSet = RecipeStore.recipeSet
     var recipeArray = [Recipe]()
     var recipeNames = [String]()
+    var meal: Meal?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -43,7 +47,6 @@ class ChangeRecipeTableViewController: UITableViewController {
         // Create a template cell as a MealMapTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath:indexPath) as! ChangeRecipeTableViewCell
         
-        print(recipeArray[indexPath.row].name)
         cell.recipeImageView.image = recipeArray[indexPath.row].image
         cell.recipeNameLabel.text = recipeArray[indexPath.row].name
         
@@ -72,17 +75,16 @@ class ChangeRecipeTableViewController: UITableViewController {
                 let alertController = UIAlertController(title: "Select Recipe", message: "Use selected recipe?", preferredStyle: .ActionSheet)
                 
                 // Cancel the Modal
-                let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: {
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
                     action in
                     print("Cancel pressed")
                 })
                 
                 // Change the recipe
-                let changeRecipeAction = UIAlertAction(title: "Yes", style: .Default, handler: {
+                let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
                     action in
                     print("Change recipe")
-                    
-                    self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                    self.meal?.recipe = self.recipeArray[indexPath.row]
                 })
                 
                 alertController.addAction(cancelAction)

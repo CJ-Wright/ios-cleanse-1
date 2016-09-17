@@ -28,8 +28,9 @@ enum DeploydError: ErrorType {
 }
 struct DeploydAPI {
     // The base url of the server to make the requests from
-    private static let baseURLString = "http://52.52.65.150:3000" // <- This is my current aws server
+//    private static let baseURLString = "http://52.52.65.150:3000" // <- This is my current aws server
     //    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403"  // <- This is Anthony's server
+    private static let baseURLString = "http://52.52.65.150:8080"
     
     // Empty APIKey for the moment being
     private static let APIKey = ""
@@ -90,7 +91,8 @@ struct DeploydAPI {
     static func mealPlansURL() -> NSURL {
         
         // Base URL with the recipes API request call appended to the end of it
-        let components = NSURLComponents(string: baseURLString + "/meal-plans")!
+//        let components = NSURLComponents(string: baseURLString + "/meal-plans")!
+        let components = NSURLComponents(string: baseURLString + "/mealplan")!
         var queryItems = [NSURLQueryItem]()
         
         // Base parameters
@@ -145,13 +147,13 @@ struct DeploydAPI {
             name = json["name"] as? String,
             ingredients = json["ingredients"] as? NSMutableArray,
             serves  = json["serves"] as? String,
-            instructions = json["instructions"] as? String
-            else {
+            instructions = json["instructions"] as? String,
+            imageURLString = json["imgUrl"] as? String else {
                 print("Failed to parse json")
                 return nil
         }
-        
-        return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
+        let imageURL = NSURL(fileURLWithPath: imageURLString)
+        return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves, imageURL: imageURL)
     }
     
     // MARK: Meal Plans From JSON Methods

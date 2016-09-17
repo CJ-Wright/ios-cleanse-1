@@ -24,7 +24,7 @@ class Meal: NSObject, NSCoding {
         self.recipe = Recipe()
     }
     
-    init(imealTime: String, recipe: Recipe ){
+    init(mealTime: String, recipe: Recipe ){
 //        init(mealName: String, mealTime: String, imageUrl: NSURL, recipe: Recipe ){
         self.mealTime = mealTime
 //        self.mealName = mealName

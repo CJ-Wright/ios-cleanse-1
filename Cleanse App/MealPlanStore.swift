@@ -61,7 +61,7 @@ class MealPlanStore: NSObject {
     Method for retrieving the photo from URL in the given Meal
      */
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
-        print("Recipe img url \(meal.recipe?.imageURL)")
+        
         if let photoURL = meal.recipe?.imageURL {
             var tmpCount: Int
             let request = NSURLRequest(URL:photoURL)
@@ -71,7 +71,6 @@ class MealPlanStore: NSObject {
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
                     meal.recipe?.image = UIImage(data: imageData)!
-//                    meal.mealImage = UIImage(data: imageData)!
                     print("Image done downloading \(tmpCount)")
                 }
             }

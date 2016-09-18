@@ -144,11 +144,11 @@ struct DeploydAPI {
     static func recipeFromJSONObject(json:[String : AnyObject]) -> Recipe? {
         
         guard let recipeID = json["id"] as? String,
-            name = json["name"] as? String,
-            ingredients = json["ingredients"] as? NSMutableArray,
-            serves  = json["serves"] as? String,
-            instructions = json["instructions"] as? String,
-            imageURLString = json["imgUrl"] as? String else {
+            let name = json["name"] as? String,
+            let ingredients = json["ingredients"] as? NSMutableArray,
+            let serves  = json["serves"] as? String,
+            let instructions = json["instructions"] as? String,
+            let imageURLString = json["imgUrl"] as? String else {
                 print("Failed to parse json")
                 return nil
         }
@@ -186,12 +186,13 @@ struct DeploydAPI {
         }
     }
     
+    
     // This will take a given JSON Object and constructs a recipe
     static func mealPlanFromJSONObject(mealPlanJson:[String : AnyObject]) -> MealPlan? {
         
         guard let json = mealPlanJson["MealPlan"],
-            name = json["name"] as? String,
-            days = json["dailyPlans"] as? [Dictionary<String, AnyObject>]
+            let name = json["name"] as? String,
+            let days = json["dailyPlans"] as? [Dictionary<String, AnyObject>]
             else {
                 print("Failed to parse json")
                 return nil
@@ -199,13 +200,19 @@ struct DeploydAPI {
         
         //        print(json)
         
-        let totalPlans = NSMutableArray()
+        var totalPlans = NSMutableArray(capacity: days.count)
         
         for dailyPlan in days {
             if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {
+//                totalPlans[plan.dayNumber - 1] = plan
                 totalPlans.addObject(plan)
             }
         }
+        
+//        totalPlans = totalPlans.sorted
+//        var sortedPlans = sorted(totalPlans) {
+//            let
+//        }
         let planID = "0"
         let mealPlan = MealPlan(name: name, numberOfDays: totalPlans.count, days: totalPlans, mealPlanID: planID)
         
@@ -235,19 +242,17 @@ struct DeploydAPI {
             meal = Meal()
             
             // Attempt to parse the indiviual meal json into a meal object
-            guard let
-                recipe = mealJson["recipe"] as? [String:AnyObject],
-                mealTime = mealJson["time"] as? String else {
+            guard let recipe = mealJson["recipe"] as? [String:AnyObject],
+                let mealTime = mealJson["time"] as? String else {
                     print("Failed to parse meals in daily plan")
                     return nil
             }
             
-            guard let
-                recipeName = recipe["name"] as? String,
-                imgUrl = recipe["imgUrl"] as? String,
-                ingredients = recipe["ingredients"] as? [String],
-                instructions = recipe["instructions"] as? String,
-                serves = recipe["serves"] as? String else {
+            guard let recipeName = recipe["name"] as? String,
+                let imgUrl = recipe["imgUrl"] as? String,
+                let ingredients = recipe["ingredients"] as? [String],
+                let instructions = recipe["instructions"] as? String,
+                let serves = recipe["serves"] as? String else {
                     print("Failed to parse recipe in meal json")
                     return nil
             }

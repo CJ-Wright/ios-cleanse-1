@@ -7,22 +7,23 @@
 //
 
 import UIKit
-
+/*
 class ImageStore {
     // MARK: - Data Members
     let cache = NSCache()
     
     
     // MARK: - Methods
-    func setImage(image: UIImage, forKey key: String) {
+    func setImage(_ image: UIImage, forKey key: String) {
         cache.setObject(image, forKey: key)
     }
     
-    func imageForKey(key: String) -> UIImage? {
-        return cache.objectForKey(key) as? UIImage
+    func imageForKey(_ key: String) -> UIImage? {
+        return cache.object(forKey: key) as? UIImage
     }
     
-    func deleteImageForKey(key: String) {
-        cache.removeObjectForKey(key)
+    func deleteImageForKey(_ key: String) {
+        cache.removeObject(forKey: key)
     }
 }
+*/

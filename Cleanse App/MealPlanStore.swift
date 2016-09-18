@@ -9,12 +9,12 @@
 import UIKit
 
 enum ImageResult {
-    case Success(UIImage)
-    case Failure(ErrorType)
+    case success(UIImage)
+    case failure(Error)
 }
 
-enum PhotoError: ErrorType {
-    case ImageCreationError
+enum PhotoError: Error {
+    case imageCreationError
 }
 
 class MealPlanStore: NSObject {
@@ -31,58 +31,58 @@ class MealPlanStore: NSObject {
     var counter = 0
     
     // This is the path to where the information for the meal plans are stored.
-    let mealPlanArchiveURL: NSURL = {
+    let mealPlanArchiveURL: URL = {
         let documentsDirectories =
-            NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.URLByAppendingPathComponent("mealplans.archive")
+        return documentDirectory.appendingPathComponent("mealplans.archive")
     }()
 
     // URLSession configuration for accessing online web services.
-    let session: NSURLSession = {
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        return NSURLSession(configuration: config)
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
     }()
     
     // MARK: Retrieval Methods
-    func fetchMealPlans(completion completion: (MealPlanResult) -> Void) {
+    func fetchMealPlans(completion: @escaping (MealPlanResult) -> Void) {
         let url = DeploydAPI.mealPlansURL()
-        let request = NSURLRequest(URL:url)
-        let task = session.dataTaskWithRequest(request) {
+        let request = URLRequest(url:url as URL)
+        let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             
-            let result = self.processRecentMealPlansRequest(data: data, error: error)
+            let result = self.processRecentMealPlansRequest(data: data, error: error as NSError?)
             completion(result)
-        }
+        }) 
         task.resume()
     }
 
     /*
     Method for retrieving the photo from URL in the given Meal
      */
-    func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
+    func fetchImageForPhoto(_ meal: Meal, completion: (ImageResult) -> Void){
         
         if let photoURL = meal.recipe?.imageURL {
             var tmpCount: Int
-            let request = NSURLRequest(URL:photoURL)
+            let request = URLRequest(url:photoURL as URL)
             print("Image starting download \(counter)...")
             tmpCount = counter
-            let task = session.dataTaskWithRequest(request){
+            let task = session.dataTask(with: request, completionHandler: {
                 (data, response, error) -> Void in
-                if let imageData = data as NSData? {
+                if let imageData = data as Data? {
                     meal.recipe?.image = UIImage(data: imageData)!
                     print("Image done downloading \(tmpCount)")
                 }
-            }
+            })
             counter += 1
             task.resume()
         }
     }
     
     // MARK: Processing Methods
-    func processRecentMealPlansRequest(data data: NSData?, error: NSError?) -> MealPlanResult {
+    func processRecentMealPlansRequest(data: Data?, error: NSError?) -> MealPlanResult {
         guard let jsonData = data else {
-            return .Failure(error!)
+            return .failure(error!)
         }
         return DeploydAPI.mealPlansFromJSONData(jsonData)
     }
@@ -90,7 +90,7 @@ class MealPlanStore: NSObject {
     /*
      Initializes the meal plan and loads the images dynamically.
      */
-    func initMealPlan(user:User){
+    func initMealPlan(_ user:User){
         loadMealPlanFromArchive(user)
         if !MealPlanStore.plansReceived {
             // Attempt to fetch the Meal Plans
@@ -98,7 +98,7 @@ class MealPlanStore: NSObject {
                 (mealPlanResult) -> Void in
                 
                 switch mealPlanResult {
-                case let .Success(mealPlan):
+                case let .success(mealPlan):
                     
                     // If the plan was recevied successfully then
                     MealPlanStore.plansReceived = true
@@ -110,9 +110,9 @@ class MealPlanStore: NSObject {
                                 self.fetchImageForPhoto(meal as! Meal) {
                                     (imageResult) -> Void in
                                     switch imageResult {
-                                    case .Success(_):
+                                    case .success(_):
                                         print("Downloaded the image")
-                                    case .Failure(_):
+                                    case .failure(_):
                                         print("Error downloading the image")
                                     }
                                 }
@@ -120,7 +120,7 @@ class MealPlanStore: NSObject {
                         }
                     }
                     user.setPlanState(true)
-                case let .Failure(error):
+                case let .failure(error):
                     print("Error fetching meal plan: \(error)")
                     MealPlanStore.plansReceived = false
                 }
@@ -130,9 +130,9 @@ class MealPlanStore: NSObject {
 
     // MARK: - Persistence
     // Method will check if the given user has a meal plan, and if they do, try to load the file.
-    func loadMealPlanFromArchive(user:User) -> Bool {
+    func loadMealPlanFromArchive(_ user:User) -> Bool {
         if user.hasPlan() {
-            if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(mealPlanArchiveURL.path!) as? MealPlan {
+            if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: mealPlanArchiveURL.path) as? MealPlan {
                 MealPlanStore.currentMealPlan = archivedItems
                 MealPlanStore.plansReceived = true
                 print("Successfully unarchived plans")
@@ -145,8 +145,8 @@ class MealPlanStore: NSObject {
     }
     
     func saveChanges() -> Bool {
-        print("Saving meal plan to \(mealPlanArchiveURL.path!)")
-        return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
+        print("Saving meal plan to \(mealPlanArchiveURL.path)")
+        return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path)
     }
  
 }

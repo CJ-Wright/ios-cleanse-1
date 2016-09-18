@@ -25,7 +25,7 @@ class MealDetailsTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.setNeedsLayout()
         self.tableView.layoutIfNeeded()
-        let leftAlignment = NSTextAlignment.Left
+        let leftAlignment = NSTextAlignment.left
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -39,7 +39,7 @@ class MealDetailsTableViewController: UITableViewController {
          self.recipeIngredientsLabel.text? += "\n"
          }
          */
-        self.recipeInstructionsLabel.font = .systemFontOfSize(15)
+        self.recipeInstructionsLabel.font = .systemFont(ofSize: 15)
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,9 +47,9 @@ class MealDetailsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var returnHeight:CGFloat
-        switch(indexPath.row)
+        switch((indexPath as NSIndexPath).row)
         {
         case 0:
             returnHeight = 44
@@ -133,7 +133,7 @@ class MealDetailsTableViewController: UITableViewController {
      }
      */
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if meal != nil {

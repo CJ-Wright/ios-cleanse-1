@@ -36,10 +36,10 @@ class Meal: NSObject, NSCoding {
     
     required convenience init?(coder decoder: NSCoder) {
 //        guard let mealName = decoder.decodeObjectForKey("mealName") as? String,
-            guard let mealTime = decoder.decodeObjectForKey("mealTime") as? String,
+            guard let mealTime = decoder.decodeObject(forKey: "mealTime") as? String,
 //            let mealImageUrl = decoder.decodeObjectForKey("mealImageUrl") as? NSURL,
-            let mealImage = decoder.decodeObjectForKey("mealImage") as? UIImage,
-            let recipe = decoder.decodeObjectForKey("recipe") as? Recipe
+            let mealImage = decoder.decodeObject(forKey: "mealImage") as? UIImage,
+            let recipe = decoder.decodeObject(forKey: "recipe") as? Recipe
             else {
                 print("Failed to init Meal from archiver")
                 return nil
@@ -55,15 +55,15 @@ class Meal: NSObject, NSCoding {
         self.mealImage = mealImage
     }
     
-    func encodeWithCoder(coder: NSCoder) {
+    func encode(with coder: NSCoder) {
 //        coder.encodeObject(self.mealName, forKey: "mealName")
-        coder.encodeObject(self.mealTime, forKey: "mealTime")
+        coder.encode(self.mealTime, forKey: "mealTime")
 //        coder.encodeObject(self.mealImage, forKey: "mealImage")
 //        coder.encodeObject(self.mealImageUrl, forKey: "mealImageUrl")
-        coder.encodeObject(self.recipe, forKey: "recipe")
+        coder.encode(self.recipe, forKey: "recipe")
     }
     
-    func changeRecipe(recipe:Recipe) {
+    func changeRecipe(_ recipe:Recipe) {
         self.recipe = recipe
     }
 }

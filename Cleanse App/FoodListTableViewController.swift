@@ -15,7 +15,7 @@ class FoodListTableViewController: UITableViewController {
     var visibleRowsPerSection = [[Int]]()
 
     func loadCellDescriptors(){
-        if let path = NSBundle.mainBundle().pathForResource("FoodListCellDescriptor", ofType: "plist"){
+        if let path = Bundle.main.path(forResource: "FoodListCellDescriptor", ofType: "plist"){
             cellDescriptors = NSMutableArray(contentsOfFile: path)
             getIndicesOfVisibleRows()
             tableView.reloadData()
@@ -37,19 +37,19 @@ class FoodListTableViewController: UITableViewController {
         }
     }
     
-    func getCellDescriptorForIndexPath(indexPath: NSIndexPath) -> [String: AnyObject] {
-        let indexOfVisibleRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        let cellDescriptor = cellDescriptors[indexPath.section][indexOfVisibleRow] as! [String: AnyObject]
+    func getCellDescriptorForIndexPath(_ indexPath: IndexPath) -> [String: AnyObject] {
+        let indexOfVisibleRow = visibleRowsPerSection[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        let cellDescriptor = cellDescriptors[(indexPath as NSIndexPath).section][indexOfVisibleRow] as! [String: AnyObject]
         return cellDescriptor
     }
     
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     
-        tableView.registerNib(UINib(nibName: "NormalCell", bundle: nil), forCellReuseIdentifier: "idCellNormal")
-        tableView.registerNib(UINib(nibName: "TextfieldCell", bundle: nil), forCellReuseIdentifier: "idCellTextfield")
+        tableView.register(UINib(nibName: "NormalCell", bundle: nil), forCellReuseIdentifier: "idCellNormal")
+        tableView.register(UINib(nibName: "TextfieldCell", bundle: nil), forCellReuseIdentifier: "idCellTextfield")
     }
     
     override func viewDidLoad() {
@@ -70,7 +70,7 @@ class FoodListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if cellDescriptors != nil {
             return cellDescriptors.count
         }
@@ -79,16 +79,16 @@ class FoodListTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return visibleRowsPerSection[section].count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Food List"
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
         
         switch currentCellDescriptor["cellIdentifier"] as! String {
@@ -103,9 +103,9 @@ class FoodListTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier(currentCellDescriptor["cellIdentifier"] as! String, forIndexPath: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: currentCellDescriptor["cellIdentifier"] as! String, for: indexPath) as! CustomCell
         
         if currentCellDescriptor["cellIdentifier"] as! String == "idCellNormal" {
             if let primaryTitle = currentCellDescriptor["primaryTitle"] {
@@ -122,27 +122,27 @@ class FoodListTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let indexOfTappedRow = visibleRowsPerSection[indexPath.section][indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexOfTappedRow = visibleRowsPerSection[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         
-        if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpandable"] as! Bool == true {
+        if cellDescriptors[(indexPath as NSIndexPath).section][indexOfTappedRow]["isExpandable"] as! Bool == true {
             var shouldExpandAndShowSubRows = false
-            if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"] as! Bool == false {
+            if cellDescriptors[(indexPath as NSIndexPath).section][indexOfTappedRow]["isExpanded"] as! Bool == false {
                 // In this case the cell should expand.
                 shouldExpandAndShowSubRows = true
             }
             
-            cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
+            cellDescriptors[(indexPath as NSIndexPath).section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             
-            for i in (indexOfTappedRow + 1)...(indexOfTappedRow + (cellDescriptors[indexPath.section][indexOfTappedRow]["additionalRows"] as! Int)) {
-                cellDescriptors[indexPath.section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
+            for i in (indexOfTappedRow + 1)...(indexOfTappedRow + (cellDescriptors[(indexPath as NSIndexPath).section][indexOfTappedRow]["additionalRows"] as! Int)) {
+                cellDescriptors[(indexPath as NSIndexPath).section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
             }
         }
         getIndicesOfVisibleRows()
-        tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.reloadSections(IndexSet(integer: (indexPath as NSIndexPath).section), with: UITableViewRowAnimation.fade)
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
 }

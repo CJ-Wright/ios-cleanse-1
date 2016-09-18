@@ -25,38 +25,38 @@ class DailyPlan: NSObject, NSCoding {
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
         for meal in meals {
-            self.meals.addObject(meal)
+            self.meals.add(meal)
         }
         for aString in atAGlance{
-            self.atAGlance.addObject(aString)
+            self.atAGlance.add(aString)
         }
     }
     
     // MARK: NSCoding
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let mealsArray = decoder.decodeObjectForKey("meals") as? NSMutableArray else {
+        guard let mealsArray = decoder.decodeObject(forKey: "meals") as? NSMutableArray else {
             print("Failed to Meals Array Daily Plan from archiver")
             return nil
         }
-        guard let atAGlance = decoder.decodeObjectForKey("atAGlance") as? NSMutableArray
+        guard let atAGlance = decoder.decodeObject(forKey: "atAGlance") as? NSMutableArray
             else {
                 print("Failed to At A Glance Daily Plan from archiver")
                 return nil
         }
         
         self.init(
-            dayNum: decoder.decodeIntegerForKey("dayNumber"),
+            dayNum: decoder.decodeInteger(forKey: "dayNumber"),
             meals: mealsArray,
             atAGlance: atAGlance
         )
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         //        aCoder.encodeObject(self.dayNumber, forKey: "dayNumber")
-        aCoder.encodeInteger(self.dayNumber, forKey: "dayNumber")
-        aCoder.encodeObject(self.meals, forKey: "meals")
-        aCoder.encodeObject(self.atAGlance, forKey: "atAGlance")
+        aCoder.encode(self.dayNumber, forKey: "dayNumber")
+        aCoder.encode(self.meals, forKey: "meals")
+        aCoder.encode(self.atAGlance, forKey: "atAGlance")
         
     }
 }

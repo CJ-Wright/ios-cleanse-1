@@ -39,10 +39,10 @@ class MealPlan: NSObject, NSCoding {
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){
-        guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
-            let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
+        guard let mealPlanName = decoder.decodeObject(forKey: "mealPlanName") as? String,
+            let days = decoder.decodeObject(forKey: "days") as? NSMutableArray,
 //            let numberOfDays = decoder.decodeObjectForKey("numberOfDays") as? Int,
-            let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String
+            let mealPlanID = decoder.decodeObject(forKey: "mealPlanID") as? String
         else {
             print("Failed to init [ Meal Plan ] from archiver")
             return nil
@@ -51,22 +51,22 @@ class MealPlan: NSObject, NSCoding {
         
         self.init(
             name:mealPlanName,
-            numberOfDays: decoder.decodeIntegerForKey("numberOfDays"),
+            numberOfDays: decoder.decodeInteger(forKey: "numberOfDays"),
             days:days,
             mealPlanID: mealPlanID
         )
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
-        aCoder.encodeObject(self.mealPlanName, forKey: "mealPlanName")
+        aCoder.encode(self.mealPlanName, forKey: "mealPlanName")
 //        aCoder.encodeObject(self.numberOfDays, forKey: "numberOfDays")
-        aCoder.encodeInt(Int32(self.numberOfDays), forKey: "numberOfDays")
-        aCoder.encodeObject(self.days, forKey: "days")
-        aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
+        aCoder.encodeCInt(Int32(self.numberOfDays), forKey: "numberOfDays")
+        aCoder.encode(self.days, forKey: "days")
+        aCoder.encode(self.mealPlanID, forKey: "mealPlanID")
     }
     
-    func changeMealRecipe(recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
+    func changeMealRecipe(_ recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
         print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
         ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
     }

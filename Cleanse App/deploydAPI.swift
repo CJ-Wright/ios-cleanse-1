@@ -210,11 +210,11 @@ struct DeploydAPI {
         }
         
 //        totalPlans = totalPlans.sorted
-//        var sortedPlans = sorted(totalPlans) {
-//            let
-//        }
+        let sortedPlans: NSMutableArray = NSMutableArray(array: totalPlans.sortedArrayUsingDescriptors([NSSortDescriptor(key:"dayNumber",ascending: false)]))
+        
+        print(sortedPlans)
         let planID = "0"
-        let mealPlan = MealPlan(name: name, numberOfDays: totalPlans.count, days: totalPlans, mealPlanID: planID)
+        let mealPlan = MealPlan(name: name, numberOfDays: totalPlans.count, days: sortedPlans, mealPlanID: planID)
         
         return mealPlan
     }

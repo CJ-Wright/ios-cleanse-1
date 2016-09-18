@@ -290,4 +290,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             selectNewRecipeController.mealIndex = self.mealIndex!
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 }

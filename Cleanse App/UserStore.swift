@@ -13,7 +13,7 @@ class UserStore {
     let userArchiveURL: NSURL = {
         let documentsDirectories = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.URLByAppendingPathComponent("user.archive")
+        return documentDirectory.URLByAppendingPathComponent("user.archive")!
     }()
     
     func load() -> User? {

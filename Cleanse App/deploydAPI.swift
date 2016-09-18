@@ -163,7 +163,7 @@ struct DeploydAPI {
             let jsonObject:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             
             // Create an array of recipes to store the converted JSON Objects
-            var finalMealPlans = NSMutableArray()
+            let finalMealPlans = NSMutableArray()
             
             //            let mealPlanJson = jsonObject as! Dictionary<String, AnyObject>
             let mealPlanJson = jsonObject as! [String:AnyObject]
@@ -200,7 +200,7 @@ struct DeploydAPI {
         
         //        print(json)
         
-        var totalPlans = NSMutableArray(capacity: days.count)
+        let totalPlans = NSMutableArray(capacity: days.count)
         
         for dailyPlan in days {
             if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {

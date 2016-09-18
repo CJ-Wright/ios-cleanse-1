@@ -35,7 +35,7 @@ class MealPlanStore: NSObject {
         let documentsDirectories =
             NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.URLByAppendingPathComponent("mealplans.archive")
+        return documentDirectory.URLByAppendingPathComponent("mealplans.archive")!
     }()
 
     // URLSession configuration for accessing online web services.

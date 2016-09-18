@@ -61,17 +61,18 @@ class MealPlanStore: NSObject {
     Method for retrieving the photo from URL in the given Meal
      */
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
-        if let photoURL = meal.recipe.imageUrl {
+        print("Recipe img url \(meal.recipe?.imageURL)")
+        if let photoURL = meal.recipe?.imageURL {
             var tmpCount: Int
             let request = NSURLRequest(URL:photoURL)
-//            print("Image starting download \(counter)...")
+            print("Image starting download \(counter)...")
             tmpCount = counter
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
                     meal.recipe?.image = UIImage(data: imageData)!
-                    meal.mealImage = UIImage(data: imageData)!
-//                    print("Image done downloading \(tmpCount)")
+//                    meal.mealImage = UIImage(data: imageData)!
+                    print("Image done downloading \(tmpCount)")
                 }
             }
             counter += 1
@@ -104,21 +105,21 @@ class MealPlanStore: NSObject {
                     MealPlanStore.plansReceived = true
 
                     MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
-//                    for day in MealPlanStore.currentMealPlan.days {
-//                        if let plan = day as? DailyPlan {
-//                            for meal in plan.meals {
-//                                self.fetchImageForPhoto(meal as! Meal) {
-//                                    (imageResult) -> Void in
-//                                    switch imageResult {
-//                                    case .Success(_):
-//                                        print("Downloaded the image")
-//                                    case .Failure(_):
-//                                        print("Error downloading the image")
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
+                    for day in MealPlanStore.currentMealPlan.days {
+                        if let plan = day as? DailyPlan {
+                            for meal in plan.meals {
+                                self.fetchImageForPhoto(meal as! Meal) {
+                                    (imageResult) -> Void in
+                                    switch imageResult {
+                                    case .Success(_):
+                                        print("Downloaded the image")
+                                    case .Failure(_):
+                                        print("Error downloading the image")
+                                    }
+                                }
+                            }
+                        }
+                    }
                     user.setPlanState(true)
                 case let .Failure(error):
                     print("Error fetching meal plan: \(error)")

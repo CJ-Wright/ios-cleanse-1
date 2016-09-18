@@ -122,11 +122,13 @@ struct FmcSpringAPI {
             name = json["name"] as? String,
             ingredients = json["ingredients"] as? NSMutableArray,
             serves  = json["serves"] as? String,
-            instructions = json["instructions"] as? String
+            instructions = json["instructions"] as? String,
+            imgUrlString = json["imgUrl"] as? String
             else {
                 print("Failed to parse json")
                 return nil
-        }   
-        return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves)
+        }
+        let imgURL = NSURL(fileURLWithPath: imgUrlString)
+        return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves, imageURL: imgURL)
     }
 }

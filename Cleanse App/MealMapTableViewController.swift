@@ -52,10 +52,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     for dailyMeal in dailyPlan.meals {
                         if let meal = dailyMeal as? Meal {
                             if let recipe = meal.recipe {
-//                                recipe.name = meal.recipe.mealName
-//                                recipe.image = meal.mealImage!
-//                                recipe.name = meal.mealName
-//                                recipe.image = meal.mealImage!
+                                recipe.name = meal.recipe!.name
+                                recipe.image = meal.recipe!.image
                                 if RecipeStore.recipeSet.contains(recipe) == false {
                                     RecipeStore.recipeSet.insert(recipe)
                                 }

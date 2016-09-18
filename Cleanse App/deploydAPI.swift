@@ -28,7 +28,7 @@ enum DeploydError: ErrorType {
 }
 struct DeploydAPI {
     // The base url of the server to make the requests from
-//    private static let baseURLString = "http://52.52.65.150:3000" // <- This is my current aws server
+    //    private static let baseURLString = "http://52.52.65.150:3000" // <- This is my current aws server
     //    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403"  // <- This is Anthony's server
     private static let baseURLString = "http://52.52.65.150:8080"
     
@@ -91,7 +91,7 @@ struct DeploydAPI {
     static func mealPlansURL() -> NSURL {
         
         // Base URL with the recipes API request call appended to the end of it
-//        let components = NSURLComponents(string: baseURLString + "/meal-plans")!
+        //        let components = NSURLComponents(string: baseURLString + "/meal-plans")!
         let components = NSURLComponents(string: baseURLString + "/mealplan")!
         var queryItems = [NSURLQueryItem]()
         
@@ -165,11 +165,12 @@ struct DeploydAPI {
             // Create an array of recipes to store the converted JSON Objects
             var finalMealPlans = NSMutableArray()
             
-            for mealPlanJson in jsonObject as! [Dictionary<String, AnyObject>] {
-                
-                if let mealPlan = mealPlanFromJSONObject(mealPlanJson){
-                    finalMealPlans.addObject(mealPlan)
-                }
+            //            let mealPlanJson = jsonObject as! Dictionary<String, AnyObject>
+            let mealPlanJson = jsonObject as! [String:AnyObject]
+            
+            //            print(mealPlan["MealPlan"])
+            if let mealPlan = mealPlanFromJSONObject(mealPlanJson){
+                finalMealPlans.addObject(mealPlan)
             }
             
             if finalMealPlans.count == 0 && jsonObject.count > 0 {
@@ -186,15 +187,17 @@ struct DeploydAPI {
     }
     
     // This will take a given JSON Object and constructs a recipe
-    static func mealPlanFromJSONObject(json:[String : AnyObject]) -> MealPlan? {
+    static func mealPlanFromJSONObject(mealPlanJson:[String : AnyObject]) -> MealPlan? {
         
-        guard let planID = json["id"] as? String,
-            days = json["days"] as? [Dictionary<String, AnyObject>],
-            name = json["mealplan"] as? String
+        guard let json = mealPlanJson["MealPlan"],
+            name = json["name"] as? String,
+            days = json["dailyPlans"] as? [Dictionary<String, AnyObject>]
             else {
                 print("Failed to parse json")
                 return nil
         }
+        
+        //        print(json)
         
         let totalPlans = NSMutableArray()
         
@@ -203,7 +206,7 @@ struct DeploydAPI {
                 totalPlans.addObject(plan)
             }
         }
-        
+        let planID = "0"
         let mealPlan = MealPlan(name: name, numberOfDays: totalPlans.count, days: totalPlans, mealPlanID: planID)
         
         return mealPlan
@@ -214,53 +217,61 @@ struct DeploydAPI {
         var meal: Meal
         let dailyPlan = DailyPlan()
         
-        guard let
-            mealsJson = json["meals"],
-        
-            atAGlance = json["at-a-glance"] as? [String],
-            day = json["day"] as? Int else {
-                print("Failed to parse the daily plan json")
-                return nil
+        guard let mealsJson = json["meals"] else {
+            print("Failed to parse the daily plan json -- Meals")
+            return nil
+        }
+        guard let atAGlance = json["atAGlance"] as? [String] else {
+            print("Failed to parse the daily plan json -- atAGlance")
+            return nil
+        }
+        guard let day = json["day"] as? String else {
+            print("Failed to parse the daily plan json -- Day")
+            return nil
         }
         
         // Parse the daily meal plan into individual meals
         for mealJson in mealsJson as! [Dictionary<String, AnyObject>]{
             meal = Meal()
-
+            
             // Attempt to parse the indiviual meal json into a meal object
             guard let
-                mealName = mealJson["meal"] as? String,
-                mealTime = mealJson["time"] as? String,
-                mealImageUrl = mealJson["imgurl"] as? String,
                 recipe = mealJson["recipe"] as? [String:AnyObject],
-                ingredients = recipe["ingredients"] as? [String],
-                instructions = recipe["instructions"] as? String,
-                serves = recipe["serves"] as? String
-            else {
-                    print("failed to meal json parse")
+                mealTime = mealJson["time"] as? String else {
+                    print("Failed to parse meals in daily plan")
                     return nil
             }
             
+            guard let
+                recipeName = recipe["name"] as? String,
+                imgUrl = recipe["imgUrl"] as? String,
+                ingredients = recipe["ingredients"] as? [String],
+                instructions = recipe["instructions"] as? String,
+                serves = recipe["serves"] as? String else {
+                    print("Failed to parse recipe in meal json")
+                    return nil
+            }
+            
+            
             // Assign the values to the meal object
-            meal.mealName = mealName
+            //            meal.mealName = mealName
             meal.mealTime = mealTime
             for ingredient in ingredients {
                 meal.recipe?.ingredients.addObject(ingredient)
-//                meal.recipe?.ingredients.append(ingredient)
             }
-            
+            meal.recipe?.name = recipeName
             meal.recipe?.instructions = instructions
             meal.recipe?.serves = serves
             
             
-            meal.mealImageUrl = NSURL(string:mealImageUrl)
+            meal.recipe?.imageURL = NSURL(string:imgUrl)
             dailyPlan.meals.addObject(meal)
         }
         for aString in atAGlance {
             dailyPlan.atAGlance.addObject(aString)
         }
         
-        dailyPlan.dayNumber = day
+        dailyPlan.dayNumber = Int(day)!
         
         return dailyPlan
     }

@@ -137,8 +137,8 @@ class MealDetailsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if meal != nil {
-            self.recipeNameLabel.text           = meal.mealName
-            self.recipeImageView.image          = meal.mealImage
+            self.recipeNameLabel.text           = meal.recipe?.name
+            self.recipeImageView.image          = meal.recipe?.image
             
             self.recipeInstructionsLabel.text   = meal.recipe?.instructions
             self.recipeNameLabel.adjustsFontSizeToFitWidth = true

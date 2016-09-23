@@ -71,8 +71,8 @@ class Recipe: NSObject, NSCoding {
             print("Failed to init serves from recipe archiver")
             return nil
         }
-        guard let imageURL = decoder.decodeObjectForKey("serves") as? NSURL else {
-            print("Failed to init serves from recipe archiver")
+        guard let imageURL = decoder.decodeObjectForKey("imageURL") as? NSURL else {
+            print("Failed to init imageURL from recipe archiver")
             return nil
         }
         self.init(
@@ -83,7 +83,7 @@ class Recipe: NSObject, NSCoding {
             serves: serves,
             imageURL: imageURL
         )
-//        self.image = image
+        self.image = image
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -92,6 +92,7 @@ class Recipe: NSObject, NSCoding {
         aCoder.encodeObject(self.image, forKey: "image")
         aCoder.encodeObject(self.ingredients, forKey: "ingredients")
         aCoder.encodeObject(self.recipeID, forKey: "recipeID")
+        print("Encoding serves \(self.serves)")
         aCoder.encodeObject(self.serves, forKey: "serves")
         aCoder.encodeObject(self.imageURL, forKey: "imageURL")
     }

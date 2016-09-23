@@ -198,18 +198,14 @@ struct DeploydAPI {
                 return nil
         }
         
-        //        print(json)
-        
         let totalPlans = NSMutableArray(capacity: days.count)
         
         for dailyPlan in days {
             if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {
-//                totalPlans[plan.dayNumber - 1] = plan
                 totalPlans.addObject(plan)
             }
         }
-        
-//        totalPlans = totalPlans.sorted
+
         let sortedPlans: NSMutableArray = NSMutableArray(array: totalPlans.sortedArrayUsingDescriptors([NSSortDescriptor(key:"dayNumber",ascending: false)]))
         
         print(sortedPlans)
@@ -257,9 +253,7 @@ struct DeploydAPI {
                     return nil
             }
             
-            
             // Assign the values to the meal object
-            //            meal.mealName = mealName
             meal.mealTime = mealTime
             for ingredient in ingredients {
                 meal.recipe?.ingredients.addObject(ingredient)
@@ -267,7 +261,6 @@ struct DeploydAPI {
             meal.recipe?.name = recipeName
             meal.recipe?.instructions = instructions
             meal.recipe?.serves = serves
-            
             
             meal.recipe?.imageURL = NSURL(string:imgUrl)
             dailyPlan.meals.addObject(meal)

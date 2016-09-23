@@ -92,7 +92,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         // If the current day is 1 then allow the swipe right feature to bring out the side menu
         if currentDay == 1 {
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            let panGestureRecognizer = self.revealViewController().panGestureRecognizer()
+            self.view.addGestureRecognizer(panGestureRecognizer)
+            
         } else {
             // Remove the ability to open up the side menu by swiping when it is not the first day.
             self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())

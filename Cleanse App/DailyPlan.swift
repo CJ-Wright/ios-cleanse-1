@@ -13,17 +13,20 @@ class DailyPlan: NSObject, NSCoding {
     var dayNumber: Int
     var meals:NSMutableArray
     var atAGlance: NSMutableArray
+    var amountDrank: Int
     
     override init(){
         self.dayNumber = 0
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
+        self.amountDrank = 0
     }
     
-    init(dayNum: Int, meals: NSMutableArray, atAGlance: NSMutableArray){
+    init(dayNum: Int, meals: NSMutableArray, atAGlance: NSMutableArray, amountDrank: Int){
         self.dayNumber = dayNum
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
+        self.amountDrank = amountDrank
         for meal in meals {
             self.meals.addObject(meal)
         }
@@ -45,10 +48,17 @@ class DailyPlan: NSObject, NSCoding {
                 return nil
         }
         
+        guard let amountDrank = decoder.decodeObjectForKey("amountDrank") as? Int
+            else {
+                print("Failed to decode amount drank in daily plan")
+                return nil
+        }
+        
         self.init(
             dayNum: decoder.decodeIntegerForKey("dayNumber"),
             meals: mealsArray,
-            atAGlance: atAGlance
+            atAGlance: atAGlance,
+            amountDrank: amountDrank
         )
     }
     
@@ -57,6 +67,7 @@ class DailyPlan: NSObject, NSCoding {
         aCoder.encodeInteger(self.dayNumber, forKey: "dayNumber")
         aCoder.encodeObject(self.meals, forKey: "meals")
         aCoder.encodeObject(self.atAGlance, forKey: "atAGlance")
+        aCoder.encodeObject(self.amountDrank, forKey: "amountDrank")
         
     }
 }

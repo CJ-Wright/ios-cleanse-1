@@ -30,10 +30,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
-        // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
-        self.view.addGestureRecognizer(longPressRecognizer)
         navigationBar.title! = "Meal Map"
+        
         
         // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {
@@ -43,8 +41,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         let waterTrackerNib = UINib(nibName: "WaterTrackerTableViewCell", bundle: nil)
         tableView.registerNib(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
-        //        tableView.registerNib(footerNib, forHeaderFooterViewReuseIdentifier: "WaterTrackerTableViewCell")
-        tableView.tableFooterView = UIView()
+        //        tableView.tableFooterView = UIView()
         
         if RecipeStore.recipeSet.isEmpty {
             for day in MealPlanStore.currentMealPlan.days {
@@ -84,32 +81,39 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // Initialize the swipe left gesture to change days
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MealMapTableViewController.nextDayButton(_:)))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
         
-        // If the current day is 1 then allow the swipe right feature to bring out the side menu
-        if currentDay == 1 {
-            let panGestureRecognizer = self.revealViewController().panGestureRecognizer()
-            self.view.addGestureRecognizer(panGestureRecognizer)
-            
-        } else {
-            // Remove the ability to open up the side menu by swiping when it is not the first day.
-            self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-            // Add the swipe right functionality to the view
-            let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
-            swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-            self.view.addGestureRecognizer(swipeRight)
-        }
-        
-
         if indexPath.row == 5{
-
+            
             let cell = self.tableView.dequeueReusableCellWithIdentifier("WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
+            cell.selectionStyle = .None
             
             return cell
+            
         } else {
+            // create a longPressRecognizer that is used for bringing up the modal to select recipes and marking the meal as eaten
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MealMapTableViewController.longPress(_:)))
+            self.view.addGestureRecognizer(longPressRecognizer)
+            
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MealMapTableViewController.nextDayButton(_:)))
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+            // If the current day is 1 then allow the swipe right feature to bring out the side menu
+            if currentDay == 1 {
+                let panGestureRecognizer = self.revealViewController().panGestureRecognizer()
+                self.view.addGestureRecognizer(panGestureRecognizer)
+                
+            } else {
+                // Remove the ability to open up the side menu by swiping when it is not the first day.
+                self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                
+                // Add the swipe right functionality to the view
+                let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
+                swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+                self.view.addGestureRecognizer(swipeRight)
+            }
+            
+            
             // Create a template cell as a MealMapTableViewCell
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
             var mealName: String = "None"
@@ -120,8 +124,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                         if let meal = day.meals[indexPath.row] as? Meal {
-                            image = meal.recipe!.image  // mealImage
-                            mealName = meal.recipe!.name        //mealName
+                            image = meal.recipe!.image
+                            mealName = meal.recipe!.name
                         }
                     }
                 }
@@ -137,13 +141,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
             cell.mealMapImageView.image = image
             cell.sizeToFit()
-        
-        
+            
+            
             return cell
         }
     }
-    
-    
     
     // Changes the current day to the next day in the meal plan
     @IBAction func nextDayButton(sender: UIBarButtonItem) {
@@ -191,37 +193,26 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         header.textLabel?.textAlignment = NSTextAlignment.Center
         header.textLabel?.font
     }
- 
+    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 5 {
-            return 200
+            return 170
         } else {
             return 81
         }
     }
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     print("Moving cell")
-     
-     }
-     
-     
-     
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     //Called, when long press occurred
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
         
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            
+            // Retrieve the touch point where the user pressed
             let touchPoint = longPressGestureRecognizer.locationInView(self.view)
-            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+            
+            // Get the index of the cell that the user clicked on and make sure it is not the water tracker
+            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) where indexPath.row < 5 {
                 // Alert Controller / Modal for selecting a new recipes
                 let alertController = UIAlertController(title: "Edit Meal", message: "Select a new recipe?", preferredStyle: .ActionSheet)
                 

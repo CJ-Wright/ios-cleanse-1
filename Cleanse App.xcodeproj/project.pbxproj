@@ -325,9 +325,9 @@
 				329E5A321D8BB24000C3BB28 /* Protocols.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
+				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 				32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */,
 				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
-				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

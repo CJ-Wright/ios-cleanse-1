@@ -70,4 +70,8 @@ class DailyPlan: NSObject, NSCoding {
         aCoder.encodeObject(self.amountDrank, forKey: "amountDrank")
         
     }
+    
+    func updateAmountDrank(amountDrank: Int){
+        self.amountDrank = amountDrank
+    }
 }

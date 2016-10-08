@@ -25,7 +25,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.alwaysBounceVertical = false
+//        self.tableView.alwaysBounceVertical = false
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         
@@ -41,7 +41,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         
         let waterTrackerNib = UINib(nibName: "WaterTrackerTableViewCell", bundle: nil)
         tableView.registerNib(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
-        //        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView()
         
         if RecipeStore.recipeSet.isEmpty {
             for day in MealPlanStore.currentMealPlan.days {
@@ -86,7 +86,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             
             let cell = self.tableView.dequeueReusableCellWithIdentifier("WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
             cell.selectionStyle = .None
-            
+            cell.amountDrank = MealPlanStore.currentMealPlan.days[currentDay - 1].amountDrank
+            cell.currentDay = currentDay
+            cell.updateProgress()
             return cell
             
         } else {
@@ -141,7 +143,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
             cell.mealMapImageView.image = image
             cell.sizeToFit()
-            
             
             return cell
         }

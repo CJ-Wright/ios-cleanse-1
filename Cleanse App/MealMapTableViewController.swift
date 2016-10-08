@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MealMapTableViewController: UITableViewController, UIGestureRecognizerDelegate, changeRecipeDelegate {
+class MealMapTableViewController: UITableViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -24,7 +24,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
+        
         self.tableView.alwaysBounceVertical = false
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
@@ -35,17 +35,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         self.view.addGestureRecognizer(longPressRecognizer)
         navigationBar.title! = "Meal Map"
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //         self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
+        
+        let waterTrackerNib = UINib(nibName: "WaterTrackerTableViewCell", bundle: nil)
+        tableView.registerNib(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
+        //        tableView.registerNib(footerNib, forHeaderFooterViewReuseIdentifier: "WaterTrackerTableViewCell")
+        tableView.tableFooterView = UIView()
+        
         if RecipeStore.recipeSet.isEmpty {
             for day in MealPlanStore.currentMealPlan.days {
                 if let dailyPlan = day as? DailyPlan {
@@ -73,13 +73,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
     
     
@@ -105,37 +103,47 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             self.view.addGestureRecognizer(swipeRight)
         }
         
-        // Create a template cell as a MealMapTableViewCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
-        var mealName: String = "None"
-        var image: UIImage?
-        
-        // Determine if the cell is to be a snack/shake or meal cell
-        if cellIdentifiers[indexPath.row] == "Snack" {
-            if MealPlanStore.currentMealPlan.days.count > 0 {
-                if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    if let meal = day.meals[indexPath.row] as? Meal {
-                        image = meal.recipe!.image  // mealImage
-                        mealName = meal.recipe!.name        //mealName
+
+        if indexPath.row == 5{
+
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
+            
+            return cell
+        } else {
+            // Create a template cell as a MealMapTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
+            var mealName: String = "None"
+            var image: UIImage?
+            
+            // Determine if the cell is to be a snack/shake or meal cell
+            if cellIdentifiers[indexPath.row] == "Snack" {
+                if MealPlanStore.currentMealPlan.days.count > 0 {
+                    if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                        if let meal = day.meals[indexPath.row] as? Meal {
+                            image = meal.recipe!.image  // mealImage
+                            mealName = meal.recipe!.name        //mealName
+                        }
+                    }
+                }
+            } else if cellIdentifiers[indexPath.row] != "DAY" {
+                if MealPlanStore.currentMealPlan.days.count > 0 {
+                    if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
+                        image = (day.meals[indexPath.row] as! Meal).recipe!.image
+                        mealName = (day.meals[indexPath.row] as! Meal).recipe!.name
                     }
                 }
             }
-        } else if cellIdentifiers[indexPath.row] != "DAY" {
-            if MealPlanStore.currentMealPlan.days.count > 0 {
-                if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                    image = (day.meals[indexPath.row] as! Meal).recipe!.image
-                    mealName = (day.meals[indexPath.row] as! Meal).recipe!.name
-                }
-            }
+            cell.mealMapNameLabel.numberOfLines = 3
+            cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
+            cell.mealMapImageView.image = image
+            cell.sizeToFit()
+        
+        
+            return cell
         }
-        
-        cell.mealMapNameLabel.numberOfLines = 3
-        cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
-        cell.mealMapImageView.image = image
-        cell.sizeToFit()
-        
-        return cell
     }
+    
+    
     
     // Changes the current day to the next day in the meal plan
     @IBAction func nextDayButton(sender: UIBarButtonItem) {
@@ -183,38 +191,15 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         header.textLabel?.textAlignment = NSTextAlignment.Center
         header.textLabel?.font
     }
+ 
     
-    func changeMealRecipe(recipe: Recipe) -> Recipe {
-        return recipe
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 5 {
+            return 200
+        } else {
+            return 81
+        }
     }
-    
-    /*
-     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    
     /*
      // Override to support rearranging the table view.
      override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

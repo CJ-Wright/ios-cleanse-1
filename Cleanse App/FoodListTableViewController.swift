@@ -13,6 +13,8 @@ class FoodListTableViewController: UITableViewController {
     
     var cellDescriptors: NSMutableArray!
     var visibleRowsPerSection = [[Int]]()
+    @IBOutlet var menuButton: UIBarButtonItem!
+    
 
     func loadCellDescriptors(){
         if let path = NSBundle.mainBundle().pathForResource("FoodListCellDescriptor", ofType: "plist"){
@@ -61,6 +63,14 @@ class FoodListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Do any additional setup after loading the view.
+        // This allows for the side menu to appear from within the app
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

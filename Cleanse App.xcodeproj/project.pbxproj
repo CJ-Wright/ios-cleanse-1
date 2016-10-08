@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323195221D7B8B7400A18D16 /* CheckBoxButton.swift */; };
-		323588641D0DC7E600EB861F /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 323588631D0DC7E600EB861F /* recipes.json */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
 		326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */; };
 		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
@@ -37,6 +36,8 @@
 		32DDBB3C1D36EEE500A6A065 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */; };
 		32DDBB3D1D36EEE500A6A065 /* ProximaNova-RegularIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32DDBB3A1D36EEE500A6A065 /* ProximaNova-RegularIt.otf */; };
 		32E43F7B1D56A7F700D664B5 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E43F7A1D56A7F700D664B5 /* UserStore.swift */; };
+		32E6BA6A1DA991EC0010D842 /* WaterTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */; };
+		32E6BA6B1DA991EC0010D842 /* WaterTrackerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E6BA691DA991EC0010D842 /* WaterTrackerTableViewCell.xib */; };
 		32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */; };
 		32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */; };
 		32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E90E1D20DE9E006D9F75 /* Meal.swift */; };
@@ -108,6 +109,8 @@
 		32DDBB391D36EEE500A6A065 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		32DDBB3A1D36EEE500A6A065 /* ProximaNova-RegularIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegularIt.otf"; sourceTree = "<group>"; };
 		32E43F7A1D56A7F700D664B5 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterTrackerTableViewCell.swift; sourceTree = "<group>"; };
+		32E6BA691DA991EC0010D842 /* WaterTrackerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterTrackerTableViewCell.xib; sourceTree = "<group>"; };
 		32F2F4631D1E178B00AFE68F /* MealDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailsTableViewController.swift; sourceTree = "<group>"; };
 		32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanStore.swift; sourceTree = "<group>"; };
 		32F5E90E1D20DE9E006D9F75 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -200,6 +203,7 @@
 			children = (
 				3272BB8B1D84C6C20018B367 /* NormalCell.xib */,
 				3272BB8E1D84C6C20018B367 /* TextfieldCell.xib */,
+				32E6BA691DA991EC0010D842 /* WaterTrackerTableViewCell.xib */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -321,8 +325,9 @@
 				329E5A321D8BB24000C3BB28 /* Protocols.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
-				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
+				32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */,
 				32FC27601D205B8E00DB3C99 /* WaterTrackerViewController.swift */,
+				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -460,12 +465,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3272BB951D84C6C20018B367 /* TextfieldCell.xib in Resources */,
+				3272BB921D84C6C20018B367 /* NormalCell.xib in Resources */,
+				32E6BA6B1DA991EC0010D842 /* WaterTrackerTableViewCell.xib in Resources */,
 				32A2B2E81CF113E3005CDC0E /* LaunchScreen.storyboard in Resources */,
 				326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */,
 				32A2B2E51CF113E3005CDC0E /* Assets.xcassets in Resources */,
-				3272BB921D84C6C20018B367 /* NormalCell.xib in Resources */,
 				32A2B2E01CF113E3005CDC0E /* Main.storyboard in Resources */,
-				323588641D0DC7E600EB861F /* recipes.json in Resources */,
 				32DDBB3D1D36EEE500A6A065 /* ProximaNova-RegularIt.otf in Resources */,
 				32DDBB3B1D36EEE500A6A065 /* ProximaNova-Bold.otf in Resources */,
 				32DDBB3C1D36EEE500A6A065 /* ProximaNova-Regular.otf in Resources */,
@@ -519,6 +524,7 @@
 				32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */,
 				329E5A331D8BB24000C3BB28 /* Protocols.swift in Sources */,
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
+				32E6BA6A1DA991EC0010D842 /* WaterTrackerTableViewCell.swift in Sources */,
 				32F6A9A71D1F092200047A51 /* User.swift in Sources */,
 				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,
 				328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */,

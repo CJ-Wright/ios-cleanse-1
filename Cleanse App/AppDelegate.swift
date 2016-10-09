@@ -21,10 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // TODO: Need to implement a check to see if the data has already been downloaded.
+        // Create a new storyboard instance
+        
         user = userStore.load()
         if user != nil {
             print("Loaded user profile")
         } else {
+        
+            let introStoryboard = UIStoryboard(name: "Introduction", bundle:  nil)
+            
+            // Create an instance of the storyboard's initial view controller
+            let introController = introStoryboard.instantiateViewControllerWithIdentifier("IntroductionStoryboard") as UIViewController
+            
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            window?.rootViewController = introController
+            
+            
+            // Display the new view controller
+//            controller.presentViewController(controller, animated: true, completion: nil)
+            
             print("No user found")
             user = User(name: "New User", hasPlan: false)
         }

@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ProximaNova-Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
         <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
         </array>
@@ -182,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ore-oA-T4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="2496"/>
+            <point key="canvasLocation" x="-1095" y="3145"/>
         </scene>
         <!--Change Recipe Table-->
         <scene sceneID="bgW-lg-q10">
@@ -236,7 +239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6T-ro-tUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="400"/>
+            <point key="canvasLocation" x="1087" y="428"/>
         </scene>
         <!--Meal Details Table View Controller-->
         <scene sceneID="erV-zL-FRg">
@@ -353,12 +356,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIG-ba-wNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="1094"/>
+            <point key="canvasLocation" x="1086" y="1117"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="28u-9G-0uR">
             <objects>
-                <viewController id="UTl-Di-odw" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="UTl-Di-odw" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="spe-x7-qV7"/>
                         <viewControllerLayoutGuide type="bottom" id="r6X-D0-FjP"/>
@@ -375,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cP-Nf-g1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2927" y="1563"/>
+            <point key="canvasLocation" x="-2942" y="1540"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="fW6-GG-7Tv">
@@ -389,48 +392,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mfb-dy-AE1">
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Of the Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-jH-txN">
-                                        <color key="backgroundColor" red="0.3294117647" green="0.4039215686" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At A Glance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzN-Ac-9NY">
-                                        <color key="backgroundColor" red="0.43529411759999997" green="0.0" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip of the Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-mv-6na">
-                                        <color key="backgroundColor" red="0.40784313729999999" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detox Fact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5a-vc-4TN">
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.56470588239999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At A Glance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7R-De-fFQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0H4-ul-n6d"/>
+                                    <constraint firstAttribute="height" constant="30" id="3aG-hb-WrB"/>
+                                    <constraint firstAttribute="width" constant="343" id="WiX-EL-3rA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3P-gS-1rj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IDT-wj-4MC"/>
+                                    <constraint firstAttribute="width" constant="343" id="snG-jy-OQd"/>
+                                    <constraint firstAttribute="height" constant="100" id="zGr-gp-JBg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-Tm-pcg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Kkr-Jc-AMW"/>
+                                    <constraint firstAttribute="width" constant="343" id="VFO-Qd-vZf"/>
+                                    <constraint firstAttribute="height" constant="100" id="nj0-h8-AGz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detox Fact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83r-zQ-e5c">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="JO3-gF-cGb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="uF9-hi-wdS"/>
+                                    <constraint firstAttribute="height" constant="22" id="yOd-ts-JfA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGS-wJ-9LU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="Y9U-id-bWJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="jtM-8y-0he"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="zIQ-46-soY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xF-et-yPq">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="99" id="TwZ-56-TaV"/>
+                                    <constraint firstAttribute="width" constant="343" id="hea-ce-HNQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FJo-zg-9I9" firstAttribute="top" secondItem="Mfb-dy-AE1" secondAttribute="bottom" id="Ztx-3r-PI7"/>
-                            <constraint firstItem="Mfb-dy-AE1" firstAttribute="leading" secondItem="2cU-R7-hmx" secondAttribute="leadingMargin" constant="-16" id="cCB-fl-v5D"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Mfb-dy-AE1" secondAttribute="trailing" constant="-16" id="t9Y-rf-680"/>
-                            <constraint firstItem="Mfb-dy-AE1" firstAttribute="top" secondItem="z78-GV-PPl" secondAttribute="bottom" id="ycM-xs-IRx"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="83r-zQ-e5c" secondAttribute="leading" id="0cf-UZ-qgQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U0s-Tm-pcg" secondAttribute="trailing" id="G2H-VW-Wdh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="L3P-gS-1rj" secondAttribute="leading" id="MlM-of-IY0"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="yGS-wJ-9LU" secondAttribute="leading" id="N0J-RW-BJ8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3xF-et-yPq" secondAttribute="trailing" id="R94-nB-Oj1"/>
+                            <constraint firstItem="3xF-et-yPq" firstAttribute="top" secondItem="yGS-wJ-9LU" secondAttribute="bottom" constant="8" id="TK2-wZ-Mzr"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="U0s-Tm-pcg" secondAttribute="leading" id="UuS-dT-7bd"/>
+                            <constraint firstItem="I7R-De-fFQ" firstAttribute="top" secondItem="z78-GV-PPl" secondAttribute="bottom" constant="26" id="XdR-bT-paJ"/>
+                            <constraint firstItem="U0s-Tm-pcg" firstAttribute="top" secondItem="83r-zQ-e5c" secondAttribute="bottom" constant="8" id="as5-PV-kM3"/>
+                            <constraint firstItem="83r-zQ-e5c" firstAttribute="top" secondItem="L3P-gS-1rj" secondAttribute="bottom" constant="8" id="eXg-z6-P60"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3xF-et-yPq" secondAttribute="leading" id="iax-MQ-dYi"/>
+                            <constraint firstItem="L3P-gS-1rj" firstAttribute="top" secondItem="I7R-De-fFQ" secondAttribute="bottom" constant="12" id="nRN-gn-MPR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L3P-gS-1rj" secondAttribute="trailing" id="pYr-vn-3VT"/>
+                            <constraint firstItem="yGS-wJ-9LU" firstAttribute="top" secondItem="U0s-Tm-pcg" secondAttribute="bottom" constant="8" id="psO-dQ-K5a"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="I7R-De-fFQ" secondAttribute="leading" id="sQI-Sx-JJY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Xs-sl-emf">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="UJi-CK-K9V"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="atAGlanceDesc" destination="L3P-gS-1rj" id="FqQ-Si-wyz"/>
+                        <outlet property="detoxFactLabel" destination="U0s-Tm-pcg" id="r4e-fh-lDD"/>
                         <outlet property="menuButton" destination="UJi-CK-K9V" id="SXk-oG-ggx"/>
+                        <outlet property="tipOfTheDayLabel" destination="3xF-et-yPq" id="kJU-BX-4UI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjQ-UG-pJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -519,7 +567,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hr6-5O-ZqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2068" y="1171"/>
+            <point key="canvasLocation" x="-1828" y="1039"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gsb-ZK-Qm8">
@@ -597,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFk-ZC-O0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="2496"/>
+            <point key="canvasLocation" x="494" y="3145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xAK-il-x0f">
@@ -615,7 +663,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tz-XK-28M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-500" y="2496"/>
+            <point key="canvasLocation" x="-292" y="3145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yt0-6x-F1W">
@@ -633,7 +681,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8S-1i-dQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2164" y="2496"/>
+            <point key="canvasLocation" x="-1956" y="3145"/>
         </scene>
         <!--Food List Table View Controller-->
         <scene sceneID="imz-zH-BfG">
@@ -674,7 +722,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7J-mi-CfN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2s-gs-I3P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="v2s-gs-I3P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -692,7 +740,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EMs-Z7-7Mo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ta3-NJ-2Xs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ta3-NJ-2Xs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -710,7 +758,7 @@
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x9E-tJ-vHX"/>
+        <segue reference="yRh-oh-scx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

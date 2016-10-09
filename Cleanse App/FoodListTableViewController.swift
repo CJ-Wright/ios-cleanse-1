@@ -34,7 +34,6 @@ class FoodListTableViewController: UITableViewController {
                     visibleRows.append(row)
                 }
             }
-            
             visibleRowsPerSection.append(visibleRows)
         }
     }
@@ -58,19 +57,11 @@ class FoodListTableViewController: UITableViewController {
         super.viewDidLoad()
         self.configureTableView()
         loadCellDescriptors()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // Do any additional setup after loading the view.
-        // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

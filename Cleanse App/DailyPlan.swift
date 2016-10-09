@@ -13,20 +13,32 @@ class DailyPlan: NSObject, NSCoding {
     var dayNumber: Int
     var meals:NSMutableArray
     var atAGlance: NSMutableArray
+    var atAGlanceInstruction: String
+    var tipOfTheDay: String
+    var detoxFacts: String
+    var dailyInspiration: String
     var amountDrank: Int
     
     override init(){
+        self.atAGlanceInstruction = ""
+        self.tipOfTheDay = ""
+        self.detoxFacts = ""
+        self.dailyInspiration = ""
         self.dayNumber = 0
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
         self.amountDrank = 0
     }
     
-    init(dayNum: Int, meals: NSMutableArray, atAGlance: NSMutableArray, amountDrank: Int){
+    init(dayNum: Int, meals: NSMutableArray, atAGlance: NSMutableArray, amountDrank: Int, atAGlanceInstruction:String, detoxFacts:String, tipOfTheDay:String, dailyInspiration:String){
         self.dayNumber = dayNum
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
         self.amountDrank = amountDrank
+        self.atAGlanceInstruction = atAGlanceInstruction
+        self.tipOfTheDay = tipOfTheDay
+        self.detoxFacts = detoxFacts
+        self.dailyInspiration = dailyInspiration
         for meal in meals {
             self.meals.addObject(meal)
         }
@@ -54,11 +66,25 @@ class DailyPlan: NSObject, NSCoding {
                 return nil
         }
         
+        guard let atAGlanceInstruction = decoder.decodeObjectForKey("atAGlanceInstruction") as? String,
+            let detoxFacts = decoder.decodeObjectForKey("detoxFacts") as? String,
+            let tipOfTheDay = decoder.decodeObjectForKey("tipOfTheDay") as? String,
+            let dailyInspiration = decoder.decodeObjectForKey("dailyInspiration") as? String else {
+                print("Failed to decode a string in a daily plan")
+                return nil
+        }
+        
+        
+        
         self.init(
             dayNum: decoder.decodeIntegerForKey("dayNumber"),
             meals: mealsArray,
             atAGlance: atAGlance,
-            amountDrank: amountDrank
+            amountDrank: amountDrank,
+            atAGlanceInstruction: atAGlanceInstruction,
+            detoxFacts: detoxFacts,
+            tipOfTheDay: tipOfTheDay,
+            dailyInspiration: dailyInspiration
         )
     }
     
@@ -68,6 +94,10 @@ class DailyPlan: NSObject, NSCoding {
         aCoder.encodeObject(self.meals, forKey: "meals")
         aCoder.encodeObject(self.atAGlance, forKey: "atAGlance")
         aCoder.encodeObject(self.amountDrank, forKey: "amountDrank")
+        aCoder.encodeObject(self.atAGlanceInstruction, forKey: "atAGlanceInstruction")
+        aCoder.encodeObject(self.detoxFacts, forKey:"detoxFacts")
+        aCoder.encodeObject(self.tipOfTheDay, forKey:"tipOfTheDay")
+        aCoder.encodeObject(self.dailyInspiration, forKey: "dailyInspiration")
         
     }
     

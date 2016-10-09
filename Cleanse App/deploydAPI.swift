@@ -205,7 +205,7 @@ struct DeploydAPI {
                 totalPlans.addObject(plan)
             }
         }
-
+        
         let sortedPlans: NSMutableArray = NSMutableArray(array: totalPlans.sortedArrayUsingDescriptors([NSSortDescriptor(key:"dayNumber",ascending: false)]))
         
         print(sortedPlans)
@@ -232,6 +232,16 @@ struct DeploydAPI {
             print("Failed to parse the daily plan json -- Day")
             return nil
         }
+        
+        guard let atAGlanceInstruction = json["atAGlanceInstruction"] as? String,
+            let tipOfTheDay = json["tipOfTheDay"] as? String,
+            let detoxFacts = json["detoxFacts"] as? String,
+            let dailyInspiration = json["dailyInspiration"] as? String else {
+                print("Failed to parse the daily plan json -- instructions")
+                return nil
+        }
+        
+        
         
         // Parse the daily meal plan into individual meals
         for mealJson in mealsJson as! [Dictionary<String, AnyObject>]{
@@ -270,7 +280,10 @@ struct DeploydAPI {
         }
         
         dailyPlan.dayNumber = Int(day)!
-        
+        dailyPlan.atAGlanceInstruction = atAGlanceInstruction
+        dailyPlan.dailyInspiration = dailyInspiration
+        dailyPlan.detoxFacts = detoxFacts
+        dailyPlan.tipOfTheDay = tipOfTheDay
         return dailyPlan
     }
 }

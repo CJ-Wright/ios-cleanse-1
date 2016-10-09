@@ -28,7 +28,15 @@ class MealPlanStore: NSObject {
     // Static variable to determine if the first plan has been downloaded.
     static var plansReceived = false
     
+    // Stores the day that the user is currently on
+    static var currentDay = 1
+    
+    // Stores the starting date
+    static var startingDate = NSDate()
+    
     var counter = 0
+    
+    static var imagesFinishedDownloadSet = Set<Int>()
     
     // This is the path to where the information for the meal plans are stored.
     let mealPlanArchiveURL: NSURL = {
@@ -67,11 +75,13 @@ class MealPlanStore: NSObject {
             let request = NSURLRequest(URL:photoURL)
             print("Image starting download \(counter)...")
             tmpCount = counter
+            MealPlanStore.imagesFinishedDownloadSet.insert(counter)
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
                     meal.recipe?.image = UIImage(data: imageData)!
                     print("Image done downloading \(tmpCount)")
+                    MealPlanStore.imagesFinishedDownloadSet.remove(tmpCount)
                 }
             }
             counter += 1

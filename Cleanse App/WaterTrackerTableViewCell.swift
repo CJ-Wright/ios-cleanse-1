@@ -48,7 +48,6 @@ class WaterTrackerTableViewCell: UITableViewCell {
             progressView?.progress = Float(amountDrank) / Float(goal)
             self.amountToGo.text = "You have \(self.goal - self.amountDrank) to go!"
             (MealPlanStore.currentMealPlan.days[currentDay - 1] as! DailyPlan).updateAmountDrank(self.amountDrank)
-//        } else if amountDrank >= goal {
         } else {
             progressView?.progress = 1
             self.amountToGo.text = "You 0 to go!"

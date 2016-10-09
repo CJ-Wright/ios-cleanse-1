@@ -13,14 +13,19 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     
     
+    @IBOutlet var atAGlanceDesc: UILabel!
+    @IBOutlet var detoxFactLabel: UILabel!
+    @IBOutlet var tipOfTheDayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
+        atAGlanceDesc.text = (MealPlanStore.currentMealPlan.days[MealPlanStore.currentDay - 1] as! DailyPlan).atAGlanceInstruction
+        detoxFactLabel.text = (MealPlanStore.currentMealPlan.days[MealPlanStore.currentDay - 1] as! DailyPlan).detoxFacts
+        tipOfTheDayLabel.text = (MealPlanStore.currentMealPlan.days[MealPlanStore.currentDay - 1] as! DailyPlan).tipOfTheDay
         
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
-
 
         // Do any additional setup after loading the view.
         // This allows for the side menu to appear from within the app
@@ -28,8 +33,6 @@ class HomeScreenViewController: UIViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         }
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +40,17 @@ class HomeScreenViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-
+    func loadIntroStoryboard(){
+        // Create a new storyboard instance
+        let introStoryboard = UIStoryboard(name: "Introduction", bundle:  nil)
+        
+        // Create an instance of the storyboard's initial view controller
+        let controller = introStoryboard.instantiateViewControllerWithIdentifier("IntroductionStoryboard") as UIViewController
+        
+        // Display the new view controller
+        controller.presentViewController(controller, animated: true, completion: nil)
+        
+    }
     /*
     // MARK: - Navigation
 

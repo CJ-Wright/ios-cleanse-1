@@ -31,12 +31,11 @@ class MealPlanStore: NSObject {
     // Stores the day that the user is currently on
     static var currentDay = 1
     
-    // Stores the starting date
-    static var startingDate = NSDate()
-    
     var counter = 0
     
     static var imagesFinishedDownloadSet = Set<Int>()
+    
+    
     
     // This is the path to where the information for the meal plans are stored.
     let mealPlanArchiveURL: NSURL = {
@@ -45,7 +44,7 @@ class MealPlanStore: NSObject {
         let documentDirectory = documentsDirectories.first!
         return documentDirectory.URLByAppendingPathComponent("mealplans.archive")!
     }()
-
+    
     // URLSession configuration for accessing online web services.
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -64,9 +63,9 @@ class MealPlanStore: NSObject {
         }
         task.resume()
     }
-
+    
     /*
-    Method for retrieving the photo from URL in the given Meal
+     Method for retrieving the photo from URL in the given Meal
      */
     func fetchImageForPhoto(meal: Meal, completion: (ImageResult) -> Void){
         
@@ -112,7 +111,7 @@ class MealPlanStore: NSObject {
                     
                     // If the plan was recevied successfully then
                     MealPlanStore.plansReceived = true
-
+                    
                     MealPlanStore.currentMealPlan = mealPlan[0] as! MealPlan
                     for day in MealPlanStore.currentMealPlan.days {
                         if let plan = day as? DailyPlan {
@@ -137,7 +136,7 @@ class MealPlanStore: NSObject {
             }
         }
     }
-
+    
     // MARK: - Persistence
     // Method will check if the given user has a meal plan, and if they do, try to load the file.
     func loadMealPlanFromArchive(user:User) -> Bool {
@@ -158,5 +157,5 @@ class MealPlanStore: NSObject {
         print("Saving meal plan to \(mealPlanArchiveURL.path!)")
         return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
     }
- 
+    
 }

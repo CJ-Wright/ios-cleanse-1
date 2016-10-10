@@ -40,7 +40,7 @@ class FoodListTableViewController: UITableViewController {
     
     func getCellDescriptorForIndexPath(indexPath: NSIndexPath) -> [String: AnyObject] {
         let indexOfVisibleRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        let cellDescriptor = cellDescriptors[indexPath.section][indexOfVisibleRow] as! [String: AnyObject]
+        let cellDescriptor = (cellDescriptors[indexPath.section] as! [AnyObject])[indexOfVisibleRow] as! [String: AnyObject]
         return cellDescriptor
     }
     

@@ -95,6 +95,7 @@ class ChangeRecipeTableViewController: UITableViewController {
                     
                     print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
                     print("New Recipe Name " + self.recipeArray[indexPath.row].name)
+                    MealPlanStore.currentMealPlan.saveChanges()
                 })
                 
                 alertController.addAction(cancelAction)
@@ -116,7 +117,7 @@ class ChangeRecipeTableViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, commitEditingStyleq editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

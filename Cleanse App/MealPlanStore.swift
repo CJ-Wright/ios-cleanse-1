@@ -71,6 +71,7 @@ class MealPlanStore: NSObject {
         
         if let photoURL = meal.recipe?.imageURL {
             var tmpCount: Int
+            
             let request = NSURLRequest(URL:photoURL)
             print("Image starting download \(counter)...")
             tmpCount = counter
@@ -78,6 +79,7 @@ class MealPlanStore: NSObject {
             let task = session.dataTaskWithRequest(request){
                 (data, response, error) -> Void in
                 if let imageData = data as NSData? {
+                    print("----- PHOTO URL ------- \n\(photoURL)")
                     meal.recipe?.image = UIImage(data: imageData)!
                     print("Image done downloading \(tmpCount)")
                     MealPlanStore.imagesFinishedDownloadSet.remove(tmpCount)
@@ -155,7 +157,10 @@ class MealPlanStore: NSObject {
     
     func saveChanges() -> Bool {
         print("Saving meal plan to \(mealPlanArchiveURL.path!)")
-        return NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
+        let result = NSKeyedArchiver.archiveRootObject(MealPlanStore.currentMealPlan, toFile: mealPlanArchiveURL.path!)
+        print("Done saving")
+        return result
+        
     }
     
 }

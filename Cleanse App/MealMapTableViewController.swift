@@ -274,4 +274,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
+    
+    @IBAction func unwindToMealPlan(unwindSegue: UIStoryboardSegue) {
+        
+    }
 }

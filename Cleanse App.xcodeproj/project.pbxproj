@@ -683,6 +683,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = M42KU2936E;
 				INFOPLIST_FILE = "Cleanse App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nano-nimbus.Cleanse-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -702,6 +703,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = M42KU2936E;
 				INFOPLIST_FILE = "Cleanse App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nano-nimbus.Cleanse-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";

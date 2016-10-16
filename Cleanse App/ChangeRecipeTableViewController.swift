@@ -15,6 +15,10 @@ class ChangeRecipeTableViewController: UITableViewController {
     var mealIndex: Int = 0
     var dailyPlanIndex: Int = 0
     var meal: Meal?
+    var messageFrame = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    var initBegan = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,18 +88,25 @@ class ChangeRecipeTableViewController: UITableViewController {
                 // Change the recipe
                 let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
                     action in
-                    print("Change recipe")
-                    print("Changing Day \(self.dailyPlanIndex) and Meal Index \(self.mealIndex)")
+//                    print("Change recipe")
+//                    print("Changing Day \(self.dailyPlanIndex) and Meal Index \(self.mealIndex)")
                     let newRecipe = self.recipeArray[indexPath.row]
-                    print("BEFORE CHANGING RECIPE")
-                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
+//                    print("BEFORE CHANGING RECIPE")
+//                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
 
-                    print("After changing recipe")
+//                    print("After changing recipe")
                     MealPlanStore.currentMealPlan.changeMealRecipe(newRecipe ,dailyPlanIndex: self.dailyPlanIndex, mealIndex: self.mealIndex)
+//                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
+//                    print("New Recipe Name " + self.recipeArray[indexPath.row].name)
                     
-                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
-                    print("New Recipe Name " + self.recipeArray[indexPath.row].name)
-                    MealPlanStore.currentMealPlan.saveChanges()
+                    self.progressBarDisplayer("Saving Recipe", true)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        MealPlanStore.currentMealPlan.saveChanges()
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.messageFrame.removeFromSuperview()
+                        }
+                        self.performSegueWithIdentifier("unwindToMealPlan", sender: self)
+                    }
                 })
                 
                 alertController.addAction(cancelAction)
@@ -105,6 +116,24 @@ class ChangeRecipeTableViewController: UITableViewController {
                 presentViewController(alertController, animated: true, completion:nil)
             }
         }
+    }
+    
+    func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+        print(msg)
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 300, height: 50))
+        strLabel.text = msg
+        strLabel.textColor = UIColor.whiteColor()
+        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 180, y: view.frame.midY - 25 , width: 280, height: 50))
+        messageFrame.layer.cornerRadius = 15
+        messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        if indicator {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            activityIndicator.startAnimating()
+            messageFrame.addSubview(activityIndicator)
+        }
+        messageFrame.addSubview(strLabel)
+        view.addSubview(messageFrame)
     }
     
     /*

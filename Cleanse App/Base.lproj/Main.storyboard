@@ -236,8 +236,12 @@
                             <outlet property="delegate" destination="3dD-TO-gyX" id="QjB-Wz-9Bh"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="3hn-lg-FNB" kind="unwind" identifier="unwindToMealPlan" unwindAction="unwindToMealPlanWithUnwindSegue:" id="ari-SN-rUk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6T-ro-tUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3hn-lg-FNB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1087" y="428"/>
         </scene>
@@ -536,6 +540,26 @@
                                             <segue destination="EMs-Z7-7Mo" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="9Ji-7S-dOJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2mm-zp-CrD">
+                                        <rect key="frame" x="0.0" y="132" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2mm-zp-CrD" id="dnQ-sj-JXj">
+                                            <frame key="frameInset" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1O-wh-Qnw">
+                                                    <frame key="frameInset" minX="8" minY="8" width="304" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="21"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.0" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="moZ-jX-zZZ" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="CUS-x7-BLB"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -547,14 +571,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hr6-5O-ZqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1828" y="1039"/>
+            <point key="canvasLocation" x="-1828.125" y="1038.3802816901409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gsb-ZK-Qm8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yPk-Nm-R57" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5hE-9z-8vT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5hE-9z-8vT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -632,7 +656,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="huc-z5-oew" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SbF-bv-mWb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SbF-bv-mWb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -650,7 +674,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qyz-tz-eOL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7WC-bh-fHN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7WC-bh-fHN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -702,7 +726,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7J-mi-CfN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2s-gs-I3P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="v2s-gs-I3P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -715,12 +739,77 @@
             </objects>
             <point key="canvasLocation" x="-818" y="1540"/>
         </scene>
+        <!--Purchases Table View Controller-->
+        <scene sceneID="e6S-4Q-Pat">
+            <objects>
+                <tableViewController id="WFQ-FH-8EO" customClass="PurchasesTableViewController" customModule="Cleanse_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="194" sectionHeaderHeight="28" sectionFooterHeight="28" id="92i-Aw-CbH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="194" id="PCc-MX-rMU">
+                                <rect key="frame" x="0.0" y="92" width="320" height="194"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PCc-MX-rMU" id="uM2-Ux-Mvj">
+                                    <frame key="frameInset" width="320" height="193"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foH-4p-iuJ" userLabel="RecipeList">
+                                            <frame key="frameInset" minX="101" minY="35" width="216" height="151"/>
+                                            <string key="text">Avocado Egg SaladBasque Lamb StewBlack Bean Quinoa Veggie BurgerChicken Chili Fajita BowlChile Verde (Slow Cooker Pork and Green Chile StewD-Burn Recipe Italian WonderH-Burn Recipe Basil ShrimpH-Burn-Crunchy Thai SaladI-Burn Recipe Halibut with VegetablesLamb stew In a JiffyRoasted Chicken, Avocado &amp; Grapefruit Salad</string>
+                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72M-La-kcP" userLabel="RecipeTitle">
+                                            <string key="text">Assortment of Recipes Set 1</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avocado-egg-salad-1" translatesAutoresizingMaskIntoConstraints="NO" id="r8E-8N-aAq" userLabel="RecipeImage">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="88" id="3Kf-Cs-dKx"/>
+                                                <constraint firstAttribute="height" constant="73" id="Q3o-Qc-dPg"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="r8E-8N-aAq" firstAttribute="top" secondItem="uM2-Ux-Mvj" secondAttribute="topMargin" constant="55" id="ERz-Jk-SfY"/>
+                                        <constraint firstItem="72M-La-kcP" firstAttribute="leading" secondItem="uM2-Ux-Mvj" secondAttribute="leadingMargin" constant="93" id="NTA-UG-dHh"/>
+                                        <constraint firstItem="foH-4p-iuJ" firstAttribute="top" secondItem="72M-La-kcP" secondAttribute="bottom" constant="6" id="U6a-gv-bai"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="r8E-8N-aAq" secondAttribute="bottom" constant="49" id="Vxm-4g-Zup"/>
+                                        <constraint firstItem="r8E-8N-aAq" firstAttribute="leading" secondItem="uM2-Ux-Mvj" secondAttribute="leadingMargin" constant="-3" id="jW2-9G-sQR"/>
+                                        <constraint firstItem="foH-4p-iuJ" firstAttribute="leading" secondItem="r8E-8N-aAq" secondAttribute="trailing" constant="8" id="vlL-ab-0GU"/>
+                                        <constraint firstAttribute="topMargin" secondItem="72M-La-kcP" secondAttribute="top" id="wg2-Ur-1bd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="WFQ-FH-8EO" id="ReV-TG-cPw"/>
+                            <outlet property="delegate" destination="WFQ-FH-8EO" id="NP5-y6-Wcj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2LG-bS-hML">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Q3S-bE-4ro"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="Q3S-bE-4ro" id="PKL-sH-SJx"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uv7-b0-nz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-427.5" y="2245.7746478873241"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="y6f-So-bZt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EMs-Z7-7Mo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ta3-NJ-2Xs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ta3-NJ-2Xs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -733,12 +822,31 @@
             </objects>
             <point key="canvasLocation" x="-818.39999999999998" y="147.97601199400302"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wVB-fb-X9P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="moZ-jX-zZZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="d8v-ZA-RoJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WFQ-FH-8EO" kind="relationship" relationship="rootViewController" id="i6M-oW-KZa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdj-Q3-pNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1223" y="2246"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Avocado-egg-salad-1" width="1200" height="949"/>
         <image name="Gingered Shrimp and Veggie Stir Fry Credit Miki Duisterhof" width="1616" height="2156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yRh-oh-scx"/>
+        <segue reference="x9E-tJ-vHX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

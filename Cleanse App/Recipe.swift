@@ -43,6 +43,7 @@ class Recipe: NSObject, NSCoding {
         self.numIngredients = ingredients.count
         self.recipeID = recipeID
         self.serves = serves
+        self.imageURL = imageURL
     }
     
     // MARK: NSCoding
@@ -92,7 +93,7 @@ class Recipe: NSObject, NSCoding {
         aCoder.encodeObject(self.image, forKey: "image")
         aCoder.encodeObject(self.ingredients, forKey: "ingredients")
         aCoder.encodeObject(self.recipeID, forKey: "recipeID")
-        print("Encoding serves \(self.serves)")
+//        print("Encoding serves \(self.serves)")
         aCoder.encodeObject(self.serves, forKey: "serves")
         aCoder.encodeObject(self.imageURL, forKey: "imageURL")
     }

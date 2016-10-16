@@ -16,6 +16,8 @@ class MealPlan: NSObject, NSCoding {
     var days: NSMutableArray
     var mealPlanID: String
     var startingDate: NSDate
+    var finishedSave: Bool?
+    var saveResult: Bool?
     
     
     override init(){
@@ -51,24 +53,17 @@ class MealPlan: NSObject, NSCoding {
         return documentDirectory.URLByAppendingPathComponent("mealplans.archive")!
     }()
     
-    /*func addDailyPlan(inout meals: [Meal], dayNum: Int, atAGlance: [String])
-    {
-        let dailyPlan = DailyPlan(dayNum: dayNum, meals: meals, atAGlance: atAGlance)
-        self.days.addObject(dailyPlan)
-    }*/
-    
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){
         guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
             let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
-//            let numberOfDays = decoder.decodeObjectForKey("numberOfDays") as? Int,
             let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String,
             let startingDate = decoder.decodeObjectForKey("startingDate") as? NSDate
-        else {
-            print("Failed to init [ Meal Plan ] from archiver")
-            return nil
+            else {
+//                print("Failed to init [ Meal Plan ] from archiver")
+                return nil
         }
-        print("[Meal Plan] Success!")
+//        print("[Meal Plan] Success!")
         
         self.init(
             name:mealPlanName,
@@ -80,9 +75,8 @@ class MealPlan: NSObject, NSCoding {
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
+//        print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
         aCoder.encodeObject(self.mealPlanName, forKey: "mealPlanName")
-//        aCoder.encodeObject(self.numberOfDays, forKey: "numberOfDays")
         aCoder.encodeInt(Int32(self.numberOfDays), forKey: "numberOfDays")
         aCoder.encodeObject(self.days, forKey: "days")
         aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
@@ -90,14 +84,18 @@ class MealPlan: NSObject, NSCoding {
     }
     
     func changeMealRecipe(recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
-        print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
+//        print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
         ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
     }
     
     
     func saveChanges() -> Bool {
-        print("Saving meal plan to \(mealPlanArchiveURL.path!)")
-        return NSKeyedArchiver.archiveRootObject(self, toFile: mealPlanArchiveURL.path!)
+//        print("Saving meal plan to \(mealPlanArchiveURL.path!)")
+        self.finishedSave = false
+        self.saveResult = NSKeyedArchiver.archiveRootObject(self, toFile: mealPlanArchiveURL.path!)
+//        print("Done saving meal plan")
+        self.finishedSave = false
+        return self.saveResult!
     }
     
 }

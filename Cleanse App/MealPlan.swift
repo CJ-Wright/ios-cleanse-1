@@ -18,7 +18,7 @@ class MealPlan: NSObject, NSCoding {
     var startingDate: NSDate
     var finishedSave: Bool?
     var saveResult: Bool?
-    
+     
     
     override init(){
         self.mealPlanName = "Sample Meal Plan"
@@ -41,7 +41,13 @@ class MealPlan: NSObject, NSCoding {
         self.numberOfDays = numberOfDays
         self.days = days
         self.mealPlanID = mealPlanID
-        self.startingDate = NSDate()
+        
+        let date: NSDate = NSDate()
+        let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        
+//        let newDate: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
+//        self.startingDate = newDate
+        self.startingDate = cal.startOfDayForDate(date)
     }
     
     

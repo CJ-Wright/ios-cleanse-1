@@ -43,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         mealPlanStore.initMealPlan(user!)
+
+        MealPlanStore.currentDay = Int(MealPlanStore.currentMealPlan.startingDate.timeIntervalSinceNow ) / 60 / 60 / 24
+        print("Time Interval \(MealPlanStore.currentDay)")
+        
         return true
     }
     

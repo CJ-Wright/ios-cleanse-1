@@ -18,6 +18,7 @@ class DailyPlan: NSObject, NSCoding {
     var detoxFacts: String
     var dailyInspiration: String
     var amountDrank: Int
+    var minShakesForDay: Int?
     
     override init(){
         self.atAGlanceInstruction = ""
@@ -28,6 +29,7 @@ class DailyPlan: NSObject, NSCoding {
         self.meals = NSMutableArray()
         self.atAGlance = NSMutableArray()
         self.amountDrank = 0
+        self.minShakesForDay = 0
     }
     
     init(dayNum: Int, meals: NSMutableArray, atAGlance: NSMutableArray, amountDrank: Int, atAGlanceInstruction:String, detoxFacts:String, tipOfTheDay:String, dailyInspiration:String){
@@ -42,8 +44,12 @@ class DailyPlan: NSObject, NSCoding {
         for meal in meals {
             self.meals.addObject(meal)
         }
-        for aString in atAGlance{
+        for aString in atAGlance {
             self.atAGlance.addObject(aString)
+            // Determine nShakes
+            if (aString as! String).containsString("Shakes") {
+                self.minShakesForDay = Int(String((aString as! String)[(aString as! String).startIndex]))!
+            }
         }
     }
     

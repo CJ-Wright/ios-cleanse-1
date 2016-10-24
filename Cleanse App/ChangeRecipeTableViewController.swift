@@ -88,16 +88,8 @@ class ChangeRecipeTableViewController: UITableViewController {
                 // Change the recipe
                 let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
                     action in
-//                    print("Change recipe")
-//                    print("Changing Day \(self.dailyPlanIndex) and Meal Index \(self.mealIndex)")
                     let newRecipe = self.recipeArray[indexPath.row]
-//                    print("BEFORE CHANGING RECIPE")
-//                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
-
-//                    print("After changing recipe")
                     MealPlanStore.currentMealPlan.changeMealRecipe(newRecipe ,dailyPlanIndex: self.dailyPlanIndex, mealIndex: self.mealIndex)
-//                    print("Recipe Name \(((MealPlanStore.currentMealPlan.days[self.dailyPlanIndex] as! DailyPlan).meals[self.mealIndex] as! Meal).recipe!.name)")
-//                    print("New Recipe Name " + self.recipeArray[indexPath.row].name)
                     
                     self.progressBarDisplayer("Saving Recipe", true)
                     dispatch_async(dispatch_get_main_queue()) {

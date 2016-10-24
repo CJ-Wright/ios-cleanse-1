@@ -19,14 +19,13 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     var currentDay = 1
     var numDaysInPlan = 10
     var mealIndex: Int?
+    var numShakes = 0
     
     let cellIdentifiers = ["Breakfast","Snack","Lunch","Snack","Dinner"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.tableView.alwaysBounceVertical = false
-        
+        self.currentDay = MealPlanStore.currentDay + 1
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
@@ -81,7 +80,6 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // Initialize the swipe left gesture to change days
-        
         if indexPath.row == 5{
             
             let cell = self.tableView.dequeueReusableCellWithIdentifier("WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
@@ -128,6 +126,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                         if let meal = day.meals[indexPath.row] as? Meal {
                             image = meal.recipe!.image
                             mealName = meal.recipe!.name
+                            print("Meal Name \(mealName)")
+                            if mealName.containsString("Cleanse") {
+                                print("Contained Cleanse")
+                                self.numShakes += 1
+                            }
                         }
                     }
                 }
@@ -136,6 +139,11 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                         image = (day.meals[indexPath.row] as! Meal).recipe!.image
                         mealName = (day.meals[indexPath.row] as! Meal).recipe!.name
+                        print("Meal Name \(mealName)")
+                        if mealName.containsString("Cleanse") {
+                            print("Contained Cleanse")
+                            numShakes += 1
+                        }
                     }
                 }
             }
@@ -150,7 +158,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     // Changes the current day to the next day in the meal plan
     @IBAction func nextDayButton(sender: UIBarButtonItem) {
-        
+        self.numShakes = 0
         // Check to see if the current day is less than the number of days in a meal plan
         if currentDay < numDaysInPlan {
             currentDay += 1
@@ -164,7 +172,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     // Changes the current day to the previous day
     @IBAction func previousDayButton(sender: UIBarButtonItem) {
-        
+        self.numShakes = 0
         // Check to see if the current day is greater than the first day in the meal plan
         if currentDay > 1 {
             currentDay -= 1
@@ -226,9 +234,17 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 // Change the recipe
                 let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
                     action in
-                    print("Change recipe")
+                    
                     self.mealIndex = indexPath.row
-                    self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                    if ((((MealPlanStore.currentMealPlan.days[self.currentDay - 1] as! DailyPlan).meals[indexPath.row] as! Meal).recipe!.name.containsString("Cleanse"))) {
+                        if self.numShakes == (MealPlanStore.currentMealPlan.days[self.currentDay - 1] as! DailyPlan).minShakesForDay! {
+                            // TODO: Need to implement a modal that says can't do less than the required minimum number of shakes
+                        } else {
+                            self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                        }
+                    } else {
+                        self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                    }
                 })
                 
                 alertController.addAction(cancelAction)
@@ -267,6 +283,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
             selectNewRecipeController.dailyPlanIndex = currentDay - 1
             selectNewRecipeController.mealIndex = self.mealIndex!
+            self.numShakes = 0
         }
     }
     

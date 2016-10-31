@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class PurchasesTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -42,6 +43,9 @@ class PurchasesTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
+    
+    
+    
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

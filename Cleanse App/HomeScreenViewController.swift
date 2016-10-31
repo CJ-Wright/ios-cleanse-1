@@ -20,6 +20,11 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if MealPlanStore.currentDay < 0 {
+            MealPlanStore.resetPlanDay()
+            
+        }
+        
         atAGlanceDesc.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).atAGlanceInstruction
         detoxFactLabel.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).detoxFacts
         tipOfTheDayLabel.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).tipOfTheDay

@@ -104,4 +104,7 @@ class MealPlan: NSObject, NSCoding {
         return self.saveResult!
     }
     
+    func resetStartDay() {
+        self.startingDate = NSDate()
+    }
 }

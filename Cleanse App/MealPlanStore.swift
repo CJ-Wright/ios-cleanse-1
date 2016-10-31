@@ -163,4 +163,8 @@ class MealPlanStore: NSObject {
         
     }
     
+    static func resetPlanDay() {
+        MealPlanStore.currentMealPlan.resetStartDay()
+        MealPlanStore.currentDay = Int(MealPlanStore.currentMealPlan.startingDate.timeIntervalSinceNow ) / 60 / 60 / 24
+    }
 }

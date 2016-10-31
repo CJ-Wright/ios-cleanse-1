@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import StoreKit
 
 class RecipeStore: NSObject {
-    
+
     static let sharedInstance = RecipeStore()
     static var recipesReceived = false
     static var recipeSet = Set<Recipe>()

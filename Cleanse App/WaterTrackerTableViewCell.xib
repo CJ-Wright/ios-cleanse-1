@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,11 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="2247" height="1186"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="2247" height="1185.5"/>
+                <frame key="frameInset" width="2247" height="1185"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqN-8m-LBZ">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="381" height="395"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="OlG-wF-0jE"/>
                         </constraints>
@@ -33,7 +33,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWU-KI-Gpn">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="198" height="257"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="duK-FQ-UPd"/>
                         </constraints>
@@ -43,7 +43,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5U-4d-Grl">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="340" height="329"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="isL-3R-ifk"/>
                         </constraints>
@@ -53,7 +53,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-Dv-lkZ">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="298" height="338"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="Spg-06-y74"/>
                         </constraints>
@@ -63,13 +63,13 @@
                         </connections>
                     </button>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Pgs-sC-6u9">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="363" height="1000"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="qCx-zb-qr7"/>
                         </constraints>
                     </progressView>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-Mb-l2n">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" minX="403" minY="239" width="79" height="85"/>
                         <color key="backgroundColor" red="0.26666666666666666" green="0.48627450980392156" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="89" id="Utz-3U-7Jg"/>
@@ -81,7 +81,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfN-cb-1zj">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="428" height="294"/>
                         <color key="backgroundColor" red="0.26666666666666666" green="0.48627450980392156" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="YKN-Te-Toh"/>
@@ -94,31 +94,31 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="8 oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-t2-lSd">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="381" height="338"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="16 oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdQ-07-JBC">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="395" height="294"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="24 oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgv-kh-MIO">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="482" height="358"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="32 oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biH-jV-ixV">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="453" height="423"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add single oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhj-iI-8yC">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="148" height="125"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="scd-G1-u29"/>
                         </constraints>
@@ -127,7 +127,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="You have # to go!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idq-Ia-TCy">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="395" height="380"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="BFo-Ez-xWr"/>
                         </constraints>
@@ -136,7 +136,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Goal: 85 Oz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paO-84-psB">
-                        <frame key="frameInset" width="1000" height="1000"/>
+                        <frame key="frameInset" width="381" height="423"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

@@ -31,6 +31,7 @@
 		32A2B2F31CF113E3005CDC0E /* Cleanse_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2F21CF113E3005CDC0E /* Cleanse_AppTests.swift */; };
 		32A2B2FE1CF113E4005CDC0E /* Cleanse_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2B2FD1CF113E4005CDC0E /* Cleanse_AppUITests.swift */; };
 		32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */; };
+		32C0341D1DC7033C00A4E1BA /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0341C1DC7033C00A4E1BA /* ProductTableViewCell.swift */; };
 		32C400141D1DC8E10082AB0C /* MealMapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */; };
 		32D10A931DA9E6F3003DA1A3 /* Introduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D10A921DA9E6F3003DA1A3 /* Introduction.storyboard */; };
 		32D10A951DA9EAC0003DA1A3 /* FinalIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D10A941DA9EAC0003DA1A3 /* FinalIntroductionViewController.swift */; };
@@ -109,6 +110,7 @@
 		32A2B2FF1CF113E4005CDC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A3A2511D2176C2000FC321 /* BAFluidView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BAFluidView.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Cleanse_App-beapgjdvrponvoffzrvsyeawowil/Build/Products/Debug-iphonesimulator/BAFluidView/BAFluidView.framework"; sourceTree = "<group>"; };
 		32BE58A51D7E2664009DFA8B /* FmcSpringAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FmcSpringAPI.swift; sourceTree = "<group>"; };
+		32C0341C1DC7033C00A4E1BA /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewCell.swift; path = ../ProductTableViewCell.swift; sourceTree = "<group>"; };
 		32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewController.swift; sourceTree = "<group>"; };
 		32D10A921DA9E6F3003DA1A3 /* Introduction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Introduction.storyboard; sourceTree = "<group>"; };
 		32D10A941DA9EAC0003DA1A3 /* FinalIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIntroductionViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				32C400131D1DC8E10082AB0C /* MealMapTableViewController.swift */,
 				329E5A321D8BB24000C3BB28 /* Protocols.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
+				32C0341C1DC7033C00A4E1BA /* ProductTableViewCell.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 				32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */,
@@ -525,6 +528,7 @@
 				32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */,
 				328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
+				32C0341D1DC7033C00A4E1BA /* ProductTableViewCell.swift in Sources */,
 				3272BB891D84AB950018B367 /* ChangeRecipeTableViewController.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
 				32FB6EF91DC69BB900CC79A0 /* RecipeProducts.swift in Sources */,

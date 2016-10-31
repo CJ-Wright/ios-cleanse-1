@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PurchasesTableViewController: UITableViewController {
+class PurchasesTableViewController: UITableViewController, SKPaymentTransactionObserver {
     @IBOutlet var menuButton: UIBarButtonItem!
 
     override func viewDidLoad() {

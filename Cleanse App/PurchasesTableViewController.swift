@@ -12,6 +12,7 @@ import StoreKit
 class PurchasesTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    let showDetailSegueIdentifier = "showDetail"
     var products = [SKProduct]()
     
     override func viewDidLoad() {
@@ -100,7 +101,7 @@ class PurchasesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
         
         let product = products[(indexPath as NSIndexPath).row]
         
@@ -110,6 +111,37 @@ class PurchasesTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == showDetailSegueIdentifier {
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                return false
+            }
+            
+            let product = products[(indexPath as NSIndexPath).row]
+            
+            return RecipeSetProducts.store.isProductPurchased(product.productIdentifier)
+        }
+        
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showDetailSegueIdentifier {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let product = products[(indexPath as NSIndexPath).row]
+            
+            if resourceNameForProductIdentifier(product.productIdentifier) != nil{
+                print("Merp")
+                /*
+                let detailViewController = segue.destination as? DetailViewController {
+                let image = UIImage(named: name)
+                detailViewController.image = image
+                */
+            }
+        }
     }
     
     /*

@@ -51,7 +51,8 @@
 		32F923941D00302F0069D49D /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923931D00302F0069D49D /* RecipeStore.swift */; };
 		32F923961D003F940069D49D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F923951D003F940069D49D /* ImageStore.swift */; };
 		32FB6EF71DC6975000CC79A0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FB6EF61DC6975000CC79A0 /* StoreKit.framework */; };
-		32FB6EF91DC69BB900CC79A0 /* RecipeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB6EF81DC69BB900CC79A0 /* RecipeProduct.swift */; };
+		32FB6EF91DC69BB900CC79A0 /* RecipeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB6EF81DC69BB900CC79A0 /* RecipeProducts.swift */; };
+		32FB6EFD1DC6E55600CC79A0 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB6EFC1DC6E55600CC79A0 /* IAPHelper.swift */; };
 		32FC27591D205A1E00DB3C99 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC27581D205A1E00DB3C99 /* CoreGraphics.framework */; };
 		32FC275B1D205A2600DB3C99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275A1D205A2600DB3C99 /* UIKit.framework */; };
 		32FC275D1D205A2F00DB3C99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FC275C1D205A2F00DB3C99 /* Foundation.framework */; };
@@ -130,7 +131,8 @@
 		32F923931D00302F0069D49D /* RecipeStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		32F923951D003F940069D49D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		32FB6EF61DC6975000CC79A0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		32FB6EF81DC69BB900CC79A0 /* RecipeProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeProduct.swift; sourceTree = "<group>"; };
+		32FB6EF81DC69BB900CC79A0 /* RecipeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeProducts.swift; sourceTree = "<group>"; };
+		32FB6EFC1DC6E55600CC79A0 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		32FC27581D205A1E00DB3C99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32FC275A1D205A2600DB3C99 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32FC275C1D205A2F00DB3C99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -256,7 +258,7 @@
 				3272BB981D84C6C80018B367 /* Xib Files */,
 				323195241D7B8B8900A18D16 /* UIElements */,
 				32DDBB3F1D36EEF300A6A065 /* Fonts */,
-				32F6A9AA1D1F12FE00047A51 /* Objects */,
+				32F6A9AA1D1F12FE00047A51 /* Classes */,
 				323588621D0DC7CD00EB861F /* Resources */,
 				32F923971D0041030069D49D /* Stores */,
 				32F9238E1D0022C00069D49D /* ViewControllers */,
@@ -300,16 +302,17 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		32F6A9AA1D1F12FE00047A51 /* Objects */ = {
+		32F6A9AA1D1F12FE00047A51 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				32F923911D002D4A0069D49D /* Recipe.swift */,
+				32FB6EFC1DC6E55600CC79A0 /* IAPHelper.swift */,
 				32F6A9A61D1F092200047A51 /* User.swift */,
 				32F5E90E1D20DE9E006D9F75 /* Meal.swift */,
 				32F6A9A81D1F128200047A51 /* MealPlan.swift */,
 				32F5E9101D20E647006D9F75 /* DailyPlan.swift */,
 			);
-			name = Objects;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		32F9238D1D0021800069D49D /* SWRevealView */ = {
@@ -349,7 +352,7 @@
 			children = (
 				32F923951D003F940069D49D /* ImageStore.swift */,
 				32F923931D00302F0069D49D /* RecipeStore.swift */,
-				32FB6EF81DC69BB900CC79A0 /* RecipeProduct.swift */,
+				32FB6EF81DC69BB900CC79A0 /* RecipeProducts.swift */,
 				32E43F7A1D56A7F700D664B5 /* UserStore.swift */,
 				32F5E90C1D20CEB8006D9F75 /* MealPlanStore.swift */,
 			);
@@ -524,7 +527,7 @@
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
 				3272BB891D84AB950018B367 /* ChangeRecipeTableViewController.swift in Sources */,
 				32FC27611D205B8E00DB3C99 /* WaterTrackerViewController.swift in Sources */,
-				32FB6EF91DC69BB900CC79A0 /* RecipeProduct.swift in Sources */,
+				32FB6EF91DC69BB900CC79A0 /* RecipeProducts.swift in Sources */,
 				32F5E90F1D20DE9E006D9F75 /* Meal.swift in Sources */,
 				326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */,
 				32E43F7B1D56A7F700D664B5 /* UserStore.swift in Sources */,
@@ -539,6 +542,7 @@
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,
 				329E5A301D8BA67D00C3BB28 /* ChangeRecipeTableViewCell.swift in Sources */,
+				32FB6EFD1DC6E55600CC79A0 /* IAPHelper.swift in Sources */,
 				32F923961D003F940069D49D /* ImageStore.swift in Sources */,
 				32F2F4641D1E178B00AFE68F /* MealDetailsTableViewController.swift in Sources */,
 				32F5E90D1D20CEB8006D9F75 /* MealPlanStore.swift in Sources */,

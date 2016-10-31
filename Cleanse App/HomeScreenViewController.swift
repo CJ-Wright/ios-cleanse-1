@@ -20,9 +20,8 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if MealPlanStore.currentDay < 0 {
+        if MealPlanStore.currentDay < 0 || MealPlanStore.currentDay > 9 {
             MealPlanStore.resetPlanDay()
-            
         }
         
         atAGlanceDesc.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).atAGlanceInstruction

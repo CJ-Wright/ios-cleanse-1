@@ -66,11 +66,12 @@ class DailyPlan: NSObject, NSCoding {
                 return nil
         }
         
+        /*
         guard let amountDrank = decoder.decodeObject(forKey: "amountDrank") as? Int
             else {
                 print("Failed to decode amount drank in daily plan")
                 return nil
-        }
+        }*/
         
         guard let atAGlanceInstruction = decoder.decodeObject(forKey: "atAGlanceInstruction") as? String,
             let detoxFacts = decoder.decodeObject(forKey: "detoxFacts") as? String,
@@ -86,7 +87,7 @@ class DailyPlan: NSObject, NSCoding {
             dayNum: decoder.decodeInteger(forKey: "dayNumber"),
             meals: mealsArray,
             atAGlance: atAGlance,
-            amountDrank: amountDrank,
+            amountDrank: decoder.decodeInteger(forKey: "amountDrank"),
             atAGlanceInstruction: atAGlanceInstruction,
             detoxFacts: detoxFacts,
             tipOfTheDay: tipOfTheDay,
@@ -99,7 +100,7 @@ class DailyPlan: NSObject, NSCoding {
         aCoder.encode(self.dayNumber, forKey: "dayNumber")
         aCoder.encode(self.meals, forKey: "meals")
         aCoder.encode(self.atAGlance, forKey: "atAGlance")
-        aCoder.encode(self.amountDrank, forKey: "amountDrank")
+        aCoder.encode(Int32(self.amountDrank), forKey: "amountDrank")
         aCoder.encode(self.atAGlanceInstruction, forKey: "atAGlanceInstruction")
         aCoder.encode(self.detoxFacts, forKey:"detoxFacts")
         aCoder.encode(self.tipOfTheDay, forKey:"tipOfTheDay")

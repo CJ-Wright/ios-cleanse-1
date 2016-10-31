@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PurchasesTableViewController: UITableViewController, SKPaymentTransactionObserver {
+class PurchasesTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -34,12 +34,12 @@ class PurchasesTableViewController: UITableViewController, SKPaymentTransactionO
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }

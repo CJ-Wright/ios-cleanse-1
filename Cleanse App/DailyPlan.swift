@@ -42,12 +42,12 @@ class DailyPlan: NSObject, NSCoding {
         self.detoxFacts = detoxFacts
         self.dailyInspiration = dailyInspiration
         for meal in meals {
-            self.meals.addObject(meal)
+            self.meals.add(meal)
         }
         for aString in atAGlance {
-            self.atAGlance.addObject(aString)
+            self.atAGlance.add(aString)
             // Determine nShakes
-            if (aString as! String).containsString("Shakes") {
+            if (aString as! String).contains("Shakes") {
                 self.minShakesForDay = Int(String((aString as! String)[(aString as! String).startIndex]))!
             }
         }
@@ -56,26 +56,26 @@ class DailyPlan: NSObject, NSCoding {
     // MARK: NSCoding
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let mealsArray = decoder.decodeObjectForKey("meals") as? NSMutableArray else {
+        guard let mealsArray = decoder.decodeObject(forKey: "meals") as? NSMutableArray else {
             print("Failed to Meals Array Daily Plan from archiver")
             return nil
         }
-        guard let atAGlance = decoder.decodeObjectForKey("atAGlance") as? NSMutableArray
+        guard let atAGlance = decoder.decodeObject(forKey: "atAGlance") as? NSMutableArray
             else {
                 print("Failed to At A Glance Daily Plan from archiver")
                 return nil
         }
         
-        guard let amountDrank = decoder.decodeObjectForKey("amountDrank") as? Int
+        guard let amountDrank = decoder.decodeObject(forKey: "amountDrank") as? Int
             else {
                 print("Failed to decode amount drank in daily plan")
                 return nil
         }
         
-        guard let atAGlanceInstruction = decoder.decodeObjectForKey("atAGlanceInstruction") as? String,
-            let detoxFacts = decoder.decodeObjectForKey("detoxFacts") as? String,
-            let tipOfTheDay = decoder.decodeObjectForKey("tipOfTheDay") as? String,
-            let dailyInspiration = decoder.decodeObjectForKey("dailyInspiration") as? String else {
+        guard let atAGlanceInstruction = decoder.decodeObject(forKey: "atAGlanceInstruction") as? String,
+            let detoxFacts = decoder.decodeObject(forKey: "detoxFacts") as? String,
+            let tipOfTheDay = decoder.decodeObject(forKey: "tipOfTheDay") as? String,
+            let dailyInspiration = decoder.decodeObject(forKey: "dailyInspiration") as? String else {
                 print("Failed to decode a string in a daily plan")
                 return nil
         }
@@ -83,7 +83,7 @@ class DailyPlan: NSObject, NSCoding {
         
         
         self.init(
-            dayNum: decoder.decodeIntegerForKey("dayNumber"),
+            dayNum: decoder.decodeInteger(forKey: "dayNumber"),
             meals: mealsArray,
             atAGlance: atAGlance,
             amountDrank: amountDrank,
@@ -94,20 +94,20 @@ class DailyPlan: NSObject, NSCoding {
         )
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         //        aCoder.encodeObject(self.dayNumber, forKey: "dayNumber")
-        aCoder.encodeInteger(self.dayNumber, forKey: "dayNumber")
-        aCoder.encodeObject(self.meals, forKey: "meals")
-        aCoder.encodeObject(self.atAGlance, forKey: "atAGlance")
-        aCoder.encodeObject(self.amountDrank, forKey: "amountDrank")
-        aCoder.encodeObject(self.atAGlanceInstruction, forKey: "atAGlanceInstruction")
-        aCoder.encodeObject(self.detoxFacts, forKey:"detoxFacts")
-        aCoder.encodeObject(self.tipOfTheDay, forKey:"tipOfTheDay")
-        aCoder.encodeObject(self.dailyInspiration, forKey: "dailyInspiration")
+        aCoder.encode(self.dayNumber, forKey: "dayNumber")
+        aCoder.encode(self.meals, forKey: "meals")
+        aCoder.encode(self.atAGlance, forKey: "atAGlance")
+        aCoder.encode(self.amountDrank, forKey: "amountDrank")
+        aCoder.encode(self.atAGlanceInstruction, forKey: "atAGlanceInstruction")
+        aCoder.encode(self.detoxFacts, forKey:"detoxFacts")
+        aCoder.encode(self.tipOfTheDay, forKey:"tipOfTheDay")
+        aCoder.encode(self.dailyInspiration, forKey: "dailyInspiration")
         
     }
     
-    func updateAmountDrank(amountDrank: Int){
+    func updateAmountDrank(_ amountDrank: Int){
         self.amountDrank = amountDrank
     }
 }

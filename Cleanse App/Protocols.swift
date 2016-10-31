@@ -9,5 +9,5 @@
 import Foundation
 
 protocol changeRecipeDelegate {
-    func changeMealRecipe(recipe:Recipe) -> Recipe
+    func changeMealRecipe(_ recipe:Recipe) -> Recipe
 }

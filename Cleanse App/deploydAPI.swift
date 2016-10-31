@@ -13,36 +13,36 @@ enum Method: String {
 }
 
 enum RecipeResult {
-    case Success([Recipe])
-    case Failure(ErrorType)
+    case success([Recipe])
+    case failure(Error)
 }
 
 enum MealPlanResult {
     //    case Success([MealPlan])
-    case Success(NSMutableArray)
-    case Failure(ErrorType)
+    case success(NSMutableArray)
+    case failure(Error)
 }
 
-enum DeploydError: ErrorType {
-    case InvalidJSONData
+enum DeploydError: Error {
+    case invalidJSONData
 }
 struct DeploydAPI {
     // The base url of the server to make the requests from
     //    private static let baseURLString = "http://52.52.65.150:3000" // <- This is my current aws server
     //    private static let baseURLString = "http://ec2-52-90-78-109.compute-1.amazonaws.com:2403"  // <- This is Anthony's server
-    private static let baseURLString = "http://52.52.65.150:8080"
+    fileprivate static let baseURLString = "http://52.52.65.150:8080"
     
     // Empty APIKey for the moment being
-    private static let APIKey = ""
+    fileprivate static let APIKey = ""
     
     // This function will return the url endpoint of the API server which is used for storing the Recipes and the Meal Plans
-    private static func deploydURL(method method: Method, parameters: [String:String]?) -> NSURL {
+    fileprivate static func deploydURL(method: Method, parameters: [String:String]?) -> URL {
         
         // Base component for the NSURL
-        let components = NSURLComponents(string: baseURLString)!
+        let components = URLComponents(string: baseURLString)!
         
         // Array of NSURLQuery Items to be sent along with the requests
-        var queryItems = [NSURLQueryItem]()
+        var queryItems = [URLQueryItem]()
         
         // This may not be needed to make rest calls for our application at the moment.
         let baseParams = [
@@ -51,27 +51,27 @@ struct DeploydAPI {
         /* Once the API key has been established then the key:value pair "api_key" : APIKey can be added to the baseParams array */
         
         for (key, value) in baseParams {
-            let item = NSURLQueryItem(name: key, value: value)
+            let item = URLQueryItem(name: key, value: value)
             queryItems.append(item)
         }
         
         // This will append any additional items given for when requesting the URL for the deployd server
         if let additionalParams = parameters {
             for(key, value) in additionalParams {
-                let item = NSURLQueryItem(name: key, value: value)
+                let item = URLQueryItem(name: key, value: value)
                 queryItems.append(item)
             }
         }
-        return components.URL!
+        return components.url!
     }
     
     // MARK: - URL GET API Methods
     
-    static func recipesURL() -> NSURL {
+    static func recipesURL() -> URL {
         
         // Base URL with the recipes API request call appended to the end of it
-        let components = NSURLComponents(string: baseURLString + "/recipes")!
-        var queryItems = [NSURLQueryItem]()
+        let components = URLComponents(string: baseURLString + "/recipes")!
+        var queryItems = [URLQueryItem]()
         
         // Base parameters
         let baseParams = [
@@ -81,19 +81,19 @@ struct DeploydAPI {
         
         // Append the base parameters to the NSQueryItems array
         for (key, value) in baseParams {
-            let item = NSURLQueryItem(name: key, value: value)
+            let item = URLQueryItem(name: key, value: value)
             queryItems.append(item)
         }
         
-        return components.URL!
+        return components.url!
     }
     
-    static func mealPlansURL() -> NSURL {
+    static func mealPlansURL() -> URL {
         
         // Base URL with the recipes API request call appended to the end of it
         //        let components = NSURLComponents(string: baseURLString + "/meal-plans")!
-        let components = NSURLComponents(string: baseURLString + "/mealplan")!
-        var queryItems = [NSURLQueryItem]()
+        let components = URLComponents(string: baseURLString + "/mealplan")!
+        var queryItems = [URLQueryItem]()
         
         // Base parameters
         let baseParams = [
@@ -103,19 +103,19 @@ struct DeploydAPI {
         
         // Append the base parameters to the NSQueryItems array
         for (key, value) in baseParams {
-            let item = NSURLQueryItem(name: key, value: value)
+            let item = URLQueryItem(name: key, value: value)
             queryItems.append(item)
         }
         
-        return components.URL!
+        return components.url!
     }
     
     // MARK: - JSON Methods
     // MARK: Recipes From JSON Methods
-    static func recipesFromJSONData(data: NSData) -> RecipeResult {
+    static func recipesFromJSONData(_ data: Data) -> RecipeResult {
         do {
             // Attempt to convert the json object into an AnyObject
-            let jsonObject:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            let jsonObject:Any = try JSONSerialization.jsonObject(with: data, options: [])
             
             // Create an array of recipes to store the converted JSON Objects
             var finalRecipes = [Recipe]()
@@ -127,21 +127,21 @@ struct DeploydAPI {
                 }
             }
             
-            if finalRecipes.count == 0 && jsonObject.count > 0 {
+            if finalRecipes.count == 0 && (jsonObject as AnyObject).count > 0 {
                 // We weren't able to parse any of the photso
                 // Maybe the JSON format for photos has changed
                 print("Failed to get final recipes")
-                return .Failure(DeploydError.InvalidJSONData)
+                return .failure(DeploydError.invalidJSONData)
             }
             
-            return .Success(finalRecipes)
+            return .success(finalRecipes)
         } catch let error {
-            return .Failure(error)
+            return .failure(error)
         }
     }
     
     // This will take a given JSON Object and constructs a recipe
-    static func recipeFromJSONObject(json:[String : AnyObject]) -> Recipe? {
+    static func recipeFromJSONObject(_ json:[String : AnyObject]) -> Recipe? {
         
         guard let recipeID = json["id"] as? String,
             let name = json["name"] as? String,
@@ -152,15 +152,15 @@ struct DeploydAPI {
                 print("Failed to parse json")
                 return nil
         }
-        let imageURL = NSURL(fileURLWithPath: imageURLString)
+        let imageURL = URL(fileURLWithPath: imageURLString)
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves, imageURL: imageURL)
     }
     
     // MARK: Meal Plans From JSON Methods
-    static func mealPlansFromJSONData(data: NSData) -> MealPlanResult {
+    static func mealPlansFromJSONData(_ data: Data) -> MealPlanResult {
         do {
             // Attempt to convert the json object into an AnyObject
-            let jsonObject:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            let jsonObject:Any = try JSONSerialization.jsonObject(with: data, options: [])
             
             // Create an array of recipes to store the converted JSON Objects
             let finalMealPlans = NSMutableArray()
@@ -170,25 +170,25 @@ struct DeploydAPI {
             
             //            print(mealPlan["MealPlan"])
             if let mealPlan = mealPlanFromJSONObject(mealPlanJson){
-                finalMealPlans.addObject(mealPlan)
+                finalMealPlans.add(mealPlan)
             }
             
-            if finalMealPlans.count == 0 && jsonObject.count > 0 {
+            if finalMealPlans.count == 0 && (jsonObject as AnyObject).count > 0 {
                 // We weren't able to parse any of the photso
                 // Maybe the JSON format for photos has changed
                 print("Failed to get final meal plans")
-                return .Failure(DeploydError.InvalidJSONData)
+                return .failure(DeploydError.invalidJSONData)
             }
             
-            return .Success(finalMealPlans)
+            return .success(finalMealPlans)
         } catch let error {
-            return .Failure(error)
+            return .failure(error)
         }
     }
     
     
     // This will take a given JSON Object and constructs a recipe
-    static func mealPlanFromJSONObject(mealPlanJson:[String : AnyObject]) -> MealPlan? {
+    static func mealPlanFromJSONObject(_ mealPlanJson:[String : AnyObject]) -> MealPlan? {
         
         guard let json = mealPlanJson["MealPlan"],
             let name = json["name"] as? String,
@@ -202,11 +202,11 @@ struct DeploydAPI {
         
         for dailyPlan in days {
             if let plan = dailyPlanFromJSONMealPlan(dailyPlan) {
-                totalPlans.addObject(plan)
+                totalPlans.add(plan)
             }
         }
         
-        let sortedPlans: NSMutableArray = NSMutableArray(array: totalPlans.sortedArrayUsingDescriptors([NSSortDescriptor(key:"dayNumber",ascending: false)]))
+        let sortedPlans: NSMutableArray = NSMutableArray(array: totalPlans.sortedArray(using: [NSSortDescriptor(key:"dayNumber",ascending: false)]))
         
         print(sortedPlans)
         let planID = "0"
@@ -215,7 +215,7 @@ struct DeploydAPI {
         return mealPlan
     }
     
-    static func dailyPlanFromJSONMealPlan(json:[String:AnyObject]) -> DailyPlan? {
+    static func dailyPlanFromJSONMealPlan(_ json:[String:AnyObject]) -> DailyPlan? {
         
         var meal: Meal
         let dailyPlan = DailyPlan()
@@ -266,17 +266,17 @@ struct DeploydAPI {
             // Assign the values to the meal object
             meal.mealTime = mealTime
             for ingredient in ingredients {
-                meal.recipe?.ingredients.addObject(ingredient)
+                meal.recipe?.ingredients.add(ingredient)
             }
             meal.recipe?.name = recipeName
             meal.recipe?.instructions = instructions
             meal.recipe?.serves = serves
             
-            meal.recipe?.imageURL = NSURL(string:imgUrl)
-            dailyPlan.meals.addObject(meal)
+            meal.recipe?.imageURL = URL(string:imgUrl)
+            dailyPlan.meals.add(meal)
         }
         for aString in atAGlance {
-            dailyPlan.atAGlance.addObject(aString)
+            dailyPlan.atAGlance.add(aString)
         }
         
         dailyPlan.dayNumber = Int(day)!

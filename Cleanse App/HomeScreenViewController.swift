@@ -50,10 +50,10 @@ class HomeScreenViewController: UIViewController {
         let introStoryboard = UIStoryboard(name: "Introduction", bundle:  nil)
         
         // Create an instance of the storyboard's initial view controller
-        let controller = introStoryboard.instantiateViewControllerWithIdentifier("IntroductionStoryboard") as UIViewController
+        let controller = introStoryboard.instantiateViewController(withIdentifier: "IntroductionStoryboard") as UIViewController
         
         // Display the new view controller
-        controller.presentViewController(controller, animated: true, completion: nil)
+        controller.present(controller, animated: true, completion: nil)
         
     }
     /*

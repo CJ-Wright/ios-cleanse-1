@@ -15,7 +15,7 @@ class Recipe: NSObject, NSCoding {
     var name: String
     var instructions: String
     var image: UIImage
-    var imageURL: NSURL?
+    var imageURL: URL?
     var ingredients: NSMutableArray
     var recipeID: String
     var serves: String
@@ -32,13 +32,13 @@ class Recipe: NSObject, NSCoding {
         self.image = UIImage()
     }
     
-    init (name: String, instructions: String, ingredients: NSMutableArray, recipeID: String, serves: String, imageURL: NSURL){
+    init (name: String, instructions: String, ingredients: NSMutableArray, recipeID: String, serves: String, imageURL: URL){
         self.name = name
         self.image = UIImage()
         self.instructions = instructions
         self.ingredients = NSMutableArray()
         for ingredient in ingredients {
-            self.ingredients.addObject(ingredient)
+            self.ingredients.add(ingredient)
         }
         self.numIngredients = ingredients.count
         self.recipeID = recipeID
@@ -48,31 +48,31 @@ class Recipe: NSObject, NSCoding {
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){
-        guard let name = decoder.decodeObjectForKey("name") as? String  else {
+        guard let name = decoder.decodeObject(forKey: "name") as? String  else {
             print("Failed to init name from recipe archiver")
             return nil
         }
-        guard let instructions = decoder.decodeObjectForKey("instructions") as? String  else {
+        guard let instructions = decoder.decodeObject(forKey: "instructions") as? String  else {
             print("Failed to init instructions from recipe archiver")
             return nil
         }
-        guard let image = decoder.decodeObjectForKey("image") as? UIImage  else {
+        guard let image = decoder.decodeObject(forKey: "image") as? UIImage  else {
             print("Failed to init image from recipe archiver")
             return nil
         }
-        guard let ingredients = decoder.decodeObjectForKey("ingredients") as? NSMutableArray  else {
+        guard let ingredients = decoder.decodeObject(forKey: "ingredients") as? NSMutableArray  else {
             print("Failed to init ingredients from recipe archiver")
             return nil
         }
-        guard let recipeID = decoder.decodeObjectForKey("recipeID") as? String  else {
+        guard let recipeID = decoder.decodeObject(forKey: "recipeID") as? String  else {
             print("Failed to init recipeID from recipe archiver")
             return nil
         }
-        guard let serves = decoder.decodeObjectForKey("serves") as? String else {
+        guard let serves = decoder.decodeObject(forKey: "serves") as? String else {
             print("Failed to init serves from recipe archiver")
             return nil
         }
-        guard let imageURL = decoder.decodeObjectForKey("imageURL") as? NSURL else {
+        guard let imageURL = decoder.decodeObject(forKey: "imageURL") as? URL else {
             print("Failed to init imageURL from recipe archiver")
             return nil
         }
@@ -87,14 +87,14 @@ class Recipe: NSObject, NSCoding {
         self.image = image
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.name, forKey: "name")
-        aCoder.encodeObject(self.instructions, forKey: "instructions")
-        aCoder.encodeObject(self.image, forKey: "image")
-        aCoder.encodeObject(self.ingredients, forKey: "ingredients")
-        aCoder.encodeObject(self.recipeID, forKey: "recipeID")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.instructions, forKey: "instructions")
+        aCoder.encode(self.image, forKey: "image")
+        aCoder.encode(self.ingredients, forKey: "ingredients")
+        aCoder.encode(self.recipeID, forKey: "recipeID")
 //        print("Encoding serves \(self.serves)")
-        aCoder.encodeObject(self.serves, forKey: "serves")
-        aCoder.encodeObject(self.imageURL, forKey: "imageURL")
+        aCoder.encode(self.serves, forKey: "serves")
+        aCoder.encode(self.imageURL, forKey: "imageURL")
     }
 }

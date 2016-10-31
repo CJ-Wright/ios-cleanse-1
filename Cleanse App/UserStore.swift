@@ -10,18 +10,18 @@ import Foundation
 
 class UserStore {
     
-    let userArchiveURL: NSURL = {
-        let documentsDirectories = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    let userArchiveURL: URL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.URLByAppendingPathComponent("user.archive")!
+        return documentDirectory.appendingPathComponent("user.archive")
     }()
     
     func load() -> User? {
-        guard let user = NSKeyedUnarchiver.unarchiveObjectWithFile(userArchiveURL.path!) as? User else { return nil }
+        guard let user = NSKeyedUnarchiver.unarchiveObject(withFile: userArchiveURL.path) as? User else { return nil }
         return user
     }
     
-    func save(user:User) -> Bool{
-        return NSKeyedArchiver.archiveRootObject(user, toFile: userArchiveURL.path!)
+    func save(_ user:User) -> Bool{
+        return NSKeyedArchiver.archiveRootObject(user, toFile: userArchiveURL.path)
     }
 }

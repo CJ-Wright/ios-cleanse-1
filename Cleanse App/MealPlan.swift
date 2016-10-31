@@ -15,7 +15,7 @@ class MealPlan: NSObject, NSCoding {
     var numberOfDays: Int
     var days: NSMutableArray
     var mealPlanID: String
-    var startingDate: NSDate
+    var startingDate: Date
     var finishedSave: Bool?
     var saveResult: Bool?
      
@@ -25,10 +25,10 @@ class MealPlan: NSObject, NSCoding {
         self.numberOfDays = 0
         self.days = NSMutableArray()
         self.mealPlanID = ""
-        self.startingDate = NSDate()
+        self.startingDate = Date()
     }
     
-    init(name: String, numberOfDays: Int, days: NSMutableArray, mealPlanID: String, startingDate: NSDate){
+    init(name: String, numberOfDays: Int, days: NSMutableArray, mealPlanID: String, startingDate: Date){
         self.mealPlanName = name
         self.numberOfDays = numberOfDays
         self.days = days
@@ -42,29 +42,29 @@ class MealPlan: NSObject, NSCoding {
         self.days = days
         self.mealPlanID = mealPlanID
         
-        let date: NSDate = NSDate()
-        let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let date: Date = Date()
+        let cal: Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
 //        let newDate: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
 //        self.startingDate = newDate
-        self.startingDate = cal.startOfDayForDate(date)
+        self.startingDate = cal.startOfDay(for: date)
     }
     
     
     // This is the path to where the information for the meal plans are stored.
-    let mealPlanArchiveURL: NSURL = {
+    let mealPlanArchiveURL: URL = {
         let documentsDirectories =
-            NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.URLByAppendingPathComponent("mealplans.archive")!
+        return documentDirectory.appendingPathComponent("mealplans.archive")
     }()
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder){
-        guard let mealPlanName = decoder.decodeObjectForKey("mealPlanName") as? String,
-            let days = decoder.decodeObjectForKey("days") as? NSMutableArray,
-            let mealPlanID = decoder.decodeObjectForKey("mealPlanID") as? String,
-            let startingDate = decoder.decodeObjectForKey("startingDate") as? NSDate
+        guard let mealPlanName = decoder.decodeObject(forKey: "mealPlanName") as? String,
+            let days = decoder.decodeObject(forKey: "days") as? NSMutableArray,
+            let mealPlanID = decoder.decodeObject(forKey: "mealPlanID") as? String,
+            let startingDate = decoder.decodeObject(forKey: "startingDate") as? Date
             else {
 //                print("Failed to init [ Meal Plan ] from archiver")
                 return nil
@@ -73,23 +73,23 @@ class MealPlan: NSObject, NSCoding {
         
         self.init(
             name:mealPlanName,
-            numberOfDays: decoder.decodeIntegerForKey("numberOfDays"),
+            numberOfDays: decoder.decodeInteger(forKey: "numberOfDays"),
             days:days,
             mealPlanID: mealPlanID,
             startingDate: startingDate
         )
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
 //        print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
-        aCoder.encodeObject(self.mealPlanName, forKey: "mealPlanName")
-        aCoder.encodeInt(Int32(self.numberOfDays), forKey: "numberOfDays")
-        aCoder.encodeObject(self.days, forKey: "days")
-        aCoder.encodeObject(self.mealPlanID, forKey: "mealPlanID")
-        aCoder.encodeObject(self.startingDate, forKey: "startingDate")
+        aCoder.encode(self.mealPlanName, forKey: "mealPlanName")
+        aCoder.encodeCInt(Int32(self.numberOfDays), forKey: "numberOfDays")
+        aCoder.encode(self.days, forKey: "days")
+        aCoder.encode(self.mealPlanID, forKey: "mealPlanID")
+        aCoder.encode(self.startingDate, forKey: "startingDate")
     }
     
-    func changeMealRecipe(recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
+    func changeMealRecipe(_ recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
 //        print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
         ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
     }
@@ -98,13 +98,13 @@ class MealPlan: NSObject, NSCoding {
     func saveChanges() -> Bool {
 //        print("Saving meal plan to \(mealPlanArchiveURL.path!)")
         self.finishedSave = false
-        self.saveResult = NSKeyedArchiver.archiveRootObject(self, toFile: mealPlanArchiveURL.path!)
+        self.saveResult = NSKeyedArchiver.archiveRootObject(self, toFile: mealPlanArchiveURL.path)
 //        print("Done saving meal plan")
         self.finishedSave = false
         return self.saveResult!
     }
     
     func resetStartDay() {
-        self.startingDate = NSDate()
+        self.startingDate = Date()
     }
 }

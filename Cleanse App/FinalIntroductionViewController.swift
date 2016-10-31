@@ -18,7 +18,7 @@ class FinalIntroductionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MealPlanStore.currentMealPlan.startingDate = NSDate()
+        MealPlanStore.currentMealPlan.startingDate = Date()
         
         // Do any additional setup after loading the view.
     }
@@ -30,16 +30,16 @@ class FinalIntroductionViewController: UIViewController {
     
     
     
-    func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+    func progressBarDisplayer(_ msg:String, _ indicator:Bool ) {
         print(msg)
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 300, height: 50))
         strLabel.text = msg
-        strLabel.textColor = UIColor.whiteColor()
+        strLabel.textColor = UIColor.white
         messageFrame = UIView(frame: CGRect(x: view.frame.midX - 180, y: view.frame.midY - 25 , width: 280, height: 50))
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
         if indicator {
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
             activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             activityIndicator.startAnimating()
             messageFrame.addSubview(activityIndicator)
@@ -49,7 +49,7 @@ class FinalIntroductionViewController: UIViewController {
     }
     
     
-    @IBAction func loadMainStoryboard(sender: UIButton) {
+    @IBAction func loadMainStoryboard(_ sender: UIButton) {
         
         if MealPlanStore.imagesFinishedDownloadSet.count > 0 {
             if initBegan == false{
@@ -72,10 +72,10 @@ class FinalIntroductionViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             // [2] Create an instance of the storyboard's initial view controller.
-            let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as UIViewController
+            let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
             
             // [3] Display the new view controller.
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.present(controller, animated: true, completion: nil)
         }
     }
 }

@@ -42,19 +42,19 @@ class SelectPlanViewController: UIViewController {
     
     // MARK: - Buttons
 
-    @IBAction func parasiteDetox(sender: UIButton) {
+    @IBAction func parasiteDetox(_ sender: UIButton) {
         let color = detoxDescriptionTextView.textColor
         detoxDescriptionTextView.text = parasiteInformation
         detoxDescriptionTextView.textColor = color
     }
     
-    @IBAction func heavyMetalDetox(sender: UIButton) {
+    @IBAction func heavyMetalDetox(_ sender: UIButton) {
         let color = detoxDescriptionTextView.textColor
         detoxDescriptionTextView.text = heavyMetalInformation
         detoxDescriptionTextView.textColor = color
     }
     
-    @IBAction func candidaDetox(sender: UIButton) {
+    @IBAction func candidaDetox(_ sender: UIButton) {
         let color = detoxDescriptionTextView.textColor
         detoxDescriptionTextView.text = candidaInformation
         detoxDescriptionTextView.textColor = color

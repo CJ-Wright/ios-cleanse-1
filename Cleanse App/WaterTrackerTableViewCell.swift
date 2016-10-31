@@ -25,7 +25,7 @@ class WaterTrackerTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
@@ -58,28 +58,28 @@ class WaterTrackerTableViewCell: UITableViewCell {
     
     
     // MARK: - Buttons
-    @IBAction func incrementByOne(sender: UIButton) {
+    @IBAction func incrementByOne(_ sender: UIButton) {
         amountDrank += 1
         updateProgress()
     }
-    @IBAction func decrementByOne(sender: UIButton) {
+    @IBAction func decrementByOne(_ sender: UIButton) {
         amountDrank -= 1
         updateProgress()
     }
-    @IBAction func add8Ounces(sender: UIButton) {
+    @IBAction func add8Ounces(_ sender: UIButton) {
         amountDrank += 8
         updateProgress()
     }
     
-    @IBAction func add16Ounces(sender: UIButton) {
+    @IBAction func add16Ounces(_ sender: UIButton) {
         amountDrank += 16
         updateProgress()
     }
-    @IBAction func add24Ounces(sender: UIButton) {
+    @IBAction func add24Ounces(_ sender: UIButton) {
         amountDrank += 24
         updateProgress()
     }
-    @IBAction func add32Ounces(sender: UIButton) {
+    @IBAction func add32Ounces(_ sender: UIButton) {
         amountDrank += 32
         updateProgress()
     }

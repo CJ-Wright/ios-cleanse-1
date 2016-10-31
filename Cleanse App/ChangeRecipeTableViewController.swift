@@ -38,28 +38,28 @@ class ChangeRecipeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return recipeArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create a template cell as a MealMapTableViewCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath:indexPath) as! ChangeRecipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for:indexPath) as! ChangeRecipeTableViewCell
         
-        cell.recipeImageView.image = recipeArray[indexPath.row].image
-        cell.recipeNameLabel.text = recipeArray[indexPath.row].name
+        cell.recipeImageView.image = recipeArray[(indexPath as NSIndexPath).row].image
+        cell.recipeNameLabel.text = recipeArray[(indexPath as NSIndexPath).row].name
         
         return cell
     }
  
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         for recipe in recipeSet {
@@ -71,33 +71,33 @@ class ChangeRecipeTableViewController: UITableViewController {
     }
     
     //Called, when long press occurred
-    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
+    func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer){
         
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
-            let touchPoint = longPressGestureRecognizer.locationInView(self.view)
-            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 // Alert Controller / Modal for selecting a new recipes
-                let alertController = UIAlertController(title: "", message: "Use selected recipe?", preferredStyle: .ActionSheet)
+                let alertController = UIAlertController(title: "", message: "Use selected recipe?", preferredStyle: .actionSheet)
                 
                 // Cancel the Modal
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                     action in
                     print("Cancel pressed")
                 })
                 
                 // Change the recipe
-                let changeRecipeAction = UIAlertAction(title: "Change", style: .Default, handler: {
+                let changeRecipeAction = UIAlertAction(title: "Change", style: .default, handler: {
                     action in
-                    let newRecipe = self.recipeArray[indexPath.row]
+                    let newRecipe = self.recipeArray[(indexPath as NSIndexPath).row]
                     MealPlanStore.currentMealPlan.changeMealRecipe(newRecipe ,dailyPlanIndex: self.dailyPlanIndex, mealIndex: self.mealIndex)
                     
                     self.progressBarDisplayer("Saving Recipe", true)
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         MealPlanStore.currentMealPlan.saveChanges()
-                        dispatch_async(dispatch_get_main_queue()) {
+                        DispatchQueue.main.async {
                             self.messageFrame.removeFromSuperview()
                         }
-                        self.performSegueWithIdentifier("unwindToMealPlan", sender: self)
+                        self.performSegue(withIdentifier: "unwindToMealPlan", sender: self)
                     }
                 })
                 
@@ -105,21 +105,21 @@ class ChangeRecipeTableViewController: UITableViewController {
                 alertController.addAction(changeRecipeAction)
                 
                 alertController.popoverPresentationController?.sourceView = view
-                presentViewController(alertController, animated: true, completion:nil)
+                present(alertController, animated: true, completion:nil)
             }
         }
     }
     
-    func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+    func progressBarDisplayer(_ msg:String, _ indicator:Bool ) {
         print(msg)
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 300, height: 50))
         strLabel.text = msg
-        strLabel.textColor = UIColor.whiteColor()
+        strLabel.textColor = UIColor.white
         messageFrame = UIView(frame: CGRect(x: view.frame.midX - 180, y: view.frame.midY - 25 , width: 280, height: 50))
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
         if indicator {
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
             activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             activityIndicator.startAnimating()
             messageFrame.addSubview(activityIndicator)
@@ -167,7 +167,7 @@ class ChangeRecipeTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         

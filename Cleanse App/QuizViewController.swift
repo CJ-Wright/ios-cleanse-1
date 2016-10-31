@@ -82,7 +82,7 @@ class QuizViewController: UIViewController {
         }
     }
     
-    @IBAction func answerYes(Sender: AnyObject){
+    @IBAction func answerYes(_ Sender: AnyObject){
         print("Answered yes ")
         if(isParasiteQuestion)
         {
@@ -101,7 +101,7 @@ class QuizViewController: UIViewController {
         generateNewQuestion()
     }
     
-    @IBAction func answerNo(Sender: AnyObject){
+    @IBAction func answerNo(_ Sender: AnyObject){
         print("Answered no ")
         if(isParasiteQuestion)
         {

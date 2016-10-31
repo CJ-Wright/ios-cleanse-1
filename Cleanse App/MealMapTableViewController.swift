@@ -39,7 +39,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         }
         
         let waterTrackerNib = UINib(nibName: "WaterTrackerTableViewCell", bundle: nil)
-        tableView.registerNib(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
+        tableView.register(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
         tableView.tableFooterView = UIView()
         
         if RecipeStore.recipeSet.isEmpty {
@@ -68,23 +68,23 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Initialize the swipe left gesture to change days
-        if indexPath.row == 5{
+        if (indexPath as NSIndexPath).row == 5{
             
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
-            cell.selectionStyle = .None
-            cell.amountDrank = MealPlanStore.currentMealPlan.days[currentDay - 1].amountDrank
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "WaterTrackerTableViewCell") as! WaterTrackerTableViewCell
+            cell.selectionStyle = .none
+            cell.amountDrank = (MealPlanStore.currentMealPlan.days[currentDay - 1] as AnyObject).amountDrank
             cell.currentDay = currentDay
             cell.updateProgress()
             return cell
@@ -95,13 +95,13 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             self.view.addGestureRecognizer(longPressRecognizer)
             
             let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(MealMapTableViewController.nextDayButton(_:)))
-            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.left
             self.view.addGestureRecognizer(swipeLeft)
             
             // If the current day is 1 then allow the swipe right feature to bring out the side menu
             if currentDay == 1 {
                 let panGestureRecognizer = self.revealViewController().panGestureRecognizer()
-                self.view.addGestureRecognizer(panGestureRecognizer)
+                self.view.addGestureRecognizer(panGestureRecognizer!)
                 
             } else {
                 // Remove the ability to open up the side menu by swiping when it is not the first day.
@@ -109,38 +109,38 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 
                 // Add the swipe right functionality to the view
                 let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(MealMapTableViewController.previousDayButton(_:)))
-                swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+                swipeRight.direction = UISwipeGestureRecognizerDirection.right
                 self.view.addGestureRecognizer(swipeRight)
             }
             
             
             // Create a template cell as a MealMapTableViewCell
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! MealMapTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for:indexPath) as! MealMapTableViewCell
             var mealName: String = "None"
             var image: UIImage?
             
             // Determine if the cell is to be a snack/shake or meal cell
-            if cellIdentifiers[indexPath.row] == "Snack" {
+            if cellIdentifiers[(indexPath as NSIndexPath).row] == "Snack" {
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                        if let meal = day.meals[indexPath.row] as? Meal {
+                        if let meal = day.meals[(indexPath as NSIndexPath).row] as? Meal {
                             image = meal.recipe!.image
                             mealName = meal.recipe!.name
                             print("Meal Name \(mealName)")
-                            if mealName.containsString("Cleanse") {
+                            if mealName.contains("Cleanse") {
                                 print("Contained Cleanse")
                                 self.numShakes += 1
                             }
                         }
                     }
                 }
-            } else if cellIdentifiers[indexPath.row] != "DAY" {
+            } else if cellIdentifiers[(indexPath as NSIndexPath).row] != "DAY" {
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
-                        image = (day.meals[indexPath.row] as! Meal).recipe!.image
-                        mealName = (day.meals[indexPath.row] as! Meal).recipe!.name
+                        image = (day.meals[(indexPath as NSIndexPath).row] as! Meal).recipe!.image
+                        mealName = (day.meals[(indexPath as NSIndexPath).row] as! Meal).recipe!.name
                         print("Meal Name \(mealName)")
-                        if mealName.containsString("Cleanse") {
+                        if mealName.contains("Cleanse") {
                             print("Contained Cleanse")
                             numShakes += 1
                         }
@@ -148,7 +148,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
             cell.mealMapNameLabel.numberOfLines = 3
-            cell.mealMapNameLabel.text = cellIdentifiers[indexPath.row] + ":\n" + mealName
+            cell.mealMapNameLabel.text = cellIdentifiers[(indexPath as NSIndexPath).row] + ":\n" + mealName
             cell.mealMapImageView.image = image
             cell.sizeToFit()
             
@@ -157,7 +157,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     // Changes the current day to the next day in the meal plan
-    @IBAction func nextDayButton(sender: UIBarButtonItem) {
+    @IBAction func nextDayButton(_ sender: UIBarButtonItem) {
         self.numShakes = 0
         // Check to see if the current day is less than the number of days in a meal plan
         if currentDay < numDaysInPlan {
@@ -165,21 +165,21 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
             
             // This will animate the movement of the table right to left
             let range = NSMakeRange(0, self.tableView.numberOfSections)
-            let sections = NSIndexSet(indexesInRange: range)
-            self.tableView.reloadSections(sections, withRowAnimation: .Left)
+            let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+            self.tableView.reloadSections(sections, with: .left)
         }
     }
     
     // Changes the current day to the previous day
-    @IBAction func previousDayButton(sender: UIBarButtonItem) {
+    @IBAction func previousDayButton(_ sender: UIBarButtonItem) {
         self.numShakes = 0
         // Check to see if the current day is greater than the first day in the meal plan
         if currentDay > 1 {
             currentDay -= 1
             // This will animate the movement of the table left to right
             let range = NSMakeRange(0, self.tableView.numberOfSections)
-            let sections = NSIndexSet(indexesInRange: range)
-            self.tableView.reloadSections(sections, withRowAnimation: .Right)
+            let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+            self.tableView.reloadSections(sections, with: .right)
         }
     }
     
@@ -187,25 +187,25 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     
     // Return the title of the section header. This will change based on the current
     //  day of the meal plan.
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         navigationBar.title! = "Meal Map"
         return "Day " + String(currentDay)
     }
     
     // This configures and edits the section header
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         //recast your view as a UITableViewHeaderFooterView
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         //make the background color dark blue
         header.contentView.backgroundColor = UIColor(red: 18/255, green: 68/255, blue: 104/255, alpha: 1.0)
-        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
-        header.textLabel?.textAlignment = NSTextAlignment.Center
+        header.textLabel!.textColor = UIColor.white //make the text white
+        header.textLabel?.textAlignment = NSTextAlignment.center
         header.textLabel?.font
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 5 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row == 5 {
             return 170
         } else {
             return 81
@@ -213,37 +213,37 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     //Called, when long press occurred
-    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer){
+    func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer){
         
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
             
             // Retrieve the touch point where the user pressed
-            let touchPoint = longPressGestureRecognizer.locationInView(self.view)
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
             
             // Get the index of the cell that the user clicked on and make sure it is not the water tracker
-            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) where indexPath.row < 5 {
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) , (indexPath as NSIndexPath).row < 5 {
                 // Alert Controller / Modal for selecting a new recipes
-                let alertController = UIAlertController(title: "Edit Meal", message: "Select a new recipe?", preferredStyle: .ActionSheet)
+                let alertController = UIAlertController(title: "Edit Meal", message: "Select a new recipe?", preferredStyle: .actionSheet)
                 
                 // Cancel the Modal
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                     action in
                     print("Cancel pressed")
                 })
                 
                 // Change the recipe
-                let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .Default, handler: {
+                let changeRecipeAction = UIAlertAction(title: "Change Recipe", style: .default, handler: {
                     action in
                     
-                    self.mealIndex = indexPath.row
-                    if ((((MealPlanStore.currentMealPlan.days[self.currentDay - 1] as! DailyPlan).meals[indexPath.row] as! Meal).recipe!.name.containsString("Cleanse"))) {
+                    self.mealIndex = (indexPath as NSIndexPath).row
+                    if ((((MealPlanStore.currentMealPlan.days[self.currentDay - 1] as! DailyPlan).meals[(indexPath as NSIndexPath).row] as! Meal).recipe!.name.contains("Cleanse"))) {
                         if self.numShakes == (MealPlanStore.currentMealPlan.days[self.currentDay - 1] as! DailyPlan).minShakesForDay! {
                             // TODO: Need to implement a modal that says can't do less than the required minimum number of shakes
                         } else {
-                            self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                            self.performSegue(withIdentifier: "selectRecipeModal", sender: self)
                         }
                     } else {
-                        self.performSegueWithIdentifier("selectRecipeModal", sender: self)
+                        self.performSegue(withIdentifier: "selectRecipeModal", sender: self)
                     }
                 })
                 
@@ -251,7 +251,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 alertController.addAction(changeRecipeAction)
                 
                 alertController.popoverPresentationController?.sourceView = view
-                presentViewController(alertController, animated: true, completion:nil)
+                present(alertController, animated: true, completion:nil)
             }
         }
     }
@@ -259,7 +259,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -267,12 +267,12 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         if segue.identifier == "recipeDetailSegue" {
             
             // Figure out which row was just tapped
-            if let row = tableView.indexPathForSelectedRow?.row {
+            if let row = (tableView.indexPathForSelectedRow as NSIndexPath?)?.row {
                 // Get the item associated with this row and pass it along
                 if MealPlanStore.currentMealPlan.days.count > 0 {
                     if let dailyPlan = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                         let meal = dailyPlan.meals[row]
-                        let detailViewController = segue.destinationViewController as! MealDetailsTableViewController
+                        let detailViewController = segue.destination as! MealDetailsTableViewController
                         detailViewController.meal = meal as! Meal
                     }
                 }
@@ -280,19 +280,19 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         } else if segue.identifier == "selectRecipeModal" {
             print("Selecting new recipes\n")
             print("Selected row [\(self.mealIndex)]")
-            let selectNewRecipeController = segue.destinationViewController as! ChangeRecipeTableViewController
+            let selectNewRecipeController = segue.destination as! ChangeRecipeTableViewController
             selectNewRecipeController.dailyPlanIndex = currentDay - 1
             selectNewRecipeController.mealIndex = self.mealIndex!
             self.numShakes = 0
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     
-    @IBAction func unwindToMealPlan(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToMealPlan(_ unwindSegue: UIStoryboardSegue) {
         
     }
 }

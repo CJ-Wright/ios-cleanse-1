@@ -14,9 +14,9 @@ class User: NSObject, NSCoding {
     var apiKey: String!
     var hasCurrentPlan: Bool
     
-    let session: NSURLSession = {
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        return NSURLSession(configuration: config)
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
     }()
     
     init(name:String, hasPlan:Bool){
@@ -25,12 +25,12 @@ class User: NSObject, NSCoding {
     }
     
     required convenience init?(coder decoder: NSCoder){
-        guard let name = decoder.decodeObjectForKey("userName") as? String
+        guard let name = decoder.decodeObject(forKey: "userName") as? String
             else { return nil }
         
         self.init(
             name: name,
-            hasPlan: decoder.decodeBoolForKey("hasPlan")
+            hasPlan: decoder.decodeBool(forKey: "hasPlan")
         )
     }
     
@@ -38,12 +38,12 @@ class User: NSObject, NSCoding {
         return self.hasCurrentPlan
     }
     
-    func setPlanState(state:Bool){
+    func setPlanState(_ state:Bool){
         self.hasCurrentPlan = state
     }
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.userName, forKey: "userName")
-        aCoder.encodeBool(self.hasCurrentPlan, forKey: "hasPlan")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.userName, forKey: "userName")
+        aCoder.encode(self.hasCurrentPlan, forKey: "hasPlan")
     }
  
     

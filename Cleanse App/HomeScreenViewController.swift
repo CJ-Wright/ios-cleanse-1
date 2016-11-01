@@ -16,6 +16,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet var atAGlanceDesc: UILabel!
     @IBOutlet var detoxFactLabel: UILabel!
     @IBOutlet var tipOfTheDayLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,14 @@ class HomeScreenViewController: UIViewController {
             MealPlanStore.resetPlanDay()
         }
         
+        dayLabel.text = "Day \(MealPlanStore.currentDay + 1)"
         atAGlanceDesc.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).atAGlanceInstruction
         detoxFactLabel.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).detoxFacts
         tipOfTheDayLabel.text = (MealPlanStore.currentMealPlan.days[9 - MealPlanStore.currentDay] as! DailyPlan).tipOfTheDay
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Proxima Nova", size: 17)!]
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 79/255, green: 116/255, blue: 136/255, alpha: 1.0)
-
+        
         // Do any additional setup after loading the view.
         // This allows for the side menu to appear from within the app
         if self.revealViewController() != nil {

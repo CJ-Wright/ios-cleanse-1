@@ -10,6 +10,13 @@ import UIKit
 import StoreKit
 
 class ProductTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet var productName: UILabel!
+    @IBOutlet var productDescription: UILabel!
+    @IBOutlet var productImage: UIImageView!
+    @IBOutlet var productPrice: UILabel!
+    
     static let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         
@@ -25,22 +32,26 @@ class ProductTableViewCell: UITableViewCell {
         didSet {
             guard let product = product else { return }
             print("Trying to set text label in product")
-            textLabel?.text = product.localizedTitle
+            //textLabel?.text = product.localizedTitle
+            productName?.text = product.localizedTitle
             
             if RecipeSetProducts.store.isProductPurchased(product.productIdentifier) {
                 print("isProductPurchased")
                 accessoryType = .checkmark
                 accessoryView = nil
-                detailTextLabel?.text = ""
+                //detailTextLabel?.text = ""
+                productName?.text = ""
             } else if IAPHelper.canMakePayments() {
                 ProductTableViewCell.priceFormatter.locale = product.priceLocale
-                detailTextLabel?.text = ProductTableViewCell.priceFormatter.string(from: product.price)
+                //detailTextLabel?.text = ProductTableViewCell.priceFormatter.string(from: product.price)
+                productPrice?.text = ProductTableViewCell.priceFormatter.string(from: product.price)
                 print("Can Make Payments")
                 accessoryType = .none
                 accessoryView = self.newBuyButton()
             } else {
                 print("Not Available")
-                detailTextLabel?.text = "Not available"
+                //detailTextLabel?.text = "Not available"
+                productName?.text = "Not available"
             }
         }
     }
@@ -49,8 +60,10 @@ class ProductTableViewCell: UITableViewCell {
         print("Before prepare for reuse")
         super.prepareForReuse()
         
-        textLabel?.text = ""
-        detailTextLabel?.text = ""
+        //textLabel?.text = ""
+        productName?.text = ""
+        //detailTextLabel?.text = ""
+        productPrice?.text = ""
         accessoryView = nil
     }
     

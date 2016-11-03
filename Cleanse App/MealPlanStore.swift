@@ -73,15 +73,15 @@ class MealPlanStore: NSObject {
             var tmpCount: Int
             
             let request = URLRequest(url:photoURL as URL)
-            print("Image starting download \(counter)...")
+            //print("Image starting download \(counter)...")
             tmpCount = counter
             MealPlanStore.imagesFinishedDownloadSet.insert(counter)
             let task = session.dataTask(with: request, completionHandler: {
                 (data, response, error) -> Void in
                 if let imageData = data as Data? {
-                    print("----- PHOTO URL ------- \n\(photoURL)")
+                    //print("----- PHOTO URL ------- \n\(photoURL)")
                     meal.recipe?.image = UIImage(data: imageData)!
-                    print("Image done downloading \(tmpCount)")
+                    //print("Image done downloading \(tmpCount)")
                     MealPlanStore.imagesFinishedDownloadSet.remove(tmpCount)
                 }
             })
@@ -146,10 +146,10 @@ class MealPlanStore: NSObject {
             if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: mealPlanArchiveURL.path) as? MealPlan {
                 MealPlanStore.currentMealPlan = archivedItems
                 MealPlanStore.plansReceived = true
-                print("Successfully unarchived plans")
+                //print("Successfully unarchived plans")
             } else {
                 MealPlanStore.plansReceived = false
-                print("Failed to unarchive plans")
+                //print("Failed to unarchive plans")
             }
         }
         return MealPlanStore.plansReceived

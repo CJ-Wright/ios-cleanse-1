@@ -88,6 +88,26 @@ struct DeploydAPI {
         return components.url!
     }
     
+    static func recipeSetURL(productKey: String) -> URL {
+        
+        // Base URL with the recipes API request call appended to the end of it
+        let components = URLComponents(string: baseURLString + "/recipe/set/\(productKey)")!
+        var queryItems = [URLQueryItem]()
+        
+        // Base parameters
+        let baseParams = [
+            "format": "json"
+        ]
+        /* Once the API key has been established then the key:value pair "api_key" : APIKey can be added to the baseParams array */
+        
+        // Append the base parameters to the NSQueryItems array
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        return components.url!
+    }
     static func mealPlansURL() -> URL {
         
         // Base URL with the recipes API request call appended to the end of it

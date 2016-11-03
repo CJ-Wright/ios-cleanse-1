@@ -126,7 +126,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                         if let meal = day.meals[(indexPath as NSIndexPath).row] as? Meal {
                             image = meal.recipe!.image
                             mealName = meal.recipe!.name
-                            print("Meal Name \(mealName)")
+                            //print("Meal Name \(mealName)")
                             if mealName.contains("Cleanse") {
                                 print("Contained Cleanse")
                                 self.numShakes += 1
@@ -139,9 +139,9 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                     if let day = MealPlanStore.currentMealPlan.days[currentDay-1] as? DailyPlan {
                         image = (day.meals[(indexPath as NSIndexPath).row] as! Meal).recipe!.image
                         mealName = (day.meals[(indexPath as NSIndexPath).row] as! Meal).recipe!.name
-                        print("Meal Name \(mealName)")
+                        //print("Meal Name \(mealName)")
                         if mealName.contains("Cleanse") {
-                            print("Contained Cleanse")
+                            //print("Contained Cleanse")
                             numShakes += 1
                         }
                     }
@@ -228,7 +228,7 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 // Cancel the Modal
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                     action in
-                    print("Cancel pressed")
+                    //print("Cancel pressed")
                 })
                 
                 // Change the recipe
@@ -278,8 +278,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
         } else if segue.identifier == "selectRecipeModal" {
-            print("Selecting new recipes\n")
-            print("Selected row [\(self.mealIndex)]")
+            //print("Selecting new recipes\n")
+            //print("Selected row [\(self.mealIndex)]")
             let selectNewRecipeController = segue.destination as! ChangeRecipeTableViewController
             selectNewRecipeController.dailyPlanIndex = currentDay - 1
             selectNewRecipeController.mealIndex = self.mealIndex!

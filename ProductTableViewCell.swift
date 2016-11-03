@@ -31,25 +31,23 @@ class ProductTableViewCell: UITableViewCell {
     var product: SKProduct? {
         didSet {
             guard let product = product else { return }
-            print("Trying to set text label in product")
             //textLabel?.text = product.localizedTitle
             productName?.text = product.localizedTitle
             
             if RecipeSetProducts.store.isProductPurchased(product.productIdentifier) {
-                print("isProductPurchased")
+                //print("isProductPurchased")
                 accessoryType = .checkmark
                 accessoryView = nil
-                //detailTextLabel?.text = ""
                 productName?.text = ""
             } else if IAPHelper.canMakePayments() {
                 ProductTableViewCell.priceFormatter.locale = product.priceLocale
-                //detailTextLabel?.text = ProductTableViewCell.priceFormatter.string(from: product.price)
+                //print(product.productIdentifier)
                 productPrice?.text = ProductTableViewCell.priceFormatter.string(from: product.price)
-                print("Can Make Payments")
+                //print("Can Make Payments")
                 accessoryType = .none
                 accessoryView = self.newBuyButton()
             } else {
-                print("Not Available")
+                //print("Not Available")
                 //detailTextLabel?.text = "Not available"
                 productName?.text = "Not available"
             }
@@ -57,7 +55,7 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        print("Before prepare for reuse")
+        //print("Before prepare for reuse")
         super.prepareForReuse()
         
         //textLabel?.text = ""

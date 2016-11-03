@@ -31,7 +31,6 @@ class PurchasesTableViewController: UITableViewController {
                                                name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
                                                object: nil)
         
-        // print("Product identifier \(RecipeSetProducts.store.isProductPurchased(product.productIdentifier))")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -64,7 +63,6 @@ class PurchasesTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         reload()
     }
     
@@ -78,10 +76,8 @@ class PurchasesTableViewController: UITableViewController {
         RecipeSetProducts.store.requestProducts{success, products in
             if success {
                 self.products = products!
-                
                 self.tableView.reloadData()
             }
-            
             self.refreshControl?.endRefreshing()
         }
     }
@@ -95,7 +91,6 @@ class PurchasesTableViewController: UITableViewController {
         
         for (index, product) in products.enumerated() {
             guard product.productIdentifier == productID else { continue }
-            
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
         }
     }
@@ -134,7 +129,7 @@ class PurchasesTableViewController: UITableViewController {
             let product = products[(indexPath as NSIndexPath).row]
             
             if resourceNameForProductIdentifier(product.productIdentifier) != nil{
-                print("Merp")
+                //print("Merp")
                 /*
                 let detailViewController = segue.destination as? DetailViewController {
                 let image = UIImage(named: name)

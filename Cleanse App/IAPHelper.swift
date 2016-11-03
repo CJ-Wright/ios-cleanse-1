@@ -47,9 +47,9 @@ open class IAPHelper : NSObject  {
             let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
             if purchased {
                 purchasedProductIdentifiers.insert(productIdentifier)
-                print("Previously purchased: \(productIdentifier)")
+                //print("Previously purchased: \(productIdentifier)")
             } else {
-                print("Not purchased: \(productIdentifier)")
+                //print("Not purchased: \(productIdentifier)")
             }
         }
         super.init()

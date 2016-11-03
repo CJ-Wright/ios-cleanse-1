@@ -20,8 +20,8 @@ class WaterTrackerTableViewCell: UITableViewCell {
     @IBOutlet var progressView: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.amountToGo.text = "You have \(self.amountDrank) to go!"
-        self.goalAmount.text = "Goal: \(self.goal) Oz"
+        self.amountToGo.text = "Consumed: \(self.amountDrank) oz"
+        //self.goalAmount.text = "Goal: \(self.goal) Oz"
         // Initialization code
     }
     
@@ -32,28 +32,33 @@ class WaterTrackerTableViewCell: UITableViewCell {
     }
     
     func reset(){
-        progressView?.progress = 0.0
-        self.amountToGo.text = "You have 85 to go!"
+        //progressView?.progress = 0.0
+        self.amountToGo.text = "Consumed: 0 oz"
     }
     
     // MARK: - Increment Progress
     func updateProgress() {
+        /*
         if amountDrank <= 0 {
-            progressView?.progress = 0
+            //progressView?.progress = 0
             self.amountDrank = 0
-            self.amountToGo.text = "You have \(self.goal) to go!"
+            self.amountToGo.text = "Consumed: \(self.amountDrank) oz"
             (MealPlanStore.currentMealPlan.days[currentDay - 1] as! DailyPlan).updateAmountDrank(0)
         }
         else if(amountDrank < goal){
-            progressView?.progress = Float(amountDrank) / Float(goal)
-            self.amountToGo.text = "You have \(self.goal - self.amountDrank) to go!"
-            (MealPlanStore.currentMealPlan.days[currentDay - 1] as! DailyPlan).updateAmountDrank(self.amountDrank)
+            //progressView?.progress = Float(amountDrank) / Float(goal)
+            
         } else {
-            progressView?.progress = 1
-            self.amountToGo.text = "You 0 to go!"
+            //progressView?.progress = 1
             self.amountDrank = goal
             (MealPlanStore.currentMealPlan.days[currentDay - 1] as! DailyPlan).updateAmountDrank(goal)
         }
+        */
+        if self.amountDrank > 300 {
+            self.amountDrank = 300
+        }
+        self.amountToGo.text = "Consumed: \(self.amountDrank) oz"
+        (MealPlanStore.currentMealPlan.days[currentDay - 1] as! DailyPlan).updateAmountDrank(self.amountDrank)
     }
     
     

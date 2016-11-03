@@ -145,7 +145,7 @@ class MealDetailsTableViewController: UITableViewController {
             var ingredientsList: String = ""
             for ingredient in (meal.recipe?.ingredients)! {
                 print(ingredient)
-                ingredientsList = ingredientsList + "\n* " + (ingredient as! String)
+                ingredientsList = ingredientsList + "\n" + (ingredient as! String)
                 numIngredients += 1
             }
             self.recipeIngredientsLabel.text = ingredientsList

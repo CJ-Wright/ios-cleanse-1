@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323195221D7B8B7400A18D16 /* CheckBoxButton.swift */; };
+		32334F351DCA79B40011D23A /* RecipeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32334F341DCA79B40011D23A /* RecipeSet.swift */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
 		326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */; };
 		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		323195221D7B8B7400A18D16 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		32334F341DCA79B40011D23A /* RecipeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSet.swift; sourceTree = "<group>"; };
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
 		326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FoodListCellDescriptor.plist; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				32F923911D002D4A0069D49D /* Recipe.swift */,
+				32334F341DCA79B40011D23A /* RecipeSet.swift */,
 				32FB6EFC1DC6E55600CC79A0 /* IAPHelper.swift */,
 				32F6A9A61D1F092200047A51 /* User.swift */,
 				32F5E90E1D20DE9E006D9F75 /* Meal.swift */,
@@ -542,6 +545,7 @@
 				3272BB971D84C6C20018B367 /* CustomCell.swift in Sources */,
 				323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */,
 				32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */,
+				32334F351DCA79B40011D23A /* RecipeSet.swift in Sources */,
 				328ECB591D3333B500925BE9 /* HomeScreenViewController.swift in Sources */,
 				32F9238C1D00214B0069D49D /* SWRevealViewController.m in Sources */,
 				32F923921D002D4A0069D49D /* Recipe.swift in Sources */,

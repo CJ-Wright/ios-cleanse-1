@@ -20,8 +20,9 @@ class RecipeStore: NSObject {
         return URLSession(configuration: config)
     }()
     
-    func fetchRecipes(completion: @escaping (RecipeResult) -> Void) {
-        let url = DeploydAPI.recipesURL()
+    func fetchRecipes(productKey:String, completion: @escaping (RecipeResult) -> Void) {
+        let url = DeploydAPI.recipeSetURL(productKey: productKey)
+        print("Recipe Set URL \(url)")
         let request = URLRequest(url:url as URL)
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
@@ -39,12 +40,11 @@ class RecipeStore: NSObject {
         return DeploydAPI.recipesFromJSONData(jsonData)
     }
     
-    func initRecipes(){
+    func downloadRecipeSet(productKey: String){
         if !RecipeStore.recipesReceived {
             // Attempt to fetch the recipes
-            fetchRecipes() {
+            fetchRecipes(productKey: productKey) {
                 (recipeResult) -> Void in
-                
                 switch recipeResult {
                 case let .success(recipes):
                      print("Successfully found \(recipes)")

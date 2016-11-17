@@ -44,9 +44,6 @@ class MealPlan: NSObject, NSCoding {
         
         let date: Date = Date()
         let cal: Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        
-//        let newDate: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
-//        self.startingDate = newDate
         self.startingDate = cal.startOfDay(for: date)
     }
     
@@ -66,10 +63,8 @@ class MealPlan: NSObject, NSCoding {
             let mealPlanID = decoder.decodeObject(forKey: "mealPlanID") as? String,
             let startingDate = decoder.decodeObject(forKey: "startingDate") as? Date
             else {
-//                print("Failed to init [ Meal Plan ] from archiver")
                 return nil
         }
-//        print("[Meal Plan] Success!")
         
         self.init(
             name:mealPlanName,
@@ -81,7 +76,6 @@ class MealPlan: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-//        print("Meal \(mealPlanName) - \(numberOfDays) - \(mealPlanID)")
         aCoder.encode(self.mealPlanName, forKey: "mealPlanName")
         aCoder.encodeCInt(Int32(self.numberOfDays), forKey: "numberOfDays")
         aCoder.encode(self.days, forKey: "days")
@@ -90,16 +84,13 @@ class MealPlan: NSObject, NSCoding {
     }
     
     func changeMealRecipe(_ recipe: Recipe, dailyPlanIndex: Int, mealIndex:Int){
-//        print("Changing Day \(dailyPlanIndex) and Meal Index \(mealIndex)")
         ((self.days[dailyPlanIndex] as! DailyPlan).meals[mealIndex] as! Meal).changeRecipe(recipe)
     }
     
     
     func saveChanges() -> Bool {
-//        print("Saving meal plan to \(mealPlanArchiveURL.path!)")
         self.finishedSave = false
         self.saveResult = NSKeyedArchiver.archiveRootObject(self, toFile: mealPlanArchiveURL.path)
-//        print("Done saving meal plan")
         self.finishedSave = false
         return self.saveResult!
     }

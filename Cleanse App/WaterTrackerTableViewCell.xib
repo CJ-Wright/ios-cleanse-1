@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="174"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="376" height="173.5"/>
+                <frame key="frameInset" width="376" height="173"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqN-8m-LBZ">
@@ -111,7 +111,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="Nhj-iI-8yC" secondAttribute="trailing" constant="55" id="2hx-gW-BTh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nhj-iI-8yC" secondAttribute="trailing" constant="8" id="2hx-gW-BTh"/>
                     <constraint firstItem="rgv-kh-MIO" firstAttribute="leading" secondItem="AdQ-07-JBC" secondAttribute="trailing" constant="28" id="CxU-9l-njU"/>
                     <constraint firstItem="SqN-8m-LBZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="69" id="D07-gk-pGc"/>
                     <constraint firstItem="V5U-4d-Grl" firstAttribute="leading" secondItem="zWU-KI-Gpn" secondAttribute="trailing" constant="27" id="EGL-6P-TQg"/>

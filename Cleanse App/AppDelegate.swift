@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let userStore = UserStore()
     var user: User? = nil
     var products = [SKProduct]()
+    var recipeSets = [RecipeSet]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -52,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 for product in self.products {
                     print("Product Identifier : \(product.productIdentifier)")
                     self.recipeStore.downloadRecipeSet(productKey: product.productIdentifier)
+                    //DeploydAPI.
                 }
             }
         }

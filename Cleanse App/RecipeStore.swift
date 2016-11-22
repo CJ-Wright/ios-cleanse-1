@@ -57,7 +57,7 @@ class RecipeStore: NSObject {
                 (recipeResult) -> Void in
                 switch recipeResult {
                 case let .success(recipes):
-                    print("Successfully found \(recipes)")
+                    
                     RecipeStore.recipesReceived = true
                     var cntr = 0
                     for recipe in recipes {
@@ -115,17 +115,17 @@ class RecipeStore: NSObject {
     func fetchImageForPhoto(_ recipe: Recipe, completion: (ImageResult) -> Void){
         
         if let photoURL = recipe.imageURL {
-            print("Photo URL is \(photoURL)")
+//            print("Photo URL is \(photoURL)")
             
             let request = URLRequest(url:photoURL as URL)
             //print("Image starting download \(counter)...")
-            print("Starting downloaded for recipe \(recipe.name)")
+//            print("Starting downloaded for recipe \(recipe.name)")
             
             let task = session.dataTask(with: request, completionHandler: {
                 (data, response, error) -> Void in
                 if let imageData = data as Data? {
                     recipe.image = UIImage(data: imageData)!
-                    print("Downloaded image for \(recipe.name)")
+//                    print("Downloaded image for \(recipe.name)")
                 }
                 else{
                     print("Error \(error)")

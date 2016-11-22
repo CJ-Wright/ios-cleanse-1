@@ -39,6 +39,8 @@ class ProductTableViewCell: UITableViewCell {
             }
             productDescription?.text = recipeNames
             productImage.image = (RecipeStore.availableSets[product.productIdentifier]?[0])?.image
+            productImage.layer.cornerRadius = productImage.frame.size.width / 2
+            productImage.clipsToBounds = true
             
             if RecipeSetProducts.store.isProductPurchased(product.productIdentifier) {
                 //print("isProductPurchased")

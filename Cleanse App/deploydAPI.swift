@@ -251,9 +251,11 @@ struct DeploydAPI {
             print("Failed to [IMGURL] parse json")
             return nil
         }
-        print("Parsed Recipe \(name)")
-        let imageURL = URL(fileURLWithPath: imageURLString)
-        return Recipe(name: name, instructions: instructions, ingredients: ingredients as! NSMutableArray, recipeID: recipeID, serves: serves, imageURL: imageURL)
+        
+//        print("Parsed Recipe \(name)")
+//        print("IMAGE URL \(imageURLString)")
+        let imageURL = URL(string: imageURLString)
+        return Recipe(name: name, instructions: instructions, ingredients: ingredients as! NSMutableArray, recipeID: recipeID, serves: serves, imageURL: imageURL!)
     }
     
     // MARK: Meal Plans From JSON Methods

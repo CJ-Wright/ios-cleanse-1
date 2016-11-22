@@ -14,6 +14,7 @@ class PurchasesTableViewController: UITableViewController {
     
     let showDetailSegueIdentifier = "showDetail"
     var products = [SKProduct]()
+    let recipeStore = RecipeStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,13 @@ class PurchasesTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(PurchasesTableViewController.handlePurchaseNotification(_:)),
                                                name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
                                                object: nil)
+        
+        let userDefaults : UserDefaults = UserDefaults.standard
+        print("User defaults")
+        print("------------------------------------\n")
+        print(userDefaults.bool(forKey: "b4sxjh1xf9f2etljzcys"))
+        print("------------------------------------\n")
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

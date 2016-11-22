@@ -136,7 +136,8 @@ struct DeploydAPI {
         do {
             // Attempt to convert the json object into an AnyObject
             let jsonObject:Any = try JSONSerialization.jsonObject(with: data, options: [])
-            
+            print(jsonObject)
+            print("MERP")
             // Create an array of recipes to store the converted JSON Objects
             var finalRecipes = [Recipe]()
             
@@ -159,26 +160,106 @@ struct DeploydAPI {
             return .failure(error)
         }
     }
-    
+    // MARK: - JSON Methods
+    // MARK: Recipes From JSON Methods
+    static func recipesFromRecipeSetJSONData(_ data: Data) -> RecipeResult {
+        do {
+            // Attempt to convert the json object into an AnyObject
+            let jsonObject:Any = try JSONSerialization.jsonObject(with: data, options: [])
+            
+            
+            // Create an array of recipes to store the converted JSON Objects
+            var finalRecipes = [Recipe]()
+            
+            let recipeSetJson = (jsonObject as! Dictionary<String, AnyObject>)["recipes"] as! [Dictionary<String, AnyObject>]
+            
+            for recipeJson in recipeSetJson {
+                if let recipe = recipeFromRecipeSetJSONObject(recipeJson){                    
+                    finalRecipes.append(recipe)
+                }
+            }
+            
+            if finalRecipes.count == 0 && (jsonObject as AnyObject).count > 0 {
+                // We weren't able to parse any of the photso
+                // Maybe the JSON format for photos has changed
+                print("Failed to get final recipes")
+                return .failure(DeploydError.invalidJSONData)
+            }
+            
+            return .success(finalRecipes)
+        } catch let error {
+            return .failure(error)
+        }
+    }
     // This will take a given JSON Object and constructs a recipe
     static func recipeFromJSONObject(_ json:[String : AnyObject]) -> Recipe? {
         
-        guard let recipeID = json["id"] as? String,
-            let name = json["name"] as? String,
-            let ingredients = json["ingredients"] as? NSMutableArray,
-            let serves  = json["serves"] as? String,
-            let instructions = json["instructions"] as? String,
-            let imageURLString = json["imgUrl"] as? String else {
-                print("Failed to parse json")
-                return nil
+        guard let recipeID = json["id"] as? String else {
+            print("Failed to [ID] parse json")
+            return nil
         }
+        guard   let name = json["name"] as? String else {
+            print("Failed to [NAME] parse json")
+            return nil
+        }
+        guard let ingredients = json["ingredients"] as? NSMutableArray else {
+            print("Failed to [INGREDIENTS] parse json")
+            return nil
+        }
+        guard let serves  = json["serves"] as? String else {
+            print("Failed to [SERVES] parse json")
+            return nil
+        }
+        guard let instructions = json["instructions"] as? String else {
+            print("Failed to [INSTRUCTIONS] parse json")
+            return nil
+        }
+        guard let imageURLString = json["imgUrl"] as? String else {
+            print("Failed to [IMGURL] parse json")
+            return nil
+        }
+        print("Parsed Recipe \(name)")
         let imageURL = URL(fileURLWithPath: imageURLString)
         return Recipe(name: name, instructions: instructions, ingredients: ingredients, recipeID: recipeID, serves: serves, imageURL: imageURL)
+    }
+    
+    // This will take a given JSON Object and constructs a recipe
+    static func recipeFromRecipeSetJSONObject(_ json:[String : AnyObject]) -> Recipe? {
+        
+        guard let recipeID = json["id"] as? String else {
+            print("Failed to [ID] parse json")
+            return nil
+        }
+        guard   let name = json["name"] as? String else {
+            print("Failed to [NAME] parse json")
+            return nil
+        }
+        guard let ingredientsArray = json["ingredients"] as? NSArray else {
+            print("Failed to [INGREDIENTS] parse json")
+            return nil
+        }
+        let ingredients = ingredientsArray.mutableCopy()
+        guard let serves  = json["serves"] as? String else {
+            print("Failed to [SERVES] parse json")
+            return nil
+        }
+        guard let instructions = json["instructions"] as? String else {
+            print("Failed to [INSTRUCTIONS] parse json")
+            return nil
+        }
+        guard let imageURLString = json["imgUrl"] as? String else {
+            print("Failed to [IMGURL] parse json")
+            return nil
+        }
+        print("Parsed Recipe \(name)")
+        let imageURL = URL(fileURLWithPath: imageURLString)
+        return Recipe(name: name, instructions: instructions, ingredients: ingredients as! NSMutableArray, recipeID: recipeID, serves: serves, imageURL: imageURL)
     }
     
     // MARK: Meal Plans From JSON Methods
     static func mealPlansFromJSONData(_ data: Data) -> MealPlanResult {
         do {
+            print("Getting meal plan from json")
             // Attempt to convert the json object into an AnyObject
             let jsonObject:Any = try JSONSerialization.jsonObject(with: data, options: [])
             

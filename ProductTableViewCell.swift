@@ -33,6 +33,12 @@ class ProductTableViewCell: UITableViewCell {
             guard let product = product else { return }
             //textLabel?.text = product.localizedTitle
             productName?.text = product.localizedTitle
+            var recipeNames = ""
+            for recipe in RecipeStore.availableSets[product.productIdentifier]! {
+                recipeNames += (recipe.name + "\n")
+            }
+            productDescription?.text = recipeNames
+            productImage.image = (RecipeStore.availableSets[product.productIdentifier]?[0])?.image
             
             if RecipeSetProducts.store.isProductPurchased(product.productIdentifier) {
                 //print("isProductPurchased")

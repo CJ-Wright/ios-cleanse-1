@@ -74,6 +74,7 @@ class MealPlanStore: NSObject {
             
             let request = URLRequest(url:photoURL as URL)
             //print("Image starting download \(counter)...")
+            print("Meal Plan PHOTO URL IS \(photoURL)")
             tmpCount = counter
             MealPlanStore.imagesFinishedDownloadSet.insert(counter)
             let task = session.dataTask(with: request, completionHandler: {

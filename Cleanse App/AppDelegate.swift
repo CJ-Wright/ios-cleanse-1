@@ -14,7 +14,6 @@ import StoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let recipeStore = RecipeStore()
     let mealPlanStore = MealPlanStore()
     let userStore = UserStore()
     var user: User? = nil
@@ -23,14 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // TODO: Need to implement a check to see if the data has already been downloaded.
-        // Create a new storyboard instance
         
         user = userStore.load()
-        if user != nil {
-            //print("Loaded user profile")
-        } else {
-        
+        if user == nil {
+    
             let introStoryboard = UIStoryboard(name: "Introduction", bundle:  nil)
             
             // Create an instance of the storyboard's initial view controller
@@ -39,30 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = introController
             
-            //print("No user found")
             user = User(name: "New User", hasPlan: false)
             user?.setPlanState(true)
             if userStore.save(user!) {
-                //print("User saved!")
+                print("User saved!")
             }
         }
         
         RecipeSetProducts.store.requestProducts{success, products in
             if success {
                 self.products = products!
+                
                 for product in self.products {
                     print("Product Identifier : \(product.productIdentifier)")
-                    self.recipeStore.downloadRecipeSet(productKey: product.productIdentifier)
-                    //DeploydAPI.
+                    RecipeStore.sharedInstance.downloadRecipeSet(productKey: product.productIdentifier)
                 }
             }
         }
         
         mealPlanStore.initMealPlan(user!)
-
         MealPlanStore.currentDay = Int(MealPlanStore.currentMealPlan.startingDate.timeIntervalSinceNow ) / 60 / 60 / 24
-        //print("Time Interval \(MealPlanStore.currentDay)")
-        
         return true
     }
     

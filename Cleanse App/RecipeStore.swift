@@ -126,6 +126,7 @@ class RecipeStore: NSObject {
                 }
             }
             RecipeStore.generalRecipesAdded = true
+            print("Done adding the original")
         }
 
         for recipeSetID in RecipeStore.purchasedRecipeSetIDs {

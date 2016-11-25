@@ -39,18 +39,20 @@ class RecipeSetTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print("Number of sections \(RecipeStore.purchasedRecipeSetIDs.count)")
-        return RecipeStore.purchasedRecipeSetIDs.count
+        print("Number of sections \(RecipeStore.purchasedRecipeSetIDs.count + 1)")
+        return RecipeStore.purchasedRecipeSetIDs.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("MERP")
         var numCells = 0
         for id in RecipeStore.purchasedRecipeSetIDs {
             print("ID \(id)")
             numCells += RecipeStore.availableRecipeSets[id]!.count
         }
         numCells += RecipeStore.availableRecipeSets["Original"]!.count
+        
         print("Number of cells \(numCells)")
 //        return RecipeStore.availableRecipeSets.count
         return numCells
@@ -74,7 +76,6 @@ class RecipeSetTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeSetTableViewCell
         
         if indexPath.row < (RecipeStore.availableRecipeSets["Original"]?.count)! {
-            print("Adding the original")
             cell.recipeNameLabel.text = RecipeStore.availableRecipeSets["Original"]?[indexPath.row].name
         }
         

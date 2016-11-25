@@ -11,6 +11,8 @@ import UIKit
 class RecipeSetTableViewCell: UITableViewCell {
 
     @IBOutlet var recipeNameLabel: UILabel!
+    @IBOutlet var recipeImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

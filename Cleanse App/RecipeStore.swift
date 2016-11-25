@@ -15,6 +15,7 @@ class RecipeStore: NSObject {
     static var recipesReceived = false
     static var availableRecipeSets = Dictionary<String,[Recipe]>()
     static var purchasedRecipeSetIDs = Set<String>()
+    static var addedRecipes = Set<String>()
     static var unpurchasedAvailableSets = Dictionary<String, [Recipe]>()
     static var generalRecipesAdded = false
     var numRecipes: Int
@@ -97,7 +98,11 @@ class RecipeStore: NSObject {
         if RecipeStore.availableRecipeSets[setName] == nil {
             RecipeStore.availableRecipeSets[setName] = [Recipe]()
         }
-        RecipeStore.availableRecipeSets[setName]!.append(recipe)
+        if RecipeStore.addedRecipes.contains(recipe.name) == false {
+            RecipeStore.availableRecipeSets[setName]!.append(recipe)
+            RecipeStore.addedRecipes.insert(recipe.name)
+            
+        }
     }
     
     static func updateRecipeSet(){
@@ -107,7 +112,7 @@ class RecipeStore: NSObject {
                 RecipeStore.purchasedRecipeSetIDs.insert(productKey)
             }
         }
-        if RecipeStore.availableRecipeSets.isEmpty || !RecipeStore.generalRecipesAdded {
+        if RecipeStore.availableRecipeSets["Original"]?.count == 0 || !RecipeStore.generalRecipesAdded {
             print("Is empty... adding the original")
             RecipeStore.availableRecipeSets["Original"] = [Recipe]()
             for day in MealPlanStore.currentMealPlan.days {
@@ -117,9 +122,7 @@ class RecipeStore: NSObject {
                             if let recipe = meal.recipe {
                                 recipe.name = meal.recipe!.name
                                 recipe.image = meal.recipe!.image
-                                if !RecipeStore.availableRecipeSets["Original"]!.contains(recipe) {
-                                    RecipeStore.addRecipeToStore(setName: "Original", recipe: recipe)
-                                }
+                                RecipeStore.addRecipeToStore(setName: "Original", recipe: recipe)
                             }
                         }
                     }

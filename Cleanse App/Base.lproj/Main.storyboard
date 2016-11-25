@@ -997,15 +997,21 @@
                                     <constraint firstAttribute="trailing" secondItem="tvR-UB-wsj" secondAttribute="trailing" constant="8" id="iCD-mJ-xkk"/>
                                 </constraints>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="65" id="Hg2-fg-Z1x" customClass="RecipeSetTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="77" width="375" height="65"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="79" id="Hg2-fg-Z1x" customClass="RecipeSetTableViewCell" customModule="Cleanse_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="77" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg2-fg-Z1x" id="aw4-cP-2NT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEh-AJ-zk9">
+                                            <rect key="frame" x="3" y="3" width="65" height="73"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="DKi-PE-xdg"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RecipeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-PC-0fJ">
-                                            <rect key="frame" x="36" y="8" width="331" height="47"/>
+                                            <rect key="frame" x="69" y="3" width="298" height="73"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1013,12 +1019,17 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstItem="8rG-PC-0fJ" firstAttribute="leading" secondItem="Hg2-fg-Z1x" secondAttribute="leading" constant="36" id="3j1-zd-ZKf"/>
+                                    <constraint firstItem="cEh-AJ-zk9" firstAttribute="top" secondItem="Hg2-fg-Z1x" secondAttribute="top" constant="3" id="3P9-da-sNX"/>
+                                    <constraint firstItem="8rG-PC-0fJ" firstAttribute="leading" secondItem="Hg2-fg-Z1x" secondAttribute="leading" constant="69" id="3j1-zd-ZKf"/>
+                                    <constraint firstAttribute="bottom" secondItem="cEh-AJ-zk9" secondAttribute="bottom" constant="3" id="OBQ-EX-Sn8"/>
+                                    <constraint firstAttribute="trailing" secondItem="cEh-AJ-zk9" secondAttribute="trailing" constant="307" id="Tlc-g0-awm"/>
                                     <constraint firstAttribute="trailing" secondItem="8rG-PC-0fJ" secondAttribute="trailing" constant="8" id="YsX-f9-iea"/>
-                                    <constraint firstAttribute="bottom" secondItem="8rG-PC-0fJ" secondAttribute="bottom" constant="10" id="ral-lm-08o"/>
-                                    <constraint firstItem="8rG-PC-0fJ" firstAttribute="top" secondItem="Hg2-fg-Z1x" secondAttribute="top" constant="8" id="zkh-r8-Noy"/>
+                                    <constraint firstItem="cEh-AJ-zk9" firstAttribute="leading" secondItem="Hg2-fg-Z1x" secondAttribute="leading" constant="3" id="bOh-0S-L2P"/>
+                                    <constraint firstAttribute="bottom" secondItem="8rG-PC-0fJ" secondAttribute="bottom" constant="3" id="ral-lm-08o"/>
+                                    <constraint firstItem="8rG-PC-0fJ" firstAttribute="top" secondItem="Hg2-fg-Z1x" secondAttribute="top" constant="3" id="zkh-r8-Noy"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="recipeImage" destination="cEh-AJ-zk9" id="07a-hl-Md8"/>
                                     <outlet property="recipeNameLabel" destination="8rG-PC-0fJ" id="51R-Ke-Mgz"/>
                                 </connections>
                             </tableViewCell>

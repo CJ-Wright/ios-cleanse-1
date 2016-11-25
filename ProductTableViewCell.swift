@@ -34,11 +34,11 @@ class ProductTableViewCell: UITableViewCell {
             //textLabel?.text = product.localizedTitle
             productName?.text = product.localizedTitle
             var recipeNames = ""
-            for recipe in RecipeStore.availableSets[product.productIdentifier]! {
+            for recipe in RecipeStore.unpurchasedAvailableSets[product.productIdentifier]! {
                 recipeNames += (recipe.name + "\n")
             }
             productDescription?.text = recipeNames
-            productImage.image = (RecipeStore.availableSets[product.productIdentifier]?[0])?.image
+            productImage.image = (RecipeStore.unpurchasedAvailableSets[product.productIdentifier]?[0])?.image
             productImage.layer.cornerRadius = productImage.frame.size.width / 2
             productImage.clipsToBounds = true
             

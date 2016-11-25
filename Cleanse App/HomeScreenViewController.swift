@@ -21,6 +21,7 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        RecipeStore.updateRecipeSet()
         if MealPlanStore.currentDay < 0 || MealPlanStore.currentDay > 9 {
             MealPlanStore.resetPlanDay()
         }

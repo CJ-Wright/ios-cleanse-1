@@ -41,24 +41,8 @@ class MealMapTableViewController: UITableViewController, UIGestureRecognizerDele
         let waterTrackerNib = UINib(nibName: "WaterTrackerTableViewCell", bundle: nil)
         tableView.register(waterTrackerNib, forCellReuseIdentifier: "WaterTrackerTableViewCell")
         tableView.tableFooterView = UIView()
-        
-        if RecipeStore.recipeSet.isEmpty {
-            for day in MealPlanStore.currentMealPlan.days {
-                if let dailyPlan = day as? DailyPlan {
-                    for dailyMeal in dailyPlan.meals {
-                        if let meal = dailyMeal as? Meal {
-                            if let recipe = meal.recipe {
-                                recipe.name = meal.recipe!.name
-                                recipe.image = meal.recipe!.image
-                                if RecipeStore.recipeSet.contains(recipe) == false {
-                                    RecipeStore.recipeSet.insert(recipe)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    
+        RecipeStore.updateRecipeSet()
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,6 +10,8 @@
 		323195231D7B8B7400A18D16 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323195221D7B8B7400A18D16 /* CheckBoxButton.swift */; };
 		32334F351DCA79B40011D23A /* RecipeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32334F341DCA79B40011D23A /* RecipeSet.swift */; };
 		324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */; };
+		324CDA9D1DE897EE00CAB3D8 /* RecipeSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CDA9C1DE897EE00CAB3D8 /* RecipeSetTableViewController.swift */; };
+		324CDA9F1DE8AEC600CAB3D8 /* RecipeSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CDA9E1DE8AEC600CAB3D8 /* RecipeSetTableViewCell.swift */; };
 		326186751D7C7931003B06E8 /* FoodListCellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */; };
 		326186771D7C8B4B003B06E8 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */; };
 		32629A881D4701820095A82D /* HomeScreenDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */; };
@@ -83,6 +85,8 @@
 		32334F341DCA79B40011D23A /* RecipeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSet.swift; sourceTree = "<group>"; };
 		323588631D0DC7E600EB861F /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		324BFA0C1D1E03A700AE195C /* MealMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealMapTableViewCell.swift; sourceTree = "<group>"; };
+		324CDA9C1DE897EE00CAB3D8 /* RecipeSetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSetTableViewController.swift; sourceTree = "<group>"; };
+		324CDA9E1DE8AEC600CAB3D8 /* RecipeSetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSetTableViewCell.swift; sourceTree = "<group>"; };
 		326186741D7C7931003B06E8 /* FoodListCellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FoodListCellDescriptor.plist; sourceTree = "<group>"; };
 		326186761D7C8B4B003B06E8 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		32629A871D4701820095A82D /* HomeScreenDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 				329E5A321D8BB24000C3BB28 /* Protocols.swift */,
 				328B1D751D2839D200B69128 /* PurchasesTableViewController.swift */,
 				32C0341C1DC7033C00A4E1BA /* ProductTableViewCell.swift */,
+				324CDA9C1DE897EE00CAB3D8 /* RecipeSetTableViewController.swift */,
+				324CDA9E1DE8AEC600CAB3D8 /* RecipeSetTableViewCell.swift */,
 				328B1D731D282D3400B69128 /* QuizViewController.swift */,
 				328B1D771D283D3A00B69128 /* SelectPlanViewController.swift */,
 				32E6BA681DA991EC0010D842 /* WaterTrackerTableViewCell.swift */,
@@ -528,6 +534,7 @@
 			files = (
 				32A2B2E31CF113E3005CDC0E /* Cleanse_App.xcdatamodeld in Sources */,
 				328B1D741D282D3400B69128 /* QuizViewController.swift in Sources */,
+				324CDA9F1DE8AEC600CAB3D8 /* RecipeSetTableViewCell.swift in Sources */,
 				32BE58A61D7E2664009DFA8B /* FmcSpringAPI.swift in Sources */,
 				328B1D761D2839D200B69128 /* PurchasesTableViewController.swift in Sources */,
 				32A2B2DB1CF113E3005CDC0E /* AppDelegate.swift in Sources */,
@@ -558,6 +565,7 @@
 				329E5A331D8BB24000C3BB28 /* Protocols.swift in Sources */,
 				32F923941D00302F0069D49D /* RecipeStore.swift in Sources */,
 				32E6BA6A1DA991EC0010D842 /* WaterTrackerTableViewCell.swift in Sources */,
+				324CDA9D1DE897EE00CAB3D8 /* RecipeSetTableViewController.swift in Sources */,
 				32F6A9A71D1F092200047A51 /* User.swift in Sources */,
 				324BFA0D1D1E03A700AE195C /* MealMapTableViewCell.swift in Sources */,
 				328B1D781D283D3A00B69128 /* SelectPlanViewController.swift in Sources */,

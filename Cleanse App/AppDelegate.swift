@@ -47,7 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 for product in self.products {
                     print("Product Identifier : \(product.productIdentifier)")
+                    RecipeStore.recipesReceived = false
                     RecipeStore.sharedInstance.downloadRecipeSet(productKey: product.productIdentifier)
+                    if RecipeStore.recipesReceived {
+                        print("Failed to download new recipes")
+                    }
                 }
             }
         }

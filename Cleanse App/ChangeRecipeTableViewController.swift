@@ -9,7 +9,7 @@
 import UIKit
 
 class ChangeRecipeTableViewController: UITableViewController {
-    var recipeSet = RecipeStore.recipeSet
+//    var recipeSet = RecipeStore.availableRecipeSets
     var recipeArray = [Recipe]()
     var recipeNames = [String]()
     var mealIndex: Int = 0
@@ -45,7 +45,7 @@ class ChangeRecipeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return recipeArray.count
+        return 1
     }
 
     
@@ -62,12 +62,14 @@ class ChangeRecipeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        /*
         for recipe in recipeSet {
             if recipeNames.contains(recipe.name) == false {
                 recipeArray.append(recipe)
                 recipeNames.append(recipe.name)
             }
         }
+        */
     }
     
     //Called, when long press occurred

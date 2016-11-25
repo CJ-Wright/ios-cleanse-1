@@ -13,8 +13,15 @@ class RecipeStore: NSObject {
     
     static let sharedInstance = RecipeStore()
     static var recipesReceived = false
-    static var recipeSet = Set<Recipe>()
-    static var availableSets = Dictionary<String, [Recipe]>()
+    static var availableRecipeSets = Dictionary<String,[Recipe]>()
+    static var purchasedRecipeSetIDs = Set<String>()
+    static var unpurchasedAvailableSets = Dictionary<String, [Recipe]>()
+    static var generalRecipesAdded = false
+    var numRecipes: Int
+    
+    override init() {
+        self.numRecipes = 0
+    }
     
     
     // This is the path to where the information for the meal plans are stored.
@@ -30,6 +37,7 @@ class RecipeStore: NSObject {
         return URLSession(configuration: config)
     }()
     
+    // Performs an asynchronous request for recipes from the server. 
     func fetchRecipes(productKey:String, completion: @escaping (RecipeResult) -> Void) {
         let url = DeploydAPI.recipeSetURL(productKey: productKey)
         print("Recipe Set URL \(url)")
@@ -42,14 +50,16 @@ class RecipeStore: NSObject {
         task.resume()
     }
     
+    // Processes the Recipes
     func processRecentRecipesRequest(data: Data?, error: NSError?) -> RecipeResult {
         guard let jsonData = data else {
             return .failure(error!)
         }
-        
         return DeploydAPI.recipesFromRecipeSetJSONData(jsonData)
     }
     
+    // Given a product key this will query the API Server and receive JSON object containing the recipes and img urls.
+    // It will download and save the JSON and images inside the RecipeStore object.
     func downloadRecipeSet(productKey: String){
         if !RecipeStore.recipesReceived {
             // Attempt to fetch the recipes
@@ -59,9 +69,7 @@ class RecipeStore: NSObject {
                 case let .success(recipes):
                     
                     RecipeStore.recipesReceived = true
-                    var cntr = 0
                     for recipe in recipes {
-                        print("Counter \(cntr)")
                         self.fetchImageForPhoto(recipe, completion: {
                             (ImageResult) -> Void in
                             switch ImageResult {
@@ -72,8 +80,11 @@ class RecipeStore: NSObject {
                             }
                         })
                     }
-                    RecipeStore.availableSets[productKey] = recipes
-                    print(RecipeStore.availableSets)
+                    RecipeStore.unpurchasedAvailableSets[productKey] = recipes
+                    let userDefaults : UserDefaults = UserDefaults.standard
+                    if userDefaults.bool(forKey: productKey){
+                        RecipeStore.purchasedRecipeSetIDs.insert(productKey)
+                    }
                 case let .failure(error):
                     print("Error fetching recipes: \(error)")
                     RecipeStore.recipesReceived = false
@@ -82,8 +93,48 @@ class RecipeStore: NSObject {
         }
     }
     
-    func addRecipeToStore(_ recipe:Recipe){
-        RecipeStore.recipeSet.insert(recipe)
+    static func addRecipeToStore(setName:String, recipe:Recipe){
+        if RecipeStore.availableRecipeSets[setName] == nil {
+            RecipeStore.availableRecipeSets[setName] = [Recipe]()
+        }
+        RecipeStore.availableRecipeSets[setName]!.append(recipe)
+    }
+    
+    static func updateRecipeSet(){
+        let userDefaults : UserDefaults = UserDefaults.standard
+        for productKey in RecipeSetProducts.RECIPE_SETS {
+            if userDefaults.bool(forKey: productKey ){
+                RecipeStore.purchasedRecipeSetIDs.insert(productKey)
+            }
+        }
+        if RecipeStore.availableRecipeSets.isEmpty || !RecipeStore.generalRecipesAdded {
+            print("Is empty... adding the original")
+            RecipeStore.availableRecipeSets["Original"] = [Recipe]()
+            for day in MealPlanStore.currentMealPlan.days {
+                if let dailyPlan = day as? DailyPlan {
+                    for dailyMeal in dailyPlan.meals {
+                        if let meal = dailyMeal as? Meal {
+                            if let recipe = meal.recipe {
+                                recipe.name = meal.recipe!.name
+                                recipe.image = meal.recipe!.image
+                                if !RecipeStore.availableRecipeSets["Original"]!.contains(recipe) {
+                                    RecipeStore.addRecipeToStore(setName: "Original", recipe: recipe)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            RecipeStore.generalRecipesAdded = true
+        }
+
+        for recipeSetID in RecipeStore.purchasedRecipeSetIDs {
+            if userDefaults.bool(forKey: recipeSetID ){
+                for recipe in RecipeStore.unpurchasedAvailableSets[recipeSetID]! {
+                    RecipeStore.addRecipeToStore(setName: recipeSetID, recipe: recipe)
+                }
+            }
+        }
     }
     
     // MARK: - Persistence
@@ -91,11 +142,11 @@ class RecipeStore: NSObject {
     func loadRecipeSetsFromArchive() -> Bool {
         
         if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: recipeSetArchiveURL.path) as? MealPlan {
-//            RecipeStore.currentMealPlan = archivedItems
-//            RecipeStore.plansReceived = true
+            //            RecipeStore.currentMealPlan = archivedItems
+            //            RecipeStore.plansReceived = true
             //print("Successfully unarchived plans")
         } else {
-//            MealPlanStore.plansReceived = false
+            //            MealPlanStore.plansReceived = false
             //print("Failed to unarchive plans")
         }
         
@@ -108,24 +159,19 @@ class RecipeStore: NSObject {
         print("Done saving")
         return result
     }
-
+    
     /*
      Method for retrieving the photo from URL in the given Meal
      */
     func fetchImageForPhoto(_ recipe: Recipe, completion: (ImageResult) -> Void){
         
         if let photoURL = recipe.imageURL {
-//            print("Photo URL is \(photoURL)")
-            
             let request = URLRequest(url:photoURL as URL)
-            //print("Image starting download \(counter)...")
-//            print("Starting downloaded for recipe \(recipe.name)")
             
             let task = session.dataTask(with: request, completionHandler: {
                 (data, response, error) -> Void in
                 if let imageData = data as Data? {
                     recipe.image = UIImage(data: imageData)!
-//                    print("Downloaded image for \(recipe.name)")
                 }
                 else{
                     print("Error \(error)")
@@ -135,6 +181,6 @@ class RecipeStore: NSObject {
             task.resume()
         }
     }
-
+    
 }
 

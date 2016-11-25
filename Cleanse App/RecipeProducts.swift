@@ -20,18 +20,10 @@ public struct RecipeSetProducts {
     public static let RECIPE_SET_8 = "9z7bmxvuxxm04dnejxjz"
     public static let RECIPE_SET_9 = "odzuipiofggowx837rua"
     public static let RECIPE_SET_10 = "joc7f37ndcjny6zq07f4"
-    /*
-     public static let RECIPE_SETS = ["b4sxjh1xf9f2etljzcys",
-     "ikljk47wes24pd1ommc6",
-     "c3g3ch7wv0t0bsmr775j",
-     "z1svnijdpvocv1wtdbyk",
-     "hxtnyqzr4248x6sukmz4",
-     "eqmr76e7338s0pxba32y",
-     "j07sthayvow5crpmeezx",
-     "9z7bmxvuxxm04dnejxjz",
-     "odzuipiofggowx837rua",
-     "joc7f37ndcjny6zq07f4"]
-     */
+    
+    
+     public static let RECIPE_SETS = [RecipeSetProducts.RECIPE_SET_1,RecipeSetProducts.RECIPE_SET_2,RecipeSetProducts.RECIPE_SET_3,RecipeSetProducts.RECIPE_SET_4,RecipeSetProducts.RECIPE_SET_5,RecipeSetProducts.RECIPE_SET_6,RecipeSetProducts.RECIPE_SET_7,RecipeSetProducts.RECIPE_SET_8,RecipeSetProducts.RECIPE_SET_9,RecipeSetProducts.RECIPE_SET_10]
+    
     
     fileprivate static let productIdentifiers: Set<ProductIdentifier> = [RecipeSetProducts.RECIPE_SET_1,RecipeSetProducts.RECIPE_SET_2,RecipeSetProducts.RECIPE_SET_3,RecipeSetProducts.RECIPE_SET_4,RecipeSetProducts.RECIPE_SET_5,RecipeSetProducts.RECIPE_SET_6,RecipeSetProducts.RECIPE_SET_7,RecipeSetProducts.RECIPE_SET_8,RecipeSetProducts.RECIPE_SET_9,RecipeSetProducts.RECIPE_SET_10]
     

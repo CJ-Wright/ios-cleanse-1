@@ -2,10 +2,10 @@ Just changing something stupid....
 
 [![Stories in Ready](https://badge.waffle.io/Nano-Nimbus/ios-cleanse-1.svg?label=ready&title=Ready)](http://waffle.io/nano-nimbus/ios-cleanse-1) 
 [![Build Status](https://travis-ci.org/Nano-Nimbus/ios-cleanse-1.svg?branch=develop)](https://travis-ci.org/Nano-Nimbus/ios-cleanse-1)
-##Nano Nimbus (Cleanse App)
-##An iOS Mobile Application for helping people out complete body cleanses.
+## Nano Nimbus (Cleanse App)
+## An iOS Mobile Application for helping people out complete body cleanses.
 --------
-###Git flow and branching scheme
+### Git flow and branching scheme
 1. **Always** branch from ``develop``.
 2. Branch naming scheme is defined as such:
     - ``<issue number>-brief-description``
@@ -17,7 +17,7 @@ Just changing something stupid....
 6. Pull-requests must be reviewed by all members of the team before they are approved for merge.
 7. Delete the feature branch once a pull-request is merged.
 
-###A mini command-line git tutorial (for our purposes for this project)
+### A mini command-line git tutorial (for our purposes for this project)
 0. Clone the repo.
     - ``git clone https://github.com/home-run/subtle-cosmic-moose.git``
     - ``cd subtle-cosmic-moose``
@@ -178,9 +178,9 @@ private:
 #endif  // EXAMPLECLASS_H
 ```
 
-###Unit Tests
+### Unit Tests
 - All team members are responsible for writing unit tests for their own code.
 - Simply add the unit test to its appropriate section in test_main.cpp. Note: This currently isn't working properly. Still you should try to add unit tests as you code. 
 
-###General Style Guide
+### General Style Guide
 - For this project we will be following, loosely, [Google's C++ Style Guide](https://google.github.io/styleguide/cppguide.html). Have a quick read through of some of the sections. This is where we will refer to if there are disagreements about style.
